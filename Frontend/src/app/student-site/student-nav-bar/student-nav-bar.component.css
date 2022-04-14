@@ -1,0 +1,22 @@
+
+.slectopt{
+    font-size: 0.7rem;
+    color: #bbb;
+    font-weight: 500;
+}
+.admin-role p{
+    line-height: 1.4;
+
+}
+.imges{
+    width: 30%;
+    height: 43px;
+}
+.navbar{
+    height: 102px;
+}
+@media only screen and (min-width: 567px) and (max-width: 767.98px){
+    .container {
+        max-width: 660px;
+    }
+}

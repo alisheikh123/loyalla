@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Events</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Presentations</button>
+</div>
+
+<div id="London" class="tabcontent">
+
+
+     <div class="main_three_box">
+         <section class="track_section servives_offer new">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-4 text-left padd-4">
+        <div class="box_track_2 news_8">
+        <img src="https://static.wixstatic.com/media/5586ef_e51425830a424d11bcfb9ddf97ce905b~mv2.jpg/v1/fill/w_362,h_221,fp_0.50_0.50,q_90/5586ef_e51425830a424d11bcfb9ddf97ce905b~mv2.webp">
+        <div class="content_9">
+        <div class="list_date">
+        <ul>
+        <li><a href="#">byJohn</a></li>
+        <li class="pad_left"><a href="#">January 2021</a></li>
+        </ul>
+        </div> 
+        <h4 class="color1 fw-regular text-upprcase fs-20 fw-mob-semiBold fs-mob-25">Full Truck Load</h4>
+        <p class="fs-16 fs-mob-14">Straightforward strategy in moving our trucks is a priority for our dispatchers.</p> 
+        </div>
+        </div>
+        </div>
+        <div class="col-md-4 text-left padd-4">
+        <div class="box_track_2 news_8">
+        <img src="https://static.wixstatic.com/media/5586ef_f18ffbd86f074893908f0a29af68ea53~mv2.jpg/v1/fill/w_362,h_221,fp_0.50_0.50,q_90/5586ef_f18ffbd86f074893908f0a29af68ea53~mv2.webp">
+        <div class="content_9">
+        <div class="list_date">
+        <ul>
+        <li><a href="#">byJohn</a></li>
+        <li class="pad_left"><a href="#">January 2021</a></li>
+        </ul>
+        </div> 
+        <h4 class="color1 fw-regular text-upprcase fs-20 fw-mob-semiBold fs-mob-25">Expedited Freight</h4>
+        <p class="fs-16 fs-mob-14">Straightforward strategy in moving our trucks is a priority for our dispatchers.</p> </div></div>
+        </div>
+        <div class="col-md-4 text-left padd-4">
+        <div class="box_track_2 news_8"><img src="https://static.wixstatic.com/media/5586ef_7f4c739f815e4127b30075df9f30b4ef~mv2.jpg/v1/fill/w_362,h_241,fp_0.50_0.50,q_90/5586ef_7f4c739f815e4127b30075df9f30b4ef~mv2.webp">
+        <div class="content_9">
+        <div class="list_date">
+        <ul>
+        <li><a href="#">byJohn</a></li>
+        <li class="pad_left"><a href="#">January 2021</a></li>
+        </ul>
+        </div> 
+        <h4 class="color1 fw-regular text-upprcase fs-20 fw-mob-semiBold fs-mob-25">Hazardous Materials</h4>
+        <p class="fs-16 fs-mob-14">Straightforward strategy in moving our trucks is a priority for our dispatchers.</p> </div></div>
+        </div>
+        </div>
+        </div>
+    </section>
+     </div>
+
+
+</div>
+
+
+
+
+
+<div id="Paris" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
+
+
+
+
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html> 

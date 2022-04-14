@@ -1,0 +1,128 @@
+.pagination-lg .page-item:first-child .page-link{
+    margin-right: 15px;
+}
+.pagination-lg .page-item:last-child .page-link{
+    margin-left: 15px;
+}
+li.page-item.mid a:hover {
+    background: #f0b310;
+    color: white;
+}
+table thead th{
+    color: #8b003a;
+    border: none !important;
+}
+/* table tbody tr{
+    margin: 1rem 0rem;
+} */
+.btn_black a{
+    padding: 0.5rem 1.5rem;
+    color: white; 
+    background-color: black; 
+}
+.containers{
+    margin: 0rem 6rem;
+}
+.btn_black img{
+    width: 4%;
+}
+ul{
+    list-style: none;
+}
+ul li{
+    padding: 0rem 0.25rem;
+}
+ul li .imgtop{
+    position: relative;
+    top: 6px;
+}
+.checkedbox {
+  -webkit-appearance: none; /*hides the default checkbox*/
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 0px;
+  left: 35px;
+
+  background-color: #8b003a;
+  border:1px solid #8b003a;
+  border-radius: 50px;
+  outline: none;
+}
+.checkedboxed{
+  -webkit-appearance: none; /*hides the default checkbox*/
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 0px;
+  left: 35px;
+
+  background-color: #59c36a;
+  border:1px solid #59c36a;
+  border-radius: 50px;
+  outline: none;  
+}
+  .tooltips {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    width: 75px;
+    background-color: #555;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 150%;
+    margin-left: -60px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltips .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  .next a{
+    background-color: #8b003a !important;
+  }
+  .pevious a{
+    background-color: #8b003a !important;
+  }
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  @media only screen and (max-width: 576.98px){
+    .container{
+         margin: 0rem !important;
+    }
+    ul li{
+      padding: 0rem 0.1rem;
+  }
+  .imagedelete{
+      margin-top: 7px;
+  }
+}
+@media only screen and (min-width: 567px) and (max-width: 767.98px){
+  .container {
+      max-width: 660px;
+  }
+}
+  
+ 

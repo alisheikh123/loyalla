@@ -1,0 +1,39 @@
+.pagination-lg .page-item:first-child .page-link{
+    margin-right: 15px;
+}
+.pagination-lg .page-item:last-child .page-link{
+    margin-left: 15px;
+}
+li.page-item.mid a:hover {
+    background: #f0b310;
+    color: white;
+}
+.table td{
+
+    vertical-align: middle !important;
+
+}
+table thead th{
+    color: #8b003a;
+    border: none !important;
+}
+/* table tbody tr{
+    margin: 1rem 0rem;
+} */
+.btn_black a{
+    padding: 0.5rem 1.5rem;
+    color: white; 
+    background-color: black; 
+}
+.btn_black img{
+    width: 4%;
+}
+.pevious a{
+    background-color: #8b003a !important;
+}
+.next a{
+    background-color: #8b003a !important;
+}
+li.page-item.mid a{
+    padding: 10px !important;
+}
