@@ -29,6 +29,7 @@ namespace LoyallaApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Loyalla", Version = "v1" });
@@ -51,9 +52,12 @@ namespace LoyallaApi
                 });
             }
 
+            app.UseCors(x => x
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowed(origin => true) // allow any origin
+            .AllowCredentials());
             app.UseHttpsRedirection();
-            
-
             app.UseRouting();
 
             app.UseAuthorization();

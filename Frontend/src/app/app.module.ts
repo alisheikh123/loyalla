@@ -1,25 +1,28 @@
 import { NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { StudentRoutingModule } from './student-site/student.routing.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
-import { UploadClassesComponent } from './upload-classes/upload-classes.component';
-import { StudentResultListComponent } from './student-result-list/student-result-list.component';
-import { SettingsComponent } from './settings/settings.component';
-import { WorkListAdminComponent } from './work-list-admin/work-list-admin.component';
-import { StudentSiteComponent } from './student-site/student-site.component';
-import { StudentNavBarComponent } from './student-site/student-nav-bar/student-nav-bar.component';
-import { SignUpComponent } from './student-site/sign-up/sign-up.component';
-import { UserWorkListComponent } from './student-site/user-work-list/user-work-list.component';
-import { CommentFeedbackComponent } from './student-site/comment-feedback/comment-feedback.component';
-import { FeedbackoptionalComponent } from './student-site/feedbackoptional/feedbackoptional.component';
-import { ResultsComponent } from './student-site/results/results.component';
-import { ReadStudyComponent } from './student-site/read-study/read-study.component';
-import { GradedReportComponent } from './student-site/graded-report/graded-report.component';
-import { ExplanationComponent } from './explanation/explanation.component';
-import { AdminGradedReportComponent } from './admin-graded-report/admin-graded-report.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminNavbarComponent } from './components/admin/admin-navbar/admin-navbar.component';
+import { UploadClassesComponent } from './components/admin/upload-classes/upload-classes.component';
+import { StudentResultListComponent } from './components/admin/student-result-list/student-result-list.component';
+import { SettingsComponent } from './components/admin/settings/settings.component';
+import { WorkListAdminComponent } from './components/admin/work-list-admin/work-list-admin.component';
+import { StudentSiteComponent } from './components/student/student-site/student-site.component';
+import { StudentNavBarComponent } from './components/student/student-site/student-nav-bar/student-nav-bar.component';
+import { SignUpComponent } from './components/student/student-site/sign-up/sign-up.component';
+import { UserWorkListComponent } from './components/student/student-site/user-work-list/user-work-list.component';
+import { CommentFeedbackComponent } from './components/student/student-site/comment-feedback/comment-feedback.component';
+import { FeedbackoptionalComponent } from './components/student/student-site/feedbackoptional/feedbackoptional.component';
+import { ResultsComponent } from './components/student/student-site/results/results.component';
+import { ReadStudyComponent } from './components/student/student-site/read-study/read-study.component';
+import { GradedReportComponent } from './components/student/student-site/graded-report/graded-report.component';
+import { ExplanationComponent } from './components/admin/explanation/explanation.component';
+import { AdminGradedReportComponent } from './components/admin/admin-graded-report/admin-graded-report.component';
+import { StudentRoutingModule } from './components/student/student-site/student.routing.component';
+import { CasesService } from './shared/services/Case/cases.service';
 
 @NgModule({
   declarations: [
@@ -45,9 +48,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     StudentRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [CasesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

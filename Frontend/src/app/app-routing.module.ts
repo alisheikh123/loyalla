@@ -1,12 +1,12 @@
+import { AdminGradedReportComponent } from './components/admin/admin-graded-report/admin-graded-report.component';
+import { ExplanationComponent } from './components/admin/explanation/explanation.component';
+import { WorkListAdminComponent } from './components/admin/work-list-admin/work-list-admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
-import { UploadClassesComponent } from './upload-classes/upload-classes.component';
-import { StudentResultListComponent } from './student-result-list/student-result-list.component';
-import { SettingsComponent } from './settings/settings.component';
-import { WorkListAdminComponent } from './work-list-admin/work-list-admin.component';
-import { ExplanationComponent } from './explanation/explanation.component';
-import { AdminGradedReportComponent } from './admin-graded-report/admin-graded-report.component';
+import { AdminNavbarComponent } from './components/admin/admin-navbar/admin-navbar.component';
+import { SettingsComponent } from './components/admin/settings/settings.component';
+import { StudentResultListComponent } from './components/admin/student-result-list/student-result-list.component';
+import { UploadClassesComponent } from './components/admin/upload-classes/upload-classes.component';
 
 const routes: Routes = [
   { path: '', component: AdminNavbarComponent, children: [
