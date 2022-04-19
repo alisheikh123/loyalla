@@ -34,6 +34,7 @@ namespace LoyallaApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Loyalla", Version = "v1" });
             });
+            services.AddMvc();
             services.AddDbContext<LoyallaContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
         }
@@ -51,7 +52,6 @@ namespace LoyallaApi
                     //c.RoutePrefix = string.Empty;
                 });
             }
-
             app.UseCors(x => x
             .AllowAnyMethod()
             .AllowAnyHeader()

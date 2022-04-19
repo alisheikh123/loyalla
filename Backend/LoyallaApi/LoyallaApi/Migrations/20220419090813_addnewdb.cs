@@ -4,28 +4,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LoyallaApi.Migrations
 {
-    public partial class loyallaDB : Migration
+    public partial class addnewdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Answer_tbl",
-                columns: table => new
-                {
-                    Answer_Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Question_Id = table.Column<int>(type: "integer", nullable: false),
-                    Answer = table.Column<string>(type: "text", nullable: true),
-                    Created_By = table.Column<int>(type: "integer", nullable: false),
-                    CreationDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    Updated_By = table.Column<int>(type: "integer", nullable: false),
-                    UpdateDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Answer_tbl", x => x.Answer_Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Case_tbl",
                 columns: table => new
@@ -34,9 +16,10 @@ namespace LoyallaApi.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    Created_By = table.Column<int>(type: "integer", nullable: false),
+                    FileName = table.Column<string>(type: "text", nullable: true),
+                    Created_By = table.Column<int>(type: "integer", nullable: true),
                     CreationDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    Updated_By = table.Column<int>(type: "integer", nullable: false),
+                    Updated_By = table.Column<int>(type: "integer", nullable: true),
                     UpdateDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
                 constraints: table =>
@@ -100,6 +83,30 @@ namespace LoyallaApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Signup",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Username = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Location = table.Column<string>(type: "text", nullable: true),
+                    CurrentStatus = table.Column<string>(type: "text", nullable: true),
+                    MedicalTraining = table.Column<string>(type: "text", nullable: true),
+                    Password = table.Column<string>(type: "text", nullable: true),
+                    Age = table.Column<string>(type: "text", nullable: true),
+                    Field = table.Column<string>(type: "text", nullable: true),
+                    School = table.Column<string>(type: "text", nullable: true),
+                    otherStatus = table.Column<string>(type: "text", nullable: true),
+                    otherTraining = table.Column<string>(type: "text", nullable: true),
+                    otherField = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Signup", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Student_tbl",
                 columns: table => new
                 {
@@ -142,6 +149,36 @@ namespace LoyallaApi.Migrations
                 {
                     table.PrimaryKey("PK_StudentCaseAttemptStatus_tbl", x => x.StudentCaseAttemptStatus_Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Answer_tbl",
+                columns: table => new
+                {
+                    Answer_Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Question_Id = table.Column<int>(type: "integer", nullable: false),
+                    Answer = table.Column<string>(type: "text", nullable: true),
+                    Created_By = table.Column<int>(type: "integer", nullable: false),
+                    CreationDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    Updated_By = table.Column<int>(type: "integer", nullable: false),
+                    UpdateDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    QuestionsQuestion_Id = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Answer_tbl", x => x.Answer_Id);
+                    table.ForeignKey(
+                        name: "FK_Answer_tbl_Question_tbl_QuestionsQuestion_Id",
+                        column: x => x.QuestionsQuestion_Id,
+                        principalTable: "Question_tbl",
+                        principalColumn: "Question_Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answer_tbl_QuestionsQuestion_Id",
+                table: "Answer_tbl",
+                column: "QuestionsQuestion_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -159,13 +196,16 @@ namespace LoyallaApi.Migrations
                 name: "Feedback_tbl");
 
             migrationBuilder.DropTable(
-                name: "Question_tbl");
+                name: "Signup");
 
             migrationBuilder.DropTable(
                 name: "Student_tbl");
 
             migrationBuilder.DropTable(
                 name: "StudentCaseAttemptStatus_tbl");
+
+            migrationBuilder.DropTable(
+                name: "Question_tbl");
         }
     }
 }

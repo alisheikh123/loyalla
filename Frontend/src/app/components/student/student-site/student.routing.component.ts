@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentNavBarComponent } from './student-nav-bar/student-nav-bar.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignUpComponent } from '../../../auth/sign-up/sign-up.component';
 import { UserWorkListComponent } from './user-work-list/user-work-list.component';
 import { CommentFeedbackComponent } from './comment-feedback/comment-feedback.component';
 import { FeedbackoptionalComponent } from './feedbackoptional/feedbackoptional.component';
@@ -12,7 +12,7 @@ import { GradedReportComponent } from './graded-report/graded-report.component';
 const routes: Routes = [
 {path:'StudentSite', component: StudentNavBarComponent, children:[
 {path: '', component: SignUpComponent },
-{path: 'UserWOrkList', component: UserWorkListComponent},
+{path: 'UserWorkList', component: UserWorkListComponent},
 {path: 'Comment', component: CommentFeedbackComponent},
 {path: 'FeedbackOptional', component: FeedbackoptionalComponent},
 {path: 'result', component: ResultsComponent},

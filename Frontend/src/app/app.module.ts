@@ -1,3 +1,4 @@
+import { LoginComponent } from './auth/Login/login/login.component';
 import { NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +13,7 @@ import { SettingsComponent } from './components/admin/settings/settings.componen
 import { WorkListAdminComponent } from './components/admin/work-list-admin/work-list-admin.component';
 import { StudentSiteComponent } from './components/student/student-site/student-site.component';
 import { StudentNavBarComponent } from './components/student/student-site/student-nav-bar/student-nav-bar.component';
-import { SignUpComponent } from './components/student/student-site/sign-up/sign-up.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { UserWorkListComponent } from './components/student/student-site/user-work-list/user-work-list.component';
 import { CommentFeedbackComponent } from './components/student/student-site/comment-feedback/comment-feedback.component';
 import { FeedbackoptionalComponent } from './components/student/student-site/feedbackoptional/feedbackoptional.component';
@@ -43,14 +44,15 @@ import { CasesService } from './shared/services/Case/cases.service';
     GradedReportComponent,
     ExplanationComponent,
     AdminGradedReportComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StudentRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [CasesService],

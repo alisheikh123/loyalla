@@ -1,6 +1,7 @@
 ﻿using ExcelDataReader;
 using LoyallaApi.Context;
 using LoyallaApi.DBModels;
+using LoyallaApi.DBModels.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

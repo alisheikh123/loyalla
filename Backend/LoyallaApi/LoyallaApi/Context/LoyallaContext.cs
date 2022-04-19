@@ -14,5 +14,6 @@ namespace LoyallaApi.Context
         public DbSet<Questions> Question_tbl { get;set; }
         public DbSet<StudentCaseAttemptStatus> StudentCaseAttemptStatus_tbl { get; set; }
         public DbSet<Student> Student_tbl { get; set; }
+        public DbSet<Signup> Signup { get; set; }
     }
 }

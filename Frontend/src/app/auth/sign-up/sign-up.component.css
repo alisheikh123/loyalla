@@ -34,12 +34,19 @@ input[type=placeholder]{
     box-shadow: none;
 }
 .btn_col1 a{
-    
+
     padding: 0.75rem 2.5rem;
-    color: white; 
-    background-color: #8b003a; 
+    color: white;
+    background-color: #8b003a;
     border-radius: 5px;
 }
+.btn_col1 button{
+
+    padding: 0.75rem 2.5rem;
+    color: white;
+    background-color: #8b003a;
+    border-radius: 5px;
+  }
 .btn_marg{
     margin: 0rem 4rem;
 }

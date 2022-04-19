@@ -1,0 +1,89 @@
+<div class="position-relative">
+
+    <section class="banner_section_title">
+            <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-12 text-left">
+            <div class="title_all">
+            <ul>
+                <li><a href="#" routerLink="/" routerLinkActive="router-link-active">Home /</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+    </section>
+    <section class="btn_bottom mt-5 text-center">
+      <div class="container">
+       <div class="row">
+            <div class="col-md-12">
+                <div class="fs-50 color1 fw-bold pb-4 fs-mob-30">
+                  Login Your Account
+                             </div>
+            </div>
+       </div>
+     </div>
+    </section>
+   <form class="form" [formGroup]="loginform" #loginForm="ngForm" (ngSubmit)="login()">
+    <section class="cadinate_0_profile signup-section swiling_sec  mt-5">
+        <div class="container">
+         <div class="row">
+          <div *ngIf="invalidLogin" class="alert alert-danger">Invalid email or password.</div>
+             <div class="box_main_898">
+             <div class="col-lg-12 blowing_sec">
+                               <div class="inputfeild_profile">
+                                   <label class="fs-19 color1 fw-semiBold"> Email* </label>
+                                 <input type="email" formControlName = "email"  ngModel name="name" placeholder="Enter your email" required>
+                               </div>
+                               <div class="inputfeild_profile">
+                                   <label class="fs-19 color1 fw-semiBold"> Password* </label>
+                                 <input type="password" name="name" formControlName="password" ngModel placeholder="Enter your Password" required>
+                               </div>
+                               <div class="py-3">
+                               <input type="checkbox" id="html" class="mx-2" name="fav_language" value="HTML">
+                               <label class="fs-15 color1 fw-semiBold" for="html">Remember Me</label>
+                               <div class="position-relative">
+                                   <p class="float-right text_upper fs-15 fw-semiBold color1"><a target="_top" href="/ForgotPassword">Forget Password</a></p>
+                               </div>
+                            </div>
+               </div>
+             </div>
+         </div>
+        </div>
+    </section>
+    <section class="btn_bottom mt-2 submt_9">
+        <div class="container text-center" >
+         <div class="row">
+               <div class="col-md-12">
+                 <div class="my-4" >
+                    <!-- <a href="#" class="inputfeild_9_btn Profie_btn" [disabled]="!loginForm.valid" class="text-uppercase">Login </a> -->
+                   <button class="btn w-25"
+                      type="submit" style="background-color: #8b003a;color: aliceblue;" [disabled]="!loginform.valid">LOG IN</button>
+                  </div>
+
+              </div>
+              <div class="col-md-12">
+                <div class="sugn_up text-center mt-4">
+                 <p class="fs-20 color1 fw-semiBold">Not Registered yet? <a class="color1" style="color:#8b003a" target="_top" routerLink="/signup" routerLinkActive="active">Create An Account</a></p>
+              </div>
+            </div>
+         </div>
+       </div>
+     </section>
+    </form>
+     <!-- <section class="footer_top ">
+        <div class="container">
+            <div class="row bgcolor1">
+                <div class="col-lg-7 col-md-12">
+
+                    <h5 class="fs-35 color3 fw-bold">Subscribe to our mailing list</h5>
+                </div>
+                <div class="col-lg-5 col-md-12"><form action="/action_page.php" class="fom_9">
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email">
+                    <div class="submit"><input type="submit"></div>
+                    </form></div>
+            </div>
+        </div>
+    </section> -->
+</div>

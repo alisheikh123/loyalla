@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminNavbarComponent implements OnInit {
   showlist: boolean = false;
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
   }
   showdown(){
     this.showlist = true;
+  }
+  logout(){
+    this.route.navigate([""]);
   }
 }

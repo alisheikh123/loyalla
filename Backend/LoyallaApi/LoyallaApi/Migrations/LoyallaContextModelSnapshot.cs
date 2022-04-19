@@ -103,6 +103,9 @@ namespace LoyallaApi.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<string>("FileName")
+                        .HasColumnType("text");
+
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
@@ -175,6 +178,54 @@ namespace LoyallaApi.Migrations
                     b.HasKey("Question_Id");
 
                     b.ToTable("Question_tbl");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Signup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Age")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CurrentStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Field")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MedicalTraining")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("School")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("text");
+
+                    b.Property<string>("otherField")
+                        .HasColumnType("text");
+
+                    b.Property<string>("otherStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("otherTraining")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Signup");
                 });
 
             modelBuilder.Entity("LoyallaApi.DBModels.Student", b =>

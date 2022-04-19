@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LoyallaApi.Migrations
 {
     [DbContext(typeof(LoyallaContext))]
-    [Migration("20220407085845_loyallaDB")]
-    partial class loyallaDB
+    [Migration("20220419090813_addnewdb")]
+    partial class addnewdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,9 @@ namespace LoyallaApi.Migrations
                     b.Property<int>("Question_Id")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("QuestionsQuestion_Id")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime?>("UpdateDateTime")
                         .HasColumnType("timestamp without time zone");
 
@@ -47,6 +50,8 @@ namespace LoyallaApi.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Answer_Id");
+
+                    b.HasIndex("QuestionsQuestion_Id");
 
                     b.ToTable("Answer_tbl");
                 });
@@ -91,7 +96,7 @@ namespace LoyallaApi.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<int>("Created_By")
+                    b.Property<int?>("Created_By")
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("CreationDateTime")
@@ -100,13 +105,16 @@ namespace LoyallaApi.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<string>("FileName")
+                        .HasColumnType("text");
+
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdateDateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("Updated_By")
+                    b.Property<int?>("Updated_By")
                         .HasColumnType("integer");
 
                     b.HasKey("Case_Id");
@@ -172,6 +180,54 @@ namespace LoyallaApi.Migrations
                     b.HasKey("Question_Id");
 
                     b.ToTable("Question_tbl");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Signup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Age")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CurrentStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Field")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MedicalTraining")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("School")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("text");
+
+                    b.Property<string>("otherField")
+                        .HasColumnType("text");
+
+                    b.Property<string>("otherStatus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("otherTraining")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Signup");
                 });
 
             modelBuilder.Entity("LoyallaApi.DBModels.Student", b =>
@@ -256,6 +312,20 @@ namespace LoyallaApi.Migrations
                     b.HasKey("StudentCaseAttemptStatus_Id");
 
                     b.ToTable("StudentCaseAttemptStatus_tbl");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Answers", b =>
+                {
+                    b.HasOne("LoyallaApi.DBModels.Questions", "Questions")
+                        .WithMany("Answer")
+                        .HasForeignKey("QuestionsQuestion_Id");
+
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Questions", b =>
+                {
+                    b.Navigation("Answer");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,6 +14,7 @@ export class CasesService {
    constructor(private http: HttpClient,private errorService: ErrorService) { }
 
    addNewCase(model: any) {
+     debugger;
     return this.http.post<any>(this.apiUrl + '/api/Loyalla/AddCase', model).pipe(
       catchError(this.errorService.handleError));
   }
