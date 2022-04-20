@@ -25,76 +25,7 @@ namespace LoyallaApi.Controllers
         {
             _context = context; 
         }
-
-        [HttpGet("get/{id}")]
-        public async Task<ActionResult<string>> get()
-        {
-            return "Api Running";
-        }
-
-        [HttpPost ,Route("AddStudent")] 
-        public async Task<ActionResult<Student>> AddStudent([FromForm] Student stu)
-        {
-            try
-            {
-                var CurrentDateTime = DateTime.Now;
-                stu.CreationDateTime = CurrentDateTime;
-                stu.Created_By = stu.Student_Id;
-                var StudentData = _context.Student_tbl.Where(x => x.Email == stu.Email).SingleOrDefault();
-                if (StudentData == null)
-                {
-                    _context.Student_tbl.Add(stu);
-                    await _context.SaveChangesAsync();
-                    return Ok("Inserted");
-                }
-                return Ok("Email Already Exist");
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        [HttpGet ,Route("GetStudent")]
-        public async Task<ActionResult<Student>> getStu(int Student_Id)
-        {
-            var stu = _context.Student_tbl.Where(x => x.Student_Id == Student_Id).FirstOrDefault();
-            if(stu == null)
-            {
-                return Ok("Bad Request");
-            }
-            return Ok(stu);
-        }
-
-        [HttpPut ,Route("UpdateStudent")]
-        public async Task<ActionResult<Student>> updateStu(int Student_Id, [FromForm] Student stu)
-        {
-            var CurrentDateTime = DateTime.Now;
-            stu.CreationDateTime = CurrentDateTime;
-            //var stuData = _context.Student_tbl.Where(x => x.Student_Id == Student_Id).FirstOrDefault();
-            if (Student_Id == null)
-            {
-                return Ok("Bad Request");
-            }
-            stu.Student_Id = Student_Id;
-            stu.UpdateDateTime = CurrentDateTime;
-            _context.Entry(stu).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return Ok(stu);
-        }
-        [HttpDelete ,Route("DeleteStudent")]
-        public async Task<ActionResult<string>> deleteStu(int Student_Id)
-        {
-            var stuData= _context.Student_tbl.Where(x => x.Student_Id == Student_Id).FirstOrDefault();
-            if(stuData == null)
-            {
-                return "Bad Request";
-            }
-            _context.Student_tbl.Remove(stuData);
-            await _context.SaveChangesAsync();
-            return "Deleted"; 
-
-        }
+ 
         [HttpPost ,Route("AddCase")]
         public async Task<ActionResult<Cases>> addCase(Cases cas)
         {
@@ -180,54 +111,8 @@ namespace LoyallaApi.Controllers
         }
 
 
-        [HttpPost, Route("AddAnswer")]
-        public async Task<ActionResult<Answers>> addAns([FromForm] Answers ans)
-        {
-            var CurrentDateTime = DateTime.Now;
-            ans.CreationDateTime = CurrentDateTime;
-            _context.Answer_tbl.Add(ans);
-            await _context.SaveChangesAsync();
-            return Ok(ans);
-        }
 
-        [HttpGet, Route("GetAnswerBYId")]
-        public async Task<ActionResult<Answers>> getAns(int Answer_Id)
-        {
-            var ansData = _context.Answer_tbl.Where(x => x.Answer_Id == Answer_Id).FirstOrDefault();
-            if (ansData == null)
-            {
-                return Ok("Bad Request");
-            }
-            return ansData;
-        }
-
-        [HttpPut, Route("UpdateAnswer")]
-        public async Task<ActionResult<Answers>> updateAns([FromBody] Answers ans, int Answer_Id)
-        {
-            var CurrentDateTime = DateTime.Now;
-            ans.CreationDateTime = CurrentDateTime;
-            if (Answer_Id == null)
-            {
-                return Ok("BadRequest");
-            }
-            _context.Entry(ans).State = EntityState.Modified;
-            _context.SaveChangesAsync();
-            return Ok("Updated");
-
-        }
-        [HttpDelete, Route("DeleteAnswer")]
-        public async Task<ActionResult<Answers>> delAnswer(int Answer_Id)
-        {
-            var ansData = _context.Answer_tbl.Where(x => x.Answer_Id == Answer_Id).FirstOrDefault();
-            if (ansData == null)
-            {
-                return Ok("Bad Request");
-            }
-            _context.Answer_tbl.Remove(ansData);
-            await _context.SaveChangesAsync();
-            return Ok("Deleted");
-        }
-
+      
 
 
 

@@ -3,15 +3,17 @@ using System;
 using LoyallaApi.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LoyallaApi.Migrations
 {
     [DbContext(typeof(LoyallaContext))]
-    partial class LoyallaContextModelSnapshot : ModelSnapshot
+    [Migration("20220420115526_intialMigration3")]
+    partial class intialMigration3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,27 +108,6 @@ namespace LoyallaApi.Migrations
                     b.ToTable("Options_tbl");
                 });
 
-            modelBuilder.Entity("LoyallaApi.DBModels.Paper", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PaperName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Paper_tbl");
-                });
-
             modelBuilder.Entity("LoyallaApi.DBModels.Questions", b =>
                 {
                     b.Property<int>("Question_Id")
@@ -139,9 +120,6 @@ namespace LoyallaApi.Migrations
 
                     b.Property<DateTime?>("CreationDateTime")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("PaperId")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Question")
                         .HasColumnType("text");

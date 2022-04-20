@@ -1,0 +1,61 @@
+<form class="form" [formGroup]="questionForm" novalidate="novalidate" (ngSubmit)="submit()">
+        <div class="container">
+            <div class="row">
+             <div class="col-lg-7">
+                 <div class="form_banner">
+                    <div class="inpfiled">
+                        <label>Paper</label>
+                        <select formControlName="PaperId" class="form-control" name="PaperId"
+                        id="PaperId" (change)="selectPaper($event)">
+                        <option *ngFor="let p of paper" [value]="p.id">
+                            {{p.paperName}}</option>
+                    </select>
+                    </div>
+                   <div class="inpfiled">
+                       <label>Question Title</label>
+                       <input type="text" placeholder="Enter Your Question" formControlName="Question" class="form-control">
+                   </div>
+                <div class="inpfiled">
+                    <label>QuestionType</label>
+                    <select formControlName="QuestionType" class="form-control" name="QuestionType"
+                    id="QuestionType" (change)="selectQuestionType($event)">
+                    <option *ngFor="let q of questionType" [value]="q.id">
+                        {{q.name}}</option>
+                    <option [value]=null selected>Select QuestionType</option>
+                </select>
+                </div>
+                 </div>
+             </div>
+
+            </div>
+        </div>
+
+        <div class="btn_col1 text-center mt-4">
+            <button  type="submit" class="btn btn-primary " >Add</button>
+        </div>
+</form>
+
+
+    <div class="container">
+        <h2>All Questions</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+
+              <!-- <th>Paper Name</th> -->
+              <th>Question</th>
+              <th>Question Type</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let c of questions" >
+
+              <!-- <td>{{c.paperName}}</td> -->
+              <td>{{c.question}}</td>
+              <td>{{c.questionType==0?"Multiple Choice":"Description"}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>

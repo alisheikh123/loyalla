@@ -1,0 +1,53 @@
+<form class="form" [formGroup]="paperForm" novalidate="novalidate" (ngSubmit)="submit()">
+    <div class="container">
+        <div class="row">
+         <div class="col-lg-7">
+             <div class="form_banner">
+               <div class="inpfiled">
+                   <label>Paper Name</label>
+                   <input type="text" placeholder="Enter Your Paper" formControlName="PaperName" class="form-control">
+               </div>
+               <div class="inpfiled">
+                   <label>Title</label>
+                   <input type="text" placeholder="Enter Your Title" formControlName="Title" class="form-control">
+               </div>
+               <div class="inpfiled">
+                   <label>Description</label>
+                   <input type="text" placeholder="Enter Your Description" formControlName="Description" class="form-control">
+               </div>
+             </div>
+         </div>
+
+        </div>
+    </div>
+
+    <div class="btn_col1 text-center mt-4">
+        <button  type="submit" class="btn btn-primary " >Add</button>
+    </div>
+</form>
+
+
+<div class="container">
+    <h2>All Description</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+
+          <th>Paper Name</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let c of paper" >
+
+          <td>{{c.paperName}}</td>
+          <td>{{c.title}}</td>
+
+          <td>{{c.description}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

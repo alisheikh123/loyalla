@@ -10,7 +10,7 @@ import { ReadStudyComponent } from './read-study/read-study.component';
 import { GradedReportComponent } from './graded-report/graded-report.component';
 
 const routes: Routes = [
-{path:'StudentSite', component: StudentNavBarComponent, children:[
+{path:'studentNavbar', component: StudentNavBarComponent, children:[
 {path: '', component: SignUpComponent },
 {path: 'UserWorkList', component: UserWorkListComponent},
 {path: 'Comment', component: CommentFeedbackComponent},

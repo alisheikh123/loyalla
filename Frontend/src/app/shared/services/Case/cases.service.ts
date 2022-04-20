@@ -27,5 +27,28 @@ export class CasesService {
     return this.http.delete(this.apiUrl + '/api/Loyalla/DeleteCase'+'?Case_Id='+id).pipe(
       catchError(this.errorService.handleError));
   }
+  addNewQuestion(questions: any) {
+    debugger;
+   return this.http.post(this.apiUrl + '/api/Question/addQuestion', questions).pipe(
+     catchError(this.errorService.handleError));
+ }
+ addNewPaper(paper: any) {
+  debugger;
+ return this.http.post(this.apiUrl + '/api/Question/addPaper', paper).pipe(
+   catchError(this.errorService.handleError));
+}
+ getAllQuestions()
+ {
+  return this.http.get(this.apiUrl+'/api/Question/GetAllQuestion').pipe(catchError(this.errorService.handleError));
 
+ }
+ getAllPaper()
+ {
+  return this.http.get(this.apiUrl+'/api/Question/GetAllPaper').pipe(catchError(this.errorService.handleError));
+ }
+ getPaperById(id:any)
+ {
+   debugger;
+  return this.http.get<any>(this.apiUrl+'/api/Question/GetPaperById?Id='+id).pipe(catchError(this.errorService.handleError));
+ }
 }

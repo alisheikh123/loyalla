@@ -24,6 +24,9 @@ import { ExplanationComponent } from './components/admin/explanation/explanation
 import { AdminGradedReportComponent } from './components/admin/admin-graded-report/admin-graded-report.component';
 import { StudentRoutingModule } from './components/student/student-site/student.routing.component';
 import { CasesService } from './shared/services/Case/cases.service';
+import { QuestionComponent } from './components/admin/question/question.component';
+import { PaperComponent } from './components/admin/paper/paper.component';
+import { OptionComponent } from './components/admin/option/option.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { CasesService } from './shared/services/Case/cases.service';
     GradedReportComponent,
     ExplanationComponent,
     AdminGradedReportComponent,
-    LoginComponent
+    LoginComponent,
+    QuestionComponent,
+    PaperComponent,
+    OptionComponent
   ],
   imports: [
     BrowserModule,
