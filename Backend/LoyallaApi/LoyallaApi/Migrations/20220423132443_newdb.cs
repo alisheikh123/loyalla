@@ -4,10 +4,24 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LoyallaApi.Migrations
 {
-    public partial class addnewdb : Migration
+    public partial class newdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Anwser_tbl",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    QuestionId = table.Column<double>(type: "double precision", nullable: false),
+                    Anwsers = table.Column<double>(type: "double precision", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Anwser_tbl", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Case_tbl",
                 columns: table => new
@@ -25,25 +39,6 @@ namespace LoyallaApi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Case_tbl", x => x.Case_Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CaseQuestionAnswers_tbl",
-                columns: table => new
-                {
-                    CaseQuestionAnswer_Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Case_Id = table.Column<int>(type: "integer", nullable: false),
-                    Answer_Id = table.Column<int>(type: "integer", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    Created_By = table.Column<int>(type: "integer", nullable: false),
-                    CreationDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    Updated_By = table.Column<int>(type: "integer", nullable: false),
-                    UpdateDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CaseQuestionAnswers_tbl", x => x.CaseQuestionAnswer_Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,12 +61,44 @@ namespace LoyallaApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Options_tbl",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    QuestionId = table.Column<int>(type: "integer", nullable: false),
+                    OptionName = table.Column<string>(type: "text", nullable: true),
+                    IsAnswer = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Options_tbl", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Paper_tbl",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    PaperName = table.Column<string>(type: "text", nullable: true),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Paper_tbl", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Question_tbl",
                 columns: table => new
                 {
                     Question_Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    PaperId = table.Column<int>(type: "integer", nullable: false),
                     Question = table.Column<string>(type: "text", nullable: true),
+                    QuestionType = table.Column<int>(type: "integer", nullable: false),
                     Created_By = table.Column<int>(type: "integer", nullable: false),
                     CreationDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     Updated_By = table.Column<int>(type: "integer", nullable: false),
@@ -107,31 +134,6 @@ namespace LoyallaApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Student_tbl",
-                columns: table => new
-                {
-                    Student_Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Student_Name = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true),
-                    Password = table.Column<string>(type: "text", nullable: true),
-                    Age = table.Column<int>(type: "integer", nullable: false),
-                    Address = table.Column<string>(type: "text", nullable: true),
-                    Field = table.Column<string>(type: "text", nullable: true),
-                    Current_Status = table.Column<string>(type: "text", nullable: true),
-                    Current_Year_Of_Medical_School = table.Column<string>(type: "text", nullable: true),
-                    Current_Year_Of_Medical_Traning = table.Column<string>(type: "text", nullable: true),
-                    Created_By = table.Column<int>(type: "integer", nullable: false),
-                    CreationDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    Updated_By = table.Column<int>(type: "integer", nullable: false),
-                    UpdateDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Student_tbl", x => x.Student_Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "StudentCaseAttemptStatus_tbl",
                 columns: table => new
                 {
@@ -149,63 +151,33 @@ namespace LoyallaApi.Migrations
                 {
                     table.PrimaryKey("PK_StudentCaseAttemptStatus_tbl", x => x.StudentCaseAttemptStatus_Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Answer_tbl",
-                columns: table => new
-                {
-                    Answer_Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Question_Id = table.Column<int>(type: "integer", nullable: false),
-                    Answer = table.Column<string>(type: "text", nullable: true),
-                    Created_By = table.Column<int>(type: "integer", nullable: false),
-                    CreationDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    Updated_By = table.Column<int>(type: "integer", nullable: false),
-                    UpdateDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    QuestionsQuestion_Id = table.Column<int>(type: "integer", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Answer_tbl", x => x.Answer_Id);
-                    table.ForeignKey(
-                        name: "FK_Answer_tbl_Question_tbl_QuestionsQuestion_Id",
-                        column: x => x.QuestionsQuestion_Id,
-                        principalTable: "Question_tbl",
-                        principalColumn: "Question_Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Answer_tbl_QuestionsQuestion_Id",
-                table: "Answer_tbl",
-                column: "QuestionsQuestion_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Answer_tbl");
+                name: "Anwser_tbl");
 
             migrationBuilder.DropTable(
                 name: "Case_tbl");
 
             migrationBuilder.DropTable(
-                name: "CaseQuestionAnswers_tbl");
+                name: "Feedback_tbl");
 
             migrationBuilder.DropTable(
-                name: "Feedback_tbl");
+                name: "Options_tbl");
+
+            migrationBuilder.DropTable(
+                name: "Paper_tbl");
+
+            migrationBuilder.DropTable(
+                name: "Question_tbl");
 
             migrationBuilder.DropTable(
                 name: "Signup");
 
             migrationBuilder.DropTable(
-                name: "Student_tbl");
-
-            migrationBuilder.DropTable(
                 name: "StudentCaseAttemptStatus_tbl");
-
-            migrationBuilder.DropTable(
-                name: "Question_tbl");
         }
     }
 }

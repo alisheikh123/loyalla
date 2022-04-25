@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { ErrorService } from '../Error/error.service';
@@ -13,9 +13,8 @@ export class CasesService {
 
    constructor(private http: HttpClient,private errorService: ErrorService) { }
 
-   addNewCase(model: any) {
-     debugger;
-    return this.http.post<any>(this.apiUrl + '/api/Loyalla/AddCase', model).pipe(
+   addNewCase(cases: any) {
+    return this.http.post(this.apiUrl + '/api/Loyalla/AddCase', cases).pipe(
       catchError(this.errorService.handleError));
   }
   getCaseList() {
@@ -51,4 +50,8 @@ export class CasesService {
    debugger;
   return this.http.get<any>(this.apiUrl+'/api/Question/GetPaperById?Id='+id).pipe(catchError(this.errorService.handleError));
  }
+ uploadExcel(formFile:any) {
+   debugger;
+  return this.http.post(this.apiUrl + '/api/Question/UploadExcel', formFile)
+}
 }

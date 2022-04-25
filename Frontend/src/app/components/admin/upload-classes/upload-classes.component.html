@@ -5,7 +5,7 @@
                 <h3 class="fs-30 text-dark fw-semibold">Upload Classes</h3>
             </div>
 
-            <form class="form" [formGroup]="caseForm" novalidate="novalidate">
+            <form class="form" [formGroup]="caseForm" novalidate="novalidate" enctype="multipart/form-data">
 
                 <!-- Title -->
                 <div class="tittle-input bg-white pt-2 px-5 my-4">
@@ -51,7 +51,7 @@
                                     <img src="assets/img/answer.png" class="w-60">
                                 </div>
                                 <div class="dragin_drop">
-                                    <label class="label" id="label" for="inputFile">
+                                    <label class="label" id="label" for="fileInput">
                                         <div class="cloud-img text-center">
                                             <img src="assets/img/upload.png" class="w-38">
                                         </div>
@@ -63,9 +63,11 @@
                                     <div class="inner border-0 text-center fs-12">Drop your files here "or"<br>
                                         <p class="fs-15">Click here to upload.</p>
                                     </div>
-                                    <input type="file" (change)="onChange($event)"  id="inputFile" class="inputFile"
+                                    <!-- (change)="uploadFile(fileInput.files);" -->
+                                    <input type="file" (change)="uploadExcel(fileInput.files);" formControlName="file" id="fileInput" class="fileInput"
                                         required="true" multiple="true" hidden="true"
-                                        #inputFile>
+                                        #fileInput>
+                                            <span class="upload" *ngIf="message"> {{message}}</span>
                                     <div *ngIf="isExcelFile === false">
                                         This is not an Excel file
                                     </div>
@@ -126,13 +128,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row rhead d-flex align-items-center bg-white py-2 mb-2 mx-0" *ngIf="keys!=null">
+                <div class="row rhead d-flex align-items-center bg-white py-2 mb-2 mx-0" *ngIf="AnwserFileName!=null">
 
                     <div class="col-md-2" >
                         <input type="checkbox" class="checboxonline" placeholder="DICOM FILE">
                     </div>
                     <div class="col-md-10 d-flex justify-content-between">
-                        <p class="pt-2">{{keys}}</p>
+                        <p class="pt-2">{{AnwserFileName}}</p>
                     </div>
                     <div class="pl-lg-5 pl-md-0 pl-sm-0">
                         <img src="assets/img/delete.png">
@@ -147,7 +149,7 @@
                 </div>
                 <div class="row mx-0 my-4 d-flex justify-content-end">
                     <div class="btn_col1">
-                        <a (click)="submit()" routerLinkActive="active">Upload Case</a>
+                        <button class="btn" (click)="submit(fileInput.files)" routerLinkActive="active">Upload Case</button>
                     </div>
                 </div>
             </form>

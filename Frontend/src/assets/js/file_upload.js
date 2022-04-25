@@ -1,22 +1,22 @@
   var input = document.getElementById("input");
   var initLabel = document.getElementById("label");
 
-  input.addEventListener("change", (event) => {
-  const files = changeEvent(event);
-  handleUpdate(files);
-  });
+  // input.addEventListener("change", (event) => {
+  // const files = changeEvent(event);
+  // handleUpdate(files);
+  // });
 
-  initLabel.addEventListener("mouseover", (event) => {
-  event.preventDefault();
-  const label = document.getElementById("label");
-  label?.classList.add("label--hover");
-  });
+  // initLabel.addEventListener("mouseover", (event) => {
+  // event.preventDefault();
+  // const label = document.getElementById("label");
+  // label?.classList.add("label--hover");
+  // });
 
-  initLabel.addEventListener("mouseout", (event) => {
-  event.preventDefault();
-  const label = document.getElementById("label");
-  label?.classList.remove("label--hover");
-  });
+  // initLabel.addEventListener("mouseout", (event) => {
+  // event.preventDefault();
+  // const label = document.getElementById("label");
+  // label?.classList.remove("label--hover");
+  // });
 
   document.addEventListener("dragenter", (event) => {
   event.preventDefault();
@@ -211,4 +211,3 @@
 
   // return node;
   // }
-  

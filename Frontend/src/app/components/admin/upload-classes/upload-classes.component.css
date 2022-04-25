@@ -40,10 +40,16 @@ textarea{
     height: 150px;
 }
 .btn_col1 a{
-    
+
     padding: 0.5rem 1.5rem;
-    color: white; 
-    background-color: #8b003a; 
+    color: white;
+    background-color: #8b003a;
+}
+.btn_col1 button{
+
+    padding: 0.5rem 1.5rem;
+    color: white;
+    background-color: #8b003a;
 }
 .rhead .col-md-2{
     max-width: 5% !important;
@@ -83,4 +89,9 @@ input[type="text"]{
     .containers{
          margin: 0rem !important;
     }
+}
+.upload{
+    font-weight:bold;
+    color:#28a745;
+    margin-left: 15px;
 }

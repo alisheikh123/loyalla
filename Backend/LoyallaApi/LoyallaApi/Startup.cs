@@ -1,4 +1,5 @@
 using LoyallaApi.Context;
+using LoyallaApi.DBModels.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +38,7 @@ namespace LoyallaApi
             services.AddMvc();
             services.AddDbContext<LoyallaContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddAutoMapper(typeof(LoyallaMapper));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

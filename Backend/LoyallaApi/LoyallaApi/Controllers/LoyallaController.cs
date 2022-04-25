@@ -1,10 +1,13 @@
-﻿using ExcelDataReader;
+﻿using AutoMapper;
+using ExcelDataReader;
 using LoyallaApi.Context;
 using LoyallaApi.DBModels;
 using LoyallaApi.DBModels.DTO;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,19 +24,62 @@ namespace LoyallaApi.Controllers
     public class LoyallaController : ControllerBase
     {
         public readonly LoyallaContext _context;
-        public LoyallaController(LoyallaContext context)
+        private readonly IMapper _objectMapper;
+        public LoyallaController(LoyallaContext context, IMapper objectMapper)
         {
-            _context = context; 
+            _context = context;
+            _objectMapper = objectMapper;
         }
- 
-        [HttpPost ,Route("AddCase")]
-        public async Task<ActionResult<Cases>> addCase(Cases cas)
+
+        [HttpPost, Route("AddCase")]
+        public async Task<IActionResult> addCase([FromForm] caseDto cases)
         {
-            var CurrentDateTime = DateTime.Now;
-            cas.CreationDateTime = CurrentDateTime;
-            _context.Case_tbl.Add(cas);
-            await _context.SaveChangesAsync();
-            return Ok(cas);
+            if (cases.file != null)
+            {
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "Upload");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                path = Path.Combine(path, Path.GetFileName(cases.file.FileName));
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    cases.file.CopyTo(stream);
+                }
+                FileInfo file = new FileInfo(path);
+
+                using (ExcelPackage package = new ExcelPackage(file))
+                {
+                    ExcelPackage.LicenseContext = LicenseContext.Commercial;
+                    var list = new List<Anwser>();
+                    // add a new worksheet to the empty workbook
+
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+
+                    var rowCount = worksheet.Dimension.Rows;
+
+                    for (int row = 2; row <= rowCount; row++)
+                    {
+                        list.Add(new Anwser
+                        {
+                            QuestionId = int.Parse(worksheet.Cells[row, 1].Value.ToString().Trim()),
+                            Anwsers = int.Parse(worksheet.Cells[row, 2].Value.ToString().Trim()),
+                        });
+                    }
+                    _context.Anwser_tbl.AddRange(list);
+
+                }
+
+                var result = _objectMapper.Map<caseDto, Cases>(cases);
+                //result.CreationDateTime = DateTime.Now;
+                _context.Case_tbl.Add(result);
+
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+
+            return Ok();
 
         }
 

@@ -19,6 +19,24 @@ namespace LoyallaApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
+            modelBuilder.Entity("LoyallaApi.DBModels.Anwser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<double>("Anwsers")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("QuestionId")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Anwser_tbl");
+                });
+
             modelBuilder.Entity("LoyallaApi.DBModels.Cases", b =>
                 {
                     b.Property<int>("Case_Id")

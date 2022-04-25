@@ -13,6 +13,8 @@ namespace LoyallaApi.Context
         public DbSet<StudentCaseAttemptStatus> StudentCaseAttemptStatus_tbl { get; set; }
         public DbSet<Signup> Signup { get; set; }
         public DbSet<Options> Options_tbl{ get; set; }
+
+        public DbSet<Anwser> Anwser_tbl { get; set; }
         public DbSet<Paper> Paper_tbl{ get; set; }
     }
 }
