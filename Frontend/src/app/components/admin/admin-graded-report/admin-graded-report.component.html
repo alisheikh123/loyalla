@@ -54,45 +54,47 @@
            </div>
            <div class="col-lg-3 px-1">
             <div class="container m-3 px-0">
-             <div class="bg-white px-3 py-5" style="height: 93vh; overflow-y: scroll;">
+             <div class="bg-white px-3 py-5" style="height: 93vh; overflow-y: scroll;" >
                     <div class="heading_titile pb-3">
                         <h3 class="fs-25 text-dark">Graded Report</h3>
                     </div>
                     <div class="fluid_title">
                         <h4 class="fs-16 text-dark text-uppercase">Fluid:</h4>
                     </div>
-                    <div class="inputfield">
+                    <div class="inputfield" >
                         <h5 class="fs-14 text-dark">Joint effusion</h5>
                         <div class="d-flex">
                             <input type="radio" id="html" name="joineffusion" class="checkcorrect">&nbsp;
                             <label for="html" class="d-grid">
                                 <span class="fs-15">Small</span>
-                                <span class="fs-12">correct</span>
-                            </label>&nbsp; &nbsp;
+                                <span class="fs-12">{{anwserList.anwsers!="1"?"":"correct"}}</span>
+                            </label>
+                            &nbsp; &nbsp;
                             <input type="radio" id="html" name="joineffusion" class="checkmoderate">&nbsp;
                             <label for="html" class="d-grid">
                                 <span class="fs-15">Moderate</span>
-                                <span class="fs-12">Your Answer</span>
+                                <span class="fs-12">{{anwserList.anwsers!="1"?"":"correct"}}</span>
                             </label>&nbsp; &nbsp;
                             <input type="radio" id="html" name="joineffusion" class="topradio">&nbsp;
                             <label for="html" class="d-grid">
                                 <span class="fs-15">Large</span>
+                                <span class="fs-12">{{anwserList.anwsers!="1"?"":"correct"}}</span>
                             </label>
-                     
+
                         </div>
                         </div>
-                    
+
                  <div class="inputfield">
-                
+
                     <h5 class="fs-14 text-dark">Key references </h5>
                     <a href=""><span>+</span> Add</a>
                     <div class="py-4 d-grid">
-                   
+
                    <a href="#" class="py-1">Key Image 1</a>
                    <a href="#" class="py-1">Key Image 2</a>
                    <a href="#" class="py-1">Key Image 3</a>
                    <a href="#" class="py-1">Key Image 4</a>
-                    
+
                 </div>
                     <textarea placeholder="Explanation" class="p-3"></textarea>
                 </div>
@@ -126,7 +128,7 @@
                          </label>
                      </div>
                      <textarea placeholder="Explanation" class="p-3"></textarea>
-                     
+
                  </div>
                  <div class="inputfield">
                     <h5 class="fs-14 text-dark">Medial compartment:  </h5>
@@ -247,7 +249,7 @@
                             </div>
                         <div class="inputfield">
                             <h5 class="fs-14 text-dark">LCL</h5>
-                           
+
                                 <input type="radio" id="html" name="lcl" class="checkcorrect">&nbsp;
                                 <label for="html">
                                     <span class="fs-15">Intact</span>
@@ -263,7 +265,7 @@
                             </div>
                         <div class="inputfield">
                             <h5 class="fs-14 text-dark">Iliotibial band</h5>
-                        
+
                                 <input type="radio" id="html" name="Iliotibial" class="checkcorrect">&nbsp;
                                 <label for="html">
                                     <span class="fs-15">Normal</span>
@@ -273,13 +275,13 @@
                                     <span class="fs-15">IT band associated edema</span>
                                 </label>
                             </div>
-                     
+
                         <div class="fluid_title">
                             <h4 class="fs-16 text-dark text-uppercase">EXTENSOR MECHANISM:</h4>
                         </div>
                         <div class="inputfield">
                             <h5 class="fs-14 text-dark">Quadriceps tendon</h5>
-                      
+
                                 <input type="radio" id="html" name="Quadriceps" class="checkcorrect">&nbsp;
                                 <label for="html">
                                     <span class="fs-15">Intact</span>
@@ -293,7 +295,7 @@
                                     <span class="fs-15">Complete tear</span>
                                 </label>
                             </div>
-                 
+
                         <div class="inputfield">
                             <h5 class="fs-14 text-dark">Patellar tendon</h5>
                                 <input type="radio" id="html" name="Patellar" class="checkcorrect">&nbsp;
@@ -311,7 +313,7 @@
                             </div>
                         <div class="inputfield">
                             <h5 class="fs-14 text-dark">Medial patellar retinaculum/Medial patellofemoral ligament</h5>
-                         
+
                                 <input type="radio" id="html" name="Medial" class="checkcorrect">&nbsp;
                                 <label for="html">
                                     <span class="fs-15">Intact</span>
@@ -325,13 +327,13 @@
                                     <span class="fs-15">Tear</span>
                                 </label>
                             </div>
-                      
+
                         <div class="fluid_title">
                             <h4 class="fs-16 text-dark text-uppercase">MENISCI:</h4>
                         </div>
                         <div class="inputfield">
                             <h5 class="fs-14 text-dark">Medial meniscus:</h5>
-                           
+
                                 <input type="radio" id="html" name="meniscus" class="checkcorrect">&nbsp;
                                 <label for="html">
                                     <span class="fs-15">Intact</span>
@@ -376,11 +378,11 @@
                                 <label for="html">
                                     <span class="fs-15">Meniscocapsular junction tear</span>
                                 </label>
-                            
+
                         </div>
                         <div class="inputfield">
                             <h5 class="fs-14 text-dark">Lateral meniscus:</h5>
-                            
+
                                 <input type="radio" id="html" name="Lateral" class="checkcorrect">&nbsp;
                                 <label for="html">
                                     <span class="fs-15">Intact</span>
@@ -425,14 +427,14 @@
                                 <label for="html">
                                     <span class="fs-15">Discoid meniscus</span>
                                 </label>
-                           
+
                         </div>
                         <div class="fluid_title">
                             <h4 class="fs-16 text-dark text-uppercase">BONE:</h4>
                         </div>
                         <div class="inputfield">
                             <h5 class="fs-14 text-dark">Quadriceps tendon</h5>
-                            
+
                                 <input type="radio" id="html" name="tendons" class="checkcorrect">&nbsp;
                                 <label for="html">
                                     <span class="fs-15">Normal</span>
@@ -453,7 +455,7 @@
                                 <label for="html">
                                     <span class="fs-15">Osteonecrosis</span>
                                 </label><br>
-                       
+
                         </div>
                  <div class="float-right py-3">
                     <div class="btnpnk mx-2">
@@ -462,7 +464,7 @@
                     </div>
                  </div>
            </div>
- 
+
            </div>
        </div>
     </div>

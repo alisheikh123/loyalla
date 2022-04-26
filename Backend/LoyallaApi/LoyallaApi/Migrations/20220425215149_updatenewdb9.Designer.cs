@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LoyallaApi.Migrations
 {
     [DbContext(typeof(LoyallaContext))]
-    [Migration("20220423132443_newdb")]
-    partial class newdb
+    [Migration("20220425215149_updatenewdb9")]
+    partial class updatenewdb9
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,13 +28,18 @@ namespace LoyallaApi.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<double>("Anwsers")
+                    b.Property<double>("IsAnwsers")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("QuestionId")
+                    b.Property<double>("OptionId")
                         .HasColumnType("double precision");
+
+                    b.Property<int?>("OptionsId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OptionsId");
 
                     b.ToTable("Anwser_tbl");
                 });
@@ -112,16 +117,18 @@ namespace LoyallaApi.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<bool>("IsAnswer")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("OptionName")
                         .HasColumnType("text");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("QuestionsQuestionId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("QuestionsQuestionId");
 
                     b.ToTable("Options_tbl");
                 });
@@ -149,7 +156,7 @@ namespace LoyallaApi.Migrations
 
             modelBuilder.Entity("LoyallaApi.DBModels.Questions", b =>
                 {
-                    b.Property<int>("Question_Id")
+                    b.Property<int>("QuestionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
@@ -160,14 +167,17 @@ namespace LoyallaApi.Migrations
                     b.Property<DateTime?>("CreationDateTime")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
                     b.Property<int>("PaperId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Question")
+                    b.Property<string>("QuestionName")
                         .HasColumnType("text");
 
-                    b.Property<int>("QuestionType")
-                        .HasColumnType("integer");
+                    b.Property<string>("Topic")
+                        .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdateDateTime")
                         .HasColumnType("timestamp without time zone");
@@ -175,7 +185,9 @@ namespace LoyallaApi.Migrations
                     b.Property<int>("Updated_By")
                         .HasColumnType("integer");
 
-                    b.HasKey("Question_Id");
+                    b.HasKey("QuestionId");
+
+                    b.HasIndex("PaperId");
 
                     b.ToTable("Question_tbl");
                 });
@@ -259,6 +271,50 @@ namespace LoyallaApi.Migrations
                     b.HasKey("StudentCaseAttemptStatus_Id");
 
                     b.ToTable("StudentCaseAttemptStatus_tbl");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Anwser", b =>
+                {
+                    b.HasOne("LoyallaApi.DBModels.Options", "Options")
+                        .WithMany("Anwsers")
+                        .HasForeignKey("OptionsId");
+
+                    b.Navigation("Options");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Options", b =>
+                {
+                    b.HasOne("LoyallaApi.DBModels.Questions", "Questions")
+                        .WithMany("Options")
+                        .HasForeignKey("QuestionsQuestionId");
+
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Questions", b =>
+                {
+                    b.HasOne("LoyallaApi.DBModels.Paper", "Paper")
+                        .WithMany("Questions")
+                        .HasForeignKey("PaperId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Paper");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Options", b =>
+                {
+                    b.Navigation("Anwsers");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Paper", b =>
+                {
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Questions", b =>
+                {
+                    b.Navigation("Options");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,15 +3,17 @@ using System;
 using LoyallaApi.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LoyallaApi.Migrations
 {
     [DbContext(typeof(LoyallaContext))]
-    partial class LoyallaContextModelSnapshot : ModelSnapshot
+    [Migration("20220425214556_updatenewdb8")]
+    partial class updatenewdb8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,12 +34,7 @@ namespace LoyallaApi.Migrations
                     b.Property<double>("OptionId")
                         .HasColumnType("double precision");
 
-                    b.Property<int?>("OptionsId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("OptionsId");
 
                     b.ToTable("Anwser_tbl");
                 });
@@ -121,12 +118,7 @@ namespace LoyallaApi.Migrations
                     b.Property<int>("QuestionId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("QuestionsQuestionId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("QuestionsQuestionId");
 
                     b.ToTable("Options_tbl");
                 });
@@ -184,8 +176,6 @@ namespace LoyallaApi.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("QuestionId");
-
-                    b.HasIndex("PaperId");
 
                     b.ToTable("Question_tbl");
                 });
@@ -269,50 +259,6 @@ namespace LoyallaApi.Migrations
                     b.HasKey("StudentCaseAttemptStatus_Id");
 
                     b.ToTable("StudentCaseAttemptStatus_tbl");
-                });
-
-            modelBuilder.Entity("LoyallaApi.DBModels.Anwser", b =>
-                {
-                    b.HasOne("LoyallaApi.DBModels.Options", "Options")
-                        .WithMany("Anwsers")
-                        .HasForeignKey("OptionsId");
-
-                    b.Navigation("Options");
-                });
-
-            modelBuilder.Entity("LoyallaApi.DBModels.Options", b =>
-                {
-                    b.HasOne("LoyallaApi.DBModels.Questions", "Questions")
-                        .WithMany("Options")
-                        .HasForeignKey("QuestionsQuestionId");
-
-                    b.Navigation("Questions");
-                });
-
-            modelBuilder.Entity("LoyallaApi.DBModels.Questions", b =>
-                {
-                    b.HasOne("LoyallaApi.DBModels.Paper", "Paper")
-                        .WithMany("Questions")
-                        .HasForeignKey("PaperId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Paper");
-                });
-
-            modelBuilder.Entity("LoyallaApi.DBModels.Options", b =>
-                {
-                    b.Navigation("Anwsers");
-                });
-
-            modelBuilder.Entity("LoyallaApi.DBModels.Paper", b =>
-                {
-                    b.Navigation("Questions");
-                });
-
-            modelBuilder.Entity("LoyallaApi.DBModels.Questions", b =>
-                {
-                    b.Navigation("Options");
                 });
 #pragma warning restore 612, 618
         }

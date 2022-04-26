@@ -27,6 +27,7 @@ import { CasesService } from './shared/services/Case/cases.service';
 import { QuestionComponent } from './components/admin/question/question.component';
 import { PaperComponent } from './components/admin/paper/paper.component';
 import { OptionComponent } from './components/admin/option/option.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,10 @@ import { OptionComponent } from './components/admin/option/option.component';
     AppRoutingModule,
     StudentRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {timeOut: 10000,
+      positionClass: 'toast-top-left',
+      preventDuplicates: true,}),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

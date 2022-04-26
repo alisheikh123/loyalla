@@ -1,18 +1,20 @@
-import { ToastService } from './../../../shared/services/shared/toast.service';
+import { Router } from '@angular/router';
+
 import { CasesService } from '../../../shared/services/Case/cases.service';
-import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { HttpEventType } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-upload-classes',
   templateUrl: './upload-classes.component.html',
   styleUrls: ['./upload-classes.component.css']
 })
-export class UploadClassesComponent implements OnInit,OnDestroy  {
+export class UploadClassesComponent implements OnInit  {
   isExcelFile!: boolean;
-  @ViewChild('fileInput') fileInput;
+  // @ViewChild('fileInput') fileInput;
   message!: string;
   spinnerEnabled = false;
   excelFile:any;
@@ -21,7 +23,7 @@ export class UploadClassesComponent implements OnInit,OnDestroy  {
   @ViewChild('inputFile')
   inputFile!: ElementRef;
   constructor(private fb: FormBuilder,
-    private service: CasesService,private toast:ToastService) { }
+    private service: CasesService,private toast:ToastrService,private route:Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -43,7 +45,7 @@ uploadExcel(files:any)
 
   let fileToUpload = <File>files[0];
   this.AnwserFileName = fileToUpload.name;
-
+  this.message = "File upload Successfully!";
 }
   submit(files) {
     let fileToUpload = <File>files[0];
@@ -51,20 +53,23 @@ uploadExcel(files:any)
     formData.append('title', this.caseForm.controls['title'].value);
     formData.append('description', this.caseForm.controls['description'].value);
     formData.append('fileName', fileToUpload.name);
-     formData.append('file', fileToUpload);
+    formData.append('file', fileToUpload);
     formData.append('created_By','');
     formData.append('creationDateTime', '');
     formData.append('updated_By', '');
     formData.append('updateDateTime', '');
     this.service.addNewCase(formData).subscribe(res => {
       this.caseForm.reset();
-      this.toast.show('I am a success toast', { classname: 'bg-success text-light', delay: 10000 });
       alert("Add Case Successfully!");
+      this.reload("UploadClassesComponent");
+
     });
 
     return 0;
   }
-  ngOnDestroy(): void {
-    this.toast.clear();
+  async reload(url: string): Promise<boolean> {
+    await this.route.navigateByUrl('.', { skipLocationChange: true });
+    return this.route.navigateByUrl(url);
   }
+
 }

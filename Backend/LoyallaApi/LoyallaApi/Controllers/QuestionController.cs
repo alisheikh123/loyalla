@@ -55,18 +55,18 @@ namespace LoyallaApi.Controllers
             return Ok(paper);
 
         }
-        [HttpDelete, Route("DeleteQuestion")]
-        public async Task<ActionResult<Questions>> delete(int questionId)
-        {
-            var questionDetail = _context.Question_tbl.Where(x => x.Question_Id == questionId).FirstOrDefault();
-            if (questionDetail == null)
-            {
-                return Ok("Bad Request");
-            }
-            _context.Question_tbl.Remove(questionDetail);
-            await _context.SaveChangesAsync();
-            return Ok("Deleted");
-        }
+        //[HttpDelete, Route("DeleteQuestion")]
+        //public async Task<ActionResult<Questions>> delete(int questionId)
+        //{
+        //    var questionDetail = _context.Question_tbl.Where(x => x.Question_Id == questionId).FirstOrDefault();
+        //    if (questionDetail == null)
+        //    {
+        //        return Ok("Bad Request");
+        //    }
+        //    _context.Question_tbl.Remove(questionDetail);
+        //    await _context.SaveChangesAsync();
+        //    return Ok("Deleted");
+        //}
 
 
         [HttpPut, Route("UpdateQuestion")]

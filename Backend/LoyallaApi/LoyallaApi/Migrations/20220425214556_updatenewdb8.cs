@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LoyallaApi.Migrations
 {
-    public partial class newdb : Migration
+    public partial class updatenewdb8 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,8 @@ namespace LoyallaApi.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    QuestionId = table.Column<double>(type: "double precision", nullable: false),
-                    Anwsers = table.Column<double>(type: "double precision", nullable: false)
+                    OptionId = table.Column<double>(type: "double precision", nullable: false),
+                    IsAnwsers = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,8 +67,7 @@ namespace LoyallaApi.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     QuestionId = table.Column<int>(type: "integer", nullable: false),
-                    OptionName = table.Column<string>(type: "text", nullable: true),
-                    IsAnswer = table.Column<bool>(type: "boolean", nullable: false)
+                    OptionName = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,11 +93,12 @@ namespace LoyallaApi.Migrations
                 name: "Question_tbl",
                 columns: table => new
                 {
-                    Question_Id = table.Column<int>(type: "integer", nullable: false)
+                    QuestionId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Topic = table.Column<string>(type: "text", nullable: true),
+                    QuestionName = table.Column<string>(type: "text", nullable: true),
                     PaperId = table.Column<int>(type: "integer", nullable: false),
-                    Question = table.Column<string>(type: "text", nullable: true),
-                    QuestionType = table.Column<int>(type: "integer", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
                     Created_By = table.Column<int>(type: "integer", nullable: false),
                     CreationDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     Updated_By = table.Column<int>(type: "integer", nullable: false),
@@ -106,7 +106,7 @@ namespace LoyallaApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Question_tbl", x => x.Question_Id);
+                    table.PrimaryKey("PK_Question_tbl", x => x.QuestionId);
                 });
 
             migrationBuilder.CreateTable(

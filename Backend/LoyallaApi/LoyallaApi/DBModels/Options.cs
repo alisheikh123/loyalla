@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LoyallaApi.DBModels
 {
@@ -9,8 +10,11 @@ namespace LoyallaApi.DBModels
 
         public int QuestionId { get; set; }
 
+        public Questions Questions { get; set; }
+
         public string OptionName { get; set; }
 
-        public bool IsAnswer { get; set; }
+
+        public ICollection<Anwser> Anwsers { get; set; }    
     }
 }

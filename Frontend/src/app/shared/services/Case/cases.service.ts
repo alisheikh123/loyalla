@@ -50,8 +50,12 @@ export class CasesService {
    debugger;
   return this.http.get<any>(this.apiUrl+'/api/Question/GetPaperById?Id='+id).pipe(catchError(this.errorService.handleError));
  }
- uploadExcel(formFile:any) {
-   debugger;
-  return this.http.post(this.apiUrl + '/api/Question/UploadExcel', formFile)
+//  uploadExcel(formFile:any) {
+//    debugger;
+//   return this.http.post(this.apiUrl + '/api/Question/UploadExcel', formFile)
+// }
+getAnwsers()
+{
+  return this.http.get(this.apiUrl+'/api/Loyalla/GetAnwsers').pipe(catchError(this.errorService.handleError))
 }
 }
