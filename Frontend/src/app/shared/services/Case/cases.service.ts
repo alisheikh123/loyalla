@@ -41,6 +41,14 @@ export class CasesService {
   return this.http.get(this.apiUrl+'/api/Question/GetAllQuestion').pipe(catchError(this.errorService.handleError));
 
  }
+ getQuestions()
+ {
+  return this.http.get(this.apiUrl+'/api/Loyalla/GetTopic').pipe(catchError(this.errorService.handleError));
+ }
+ getOption(questionId:number)
+ {
+return this.http.get(this.apiUrl+'/api/Loyalla/GetOption?questionId='+`{questionId}`).pipe(catchError(this.errorService.handleError));
+ }
  getAllPaper()
  {
   return this.http.get(this.apiUrl+'/api/Question/GetAllPaper').pipe(catchError(this.errorService.handleError));

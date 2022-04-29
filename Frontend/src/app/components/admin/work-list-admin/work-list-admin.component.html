@@ -27,7 +27,7 @@
                             <td class="text-center">{{item.creationDateTime | date}}</td>
                             <td class="text-center">
                                 <ul class="d-flex justify-content-center">
-                                    <li><a href="" routerLink="/Explanation"><img src="assets/img/answer1.png" class="imgtop"></a></li>
+                                    <li><a href="" [routerLink]="['/adminNavbar/AdminGradedReport'+item]"><img src="assets/img/answer1.png" class="imgtop"></a></li>
                                     <li><a href="" routerLink="/AdminGradedReport"><img src="assets/img/edit.png" class="imgtop"></a></li>
                                     <li><img src="assets/img/delete.png" class="imagedelete" (click)="deleteCase(item.case_Id)"></li>
                                 </ul>

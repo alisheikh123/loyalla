@@ -8,17 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminGradedReportComponent implements OnInit {
   anwserList:any;
+  questionsList:any;
+  optionList:any
   constructor(private cases:CasesService) { }
 
   ngOnInit(): void {
+    this.getQuestions();
     this.getAnwsers();
+  }
+  getQuestions()
+  {
+
+
+    this.cases.getQuestions().subscribe((res:any)=>
+    {
+
+
+      this.questionsList = res?.data;
+
+      console.log(this.questionsList);
+
+    });
   }
   getAnwsers()
   {
     this.cases.getAnwsers().subscribe((res)=>
     {
       this.anwserList = res;
-      console.log(res[0])
     });
   }
+  selectedOption(optionId:number)
+  {
+console.log(optionId);
+  }
+
+
 }

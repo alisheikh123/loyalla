@@ -6,6 +6,10 @@ namespace LoyallaApi.DBModels
 {
     public class Paper
     {
+        public Paper()
+        {
+            Questions = new HashSet<Questions>();
+        }
         [Key]
         public int Id { get; set; }
         public string PaperName { get; set; }

@@ -20,5 +20,8 @@ namespace LoyallaApi.DBModels
         public Nullable<System.DateTime> CreationDateTime { get; set; }
         public int? Updated_By { get; set; }
         public Nullable<System.DateTime> UpdateDateTime { get; set; }
+
+
+       
     }
 }

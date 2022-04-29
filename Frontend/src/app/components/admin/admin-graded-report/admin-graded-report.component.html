@@ -1,475 +1,99 @@
 <div class="position-relative" style="background-color: #f5f5f5;">
     <div class="container">
-       <div class="row">
-        <div class="col-lg-9 px-0">
-            <div class="container">
-                <div class="bg-white p-3 my-3">
-                    <div class="row d-flex flex-wrap p-2">
-                      <div class="w-25 p-2">
-                      <img src="assets/img/image_1.jpg" class="rounded">
-                      </div>
-                      <div class="w-25 p-2">
-                        <img src="assets/img/image_2.jpg" class="rounded">
-                        </div>
-                        <div class="w-25 p-2">
-                            <img src="assets/img/image_3.jpg" class="rounded">
+        <div class="row">
+            <div class="col-lg-9 px-0">
+                <div class="container">
+                    <div class="bg-white p-3 my-3">
+                        <div class="row d-flex flex-wrap p-2">
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_1.jpg" class="rounded">
+                            </div>
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_2.jpg" class="rounded">
+                            </div>
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_3.jpg" class="rounded">
                             </div>
                             <div class="w-25 p-2">
                                 <img src="assets/img/image_4.jpg" class="rounded">
+                            </div>
+                        </div>
+                        <div class="row d-flex flex-wrap p-2">
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_5.jpg" class="rounded">
+                            </div>
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_6.jpg" class="rounded">
+                            </div>
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_7.jpg" class="rounded">
+                            </div>
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_10.jpg" class="rounded">
+                            </div>
+                        </div>
+                        <div class="row d-flex flex-wrap p-2">
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_4.jpg" class="rounded">
+                            </div>
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_3.jpg" class="rounded">
+                            </div>
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_9.jpg" class="rounded">
+                            </div>
+                            <div class="w-25 p-2">
+                                <img src="assets/img/image_10.jpg" class="rounded">
+                            </div>
+                        </div>
+                        <div class="description py-3">
+                            <textarea placeholder="Description" class="p-3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Questions -->
+            <div class="col-lg-3 px-1">
+                <div class="container m-3 px-0">
+                    <div class="bg-white px-3 py-5" style="height: 93vh; overflow-y: scroll;">
+                        <div>
+                            <div class="heading_titile pb-3">
+
+                                <h3 class="fs-25 text-dark">{{questionsList.paperName}}</h3>
+                            </div>
+
+
+                    <div class="inputfield" *ngFor="let q of questionsList.questions;let i = index">
+                         <div class="fluid_title">
+                            <h4 class="fs-16 text-dark text-uppercase">{{q.topic}}</h4>
+                        </div>
+                       <span>Q:{{i+1}}</span> <h5 class="fs-14 text-dark">{{q.questionName}}</h5>
+                                <div class="d-flex" *ngFor="let o of q.options">
+                                    <input type="radio" id="html" name="joineffusion" class="checkcorrect" (click)="selectedOption(o.id)" />&nbsp;
+                                    <label for="html" class="d-grid">
+                                        <span class="fs-15">{{o.optionName}}</span>
+                                        <span class="fs-12"></span>
+
+                                    </label>
                                 </div>
-                    </div>
-                    <div class="row d-flex flex-wrap p-2">
-                        <div class="w-25 p-2">
-                        <img src="assets/img/image_5.jpg" class="rounded">
-                        </div>
-                        <div class="w-25 p-2">
-                          <img src="assets/img/image_6.jpg" class="rounded">
-                          </div>
-                          <div class="w-25 p-2">
-                              <img src="assets/img/image_7.jpg" class="rounded">
-                              </div>
-                              <div class="w-25 p-2">
-                                  <img src="assets/img/image_10.jpg" class="rounded">
-                                  </div>
-                      </div>
-                      <div class="row d-flex flex-wrap p-2">
-                        <div class="w-25 p-2">
-                        <img src="assets/img/image_4.jpg" class="rounded">
-                        </div>
-                        <div class="w-25 p-2">
-                          <img src="assets/img/image_3.jpg" class="rounded">
-                          </div>
-                          <div class="w-25 p-2">
-                              <img src="assets/img/image_9.jpg" class="rounded">
-                              </div>
-                              <div class="w-25 p-2">
-                                  <img src="assets/img/image_10.jpg" class="rounded">
-                                  </div>
-                      </div>
-                    <div class="description py-3">
-                        <textarea placeholder="Description" class="p-3"></textarea>
-                    </div>
-                    </div>
-                    </div>
-           </div>
-           <div class="col-lg-3 px-1">
-            <div class="container m-3 px-0">
-             <div class="bg-white px-3 py-5" style="height: 93vh; overflow-y: scroll;" >
-                    <div class="heading_titile pb-3">
-                        <h3 class="fs-25 text-dark">Graded Report</h3>
-                    </div>
-                    <div class="fluid_title">
-                        <h4 class="fs-16 text-dark text-uppercase">Fluid:</h4>
-                    </div>
-                    <div class="inputfield" >
-                        <h5 class="fs-14 text-dark">Joint effusion</h5>
-                        <div class="d-flex">
-                            <input type="radio" id="html" name="joineffusion" class="checkcorrect">&nbsp;
-                            <label for="html" class="d-grid">
-                                <span class="fs-15">Small</span>
-                                <span class="fs-12">{{anwserList.anwsers!="1"?"":"correct"}}</span>
-                            </label>
-                            &nbsp; &nbsp;
-                            <input type="radio" id="html" name="joineffusion" class="checkmoderate">&nbsp;
-                            <label for="html" class="d-grid">
-                                <span class="fs-15">Moderate</span>
-                                <span class="fs-12">{{anwserList.anwsers!="1"?"":"correct"}}</span>
-                            </label>&nbsp; &nbsp;
-                            <input type="radio" id="html" name="joineffusion" class="topradio">&nbsp;
-                            <label for="html" class="d-grid">
-                                <span class="fs-15">Large</span>
-                                <span class="fs-12">{{anwserList.anwsers!="1"?"":"correct"}}</span>
-                            </label>
+                                <div class="description py-3">
+                                    <textarea placeholder="Description" class="p-3"></textarea>
+                                </div>
 
-                        </div>
-                        </div>
+                    </div>
 
-                 <div class="inputfield">
-
-                    <h5 class="fs-14 text-dark">Key references </h5>
-                    <a href=""><span>+</span> Add</a>
-                    <div class="py-4 d-grid">
-
-                   <a href="#" class="py-1">Key Image 1</a>
-                   <a href="#" class="py-1">Key Image 2</a>
-                   <a href="#" class="py-1">Key Image 3</a>
-                   <a href="#" class="py-1">Key Image 4</a>
 
                 </div>
-                    <textarea placeholder="Explanation" class="p-3"></textarea>
+            </div>
+            <div class="float-right py-3">
+                <div class="btnpnk mx-2">
+                    <a href="" routerLink="/StudentResultList">SAVE</a>
                 </div>
-                    <div class="inputfield">
-                     <h5 class="fs-14 text-dark">Baker cyst</h5>
-                     <div class="d-flex">
-                        <input type="radio" id="html" name="bakercyst" class="checkmoderate">&nbsp;
-                        <label for="html" class="d-grid">
-                            <span class="fs-15">No</span>
-                        </label> &nbsp; &nbsp;
-                         <input type="radio" id="html" name="bakercyst" class="checkcorrect">&nbsp;
-                         <label for="html" class="d-grid">
-                            <span class="fs-15">Yes</span>
-                            <span class="fs-12">correct</span>
-                        </label>
-                     </div>
-                     <textarea placeholder="Explanation" class="p-3"></textarea>
-                 </div>
-                 <div class="inputfield">
-                     <h5 class="fs-14 text-dark">Pes anserine bursitis: </h5>
-                     <div class="d-flex">
-                         <input type="radio" id="html" name="anserine" class="checkmoderate">&nbsp;
-                         <label for="html" class="d-grid">
-                             <span class="fs-15">No</span>
-                             <span class="fs-12">Your Answer</span>
-                         </label>&nbsp; &nbsp;
-                         <input type="radio" id="html" name="anserine" class="checkcorrect">&nbsp;
-                         <label for="html" class="d-grid">
-                             <span class="fs-15">Yes</span>
-                             <span class="fs-12">Your Correct</span>
-                         </label>
-                     </div>
-                     <textarea placeholder="Explanation" class="p-3"></textarea>
-
-                 </div>
-                 <div class="inputfield">
-                    <h5 class="fs-14 text-dark">Medial compartment:  </h5>
-                    <p class="fs-13">Patellofemoral compartment: </p>
-                        <input type="radio" id="html" name="compartment" class="checkmoderate">&nbsp;
-                        <label class="fs-15" for="html">
-                            None
-                        </label><br>
-                        <input type="radio" id="html" name="compartment" class="checkcorrect">&nbsp;
-                        <label for="html">
-                            <span class="fs-15">Up to partial-thickness</span>
-                            <!-- <span class="fs-12">correct</span> -->
-                        </label><br>
-                        <input type="radio" id="htmls" name="compartment" class="checkcorrect">&nbsp;
-                        <label for="htmls">
-                            <span class="fs-15">Up to full-thickness</span>
-                            <!-- <span class="fs-12">correct</span> -->
-                        </label><br>
-                        <input type="radio" id="htmlss" name="compartment" class="checkmoderate">&nbsp;
-                        <label for="htmlss">
-                            <span class="fs-15">Osteochondral defect</span>
-                        </label>
-                    </div>
-                    <div class="inputfield">
-                        <h5 class="fs-14 text-dark">Lateral compartment:  </h5>
-                            <input type="radio" id="html" name="compartment" class="checkmoderate">&nbsp;
-                            <label class="fs-15" for="html">
-                                None
-                            </label><br>
-                            <input type="radio" id="html" name="Lateral" class="checkcorrect">&nbsp;
-                            <label for="html">
-                                <span class="fs-15">Up to partial-thickness</span>
-                                <!-- <span class="fs-12">correct</span> -->
-                            </label><br>
-                            <input type="radio" id="htmls" name="Lateral" class="checkcorrect">&nbsp;
-                            <label for="htmls">
-                                <span class="fs-15">Up to full-thickness</span>
-                                <!-- <span class="fs-12">correct</span> -->
-                            </label><br>
-                            <input type="radio" id="htmlss" name="Lateral" class="checkmoderate">&nbsp;
-                            <label for="htmlss">
-                                <span class="fs-15">Osteochondral defect</span>
-                            </label>
-                        </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">Osteochondral body  </h5>
-                            <div class="d-flex">
-                                <input type="radio" id="html" name="Osteochondral" class="checkmoderate">&nbsp;
-                                <label for="html" class="d-grid">
-                                    <span class="fs-15">No</span>
-                                </label>&nbsp; &nbsp;
-                                <input type="radio" id="html" name="Osteochondral" class="checkcorrect">&nbsp;
-                                <label for="html" class="d-grid">
-                                    <span class="fs-15">Yes</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">Pigmented villonodular synovitis  </h5>
-                            <div class="d-flex">
-                                <input type="radio" id="html" name="villonodular" class="checkmoderate">&nbsp;
-                                <label for="html" class="d-grid">
-                                    <span class="fs-15">No</span>
-                                </label>&nbsp; &nbsp;
-                                <input type="radio" id="html" name="villonodular" class="checkcorrect">&nbsp;
-                                <label for="html" class="d-grid">
-                                    <span class="fs-15">Yes</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="fluid_title">
-                            <h4 class="fs-16 text-dark text-uppercase">LIGAMENTS:</h4>
-                        </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">ACL</h5>
-                                <input type="radio" id="html" name="acl" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Intact</span>
-                                </label><br>
-                                <input type="radio" id="html" name="acl" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Partial tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="acl" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Complete tear</span>
-                                </label>
-                            </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">PCL</h5>
-                                <input type="radio" id="html" name="pcl" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Intact</span>
-                                </label><br>
-                                <input type="radio" id="html" name="pcl" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Partial tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="pcl" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Complete tear</span>
-                                </label>
-                            </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">MCL</h5>
-                                <input type="radio" id="html" name="mcl" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Intact</span>
-                                </label><br>
-                                <input type="radio" id="html" name="mcl" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Partial tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="mcl" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Complete tear</span>
-                                </label>
-                            </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">LCL</h5>
-
-                                <input type="radio" id="html" name="lcl" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Intact</span>
-                                </label><br>
-                                <input type="radio" id="html" name="lcl" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Partial tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="lcl" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Complete tear</span>
-                                </label><br>
-                            </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">Iliotibial band</h5>
-
-                                <input type="radio" id="html" name="Iliotibial" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Normal</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Iliotibial" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">IT band associated edema</span>
-                                </label>
-                            </div>
-
-                        <div class="fluid_title">
-                            <h4 class="fs-16 text-dark text-uppercase">EXTENSOR MECHANISM:</h4>
-                        </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">Quadriceps tendon</h5>
-
-                                <input type="radio" id="html" name="Quadriceps" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Intact</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Quadriceps" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Partial tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Quadriceps" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Complete tear</span>
-                                </label>
-                            </div>
-
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">Patellar tendon</h5>
-                                <input type="radio" id="html" name="Patellar" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Intact</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Patellar" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Partial tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Patellar" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Complete tear</span>
-                                </label>
-                            </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">Medial patellar retinaculum/Medial patellofemoral ligament</h5>
-
-                                <input type="radio" id="html" name="Medial" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Intact</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Medial" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Sprain/edema</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Medial" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Tear</span>
-                                </label>
-                            </div>
-
-                        <div class="fluid_title">
-                            <h4 class="fs-16 text-dark text-uppercase">MENISCI:</h4>
-                        </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">Medial meniscus:</h5>
-
-                                <input type="radio" id="html" name="meniscus" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Intact</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Horizontal tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Horizontal flap tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Longitudinal tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Radial tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Vertical flap tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Bucket handle tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Flipped meniscus</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Complex tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Root tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="meniscus" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Meniscocapsular junction tear</span>
-                                </label>
-
-                        </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">Lateral meniscus:</h5>
-
-                                <input type="radio" id="html" name="Lateral" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Intact</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Horizontal tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Horizontal flap tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Longitudinal tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Radial tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Vertical flap tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Bucket handle tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Flipped meniscus</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Complex tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Root tear</span>
-                                </label><br>
-                                <input type="radio" id="html" name="Lateral" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Discoid meniscus</span>
-                                </label>
-
-                        </div>
-                        <div class="fluid_title">
-                            <h4 class="fs-16 text-dark text-uppercase">BONE:</h4>
-                        </div>
-                        <div class="inputfield">
-                            <h5 class="fs-14 text-dark">Quadriceps tendon</h5>
-
-                                <input type="radio" id="html" name="tendons" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Normal</span>
-                                </label><br>
-                                <input type="radio" id="html" name="tendons" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Fracture</span>
-                                </label><br>
-                                <input type="radio" id="html" name="tendons" class="topradio">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Bone marrow edema</span>
-                                </label><br>
-                                <input type="radio" id="html" name="tendons" class="checkcorrect">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Marrow replacing lesion/malignancy</span>
-                                </label><br>
-                                <input type="radio" id="html" name="tendons" class="checkmoderate">&nbsp;
-                                <label for="html">
-                                    <span class="fs-15">Osteonecrosis</span>
-                                </label><br>
-
-                        </div>
-                 <div class="float-right py-3">
-                    <div class="btnpnk mx-2">
-                        <a href="" routerLink="/StudentResultList">SAVE</a>
-                    </div>
-                    </div>
-                 </div>
-           </div>
-
-           </div>
-       </div>
+            </div>
+        </div>
     </div>
+
 </div>
-
-
-
-
+<!-- </div>
+</div> -->

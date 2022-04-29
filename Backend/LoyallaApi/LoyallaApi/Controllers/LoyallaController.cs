@@ -143,22 +143,22 @@ namespace LoyallaApi.Controllers
 
         }
 
-        [HttpGet ,Route("AdminCaseList")]
+        [HttpGet, Route("AdminCaseList")]
         public async Task<ActionResult<IEnumerable<Cases>>> adminCaseList()
         {
             var CaseList = _context.Case_tbl.ToArray();
-            if(CaseList==null)
+            if (CaseList == null)
             {
                 return Ok("Notfound");
             }
             return CaseList;
         }
 
-        [HttpDelete ,Route("DeleteCase")]
+        [HttpDelete, Route("DeleteCase")]
         public async Task<ActionResult<Cases>> delCase(int Case_Id)
         {
             var CaseData = _context.Case_tbl.Where(x => x.Case_Id == Case_Id).FirstOrDefault();
-            if(CaseData==null)
+            if (CaseData == null)
             {
                 return Ok("Bad Request");
             }
@@ -168,8 +168,8 @@ namespace LoyallaApi.Controllers
         }
 
 
-        [HttpPost ,Route("AddQuestion")]
-        public async Task<ActionResult<Questions>> addQuest ([FromForm] Questions quest)
+        [HttpPost, Route("AddQuestion")]
+        public async Task<ActionResult<Questions>> addQuest([FromForm] Questions quest)
         {
             var CurrentDateTime = DateTime.Now;
             quest.CreationDateTime = CurrentDateTime;
@@ -216,10 +216,10 @@ namespace LoyallaApi.Controllers
         //    return Ok("Deleted");
         //}
 
-        [HttpGet,Route("GetAnwsers")]
-        public async Task<ActionResult<List<Anwser>>> getAnwsers() 
+        [HttpGet, Route("GetAnwsers")]
+        public async Task<ActionResult<List<Anwser>>> getAnwsers()
         {
-        return _context.Anwser_tbl.OrderBy(x=>x.OptionId).ToList();
+            return _context.Anwser_tbl.OrderBy(x => x.OptionId).ToList();
         }
 
         [HttpGet, Route("GetQuestionsDetail")]
@@ -230,20 +230,70 @@ namespace LoyallaApi.Controllers
             var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).ToList();
             foreach (var item in questions)
             {
-                var options = _context.Options_tbl.Where(x=>x.QuestionId==item.QuestionId).OrderBy(x => x.QuestionId).ToList();
+                var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).OrderBy(x => x.QuestionId).ToList();
                 foreach (var item2 in options)
                 {
                     optionsList.Add(new QuestionsOptionsList
                     {
                         QuestionId = item.QuestionId,
+                        PaperName = paper.PaperName,
+                        Topic = item.Topic,
                         QuestionName = item.QuestionName,
+                        Description = item.Description,
                         OptionName = item2.OptionName
-                });
-                }}
-           return  optionsList;
+                    });
+                }
+            }
+            return optionsList;
         }
 
+        [HttpGet, Route("GetTopic")]
+        public async Task<EntityResponseModel<object>> getTopicOfPaper()
+        {
 
+            var paperList = new Paper();
+            var paper = _context.Paper_tbl.Where(x => x.Id == 1).FirstOrDefault();
+            var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).ToList();
+
+
+            foreach (var item in questions)
+            {
+                var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).ToList();
+
+                //foreach (var op in options)
+                //{
+                    //var anwser = _context.Anwser_tbl.Where(x => x.OptionId == options.Id).ToList();
+                    paperList.Id = paper.Id;
+                    paperList.PaperName = paper.PaperName;
+                    paperList.Questions.Add(
+                             new Questions
+                             {
+                                     QuestionId = item.QuestionId,
+                                     Topic = item.Topic,
+                                     Description = item.Description,
+                                     QuestionName =item.QuestionName,
+                                     Options = options,
+                                     //Options = new Options[]
+                                     //{
+                                     //    new Options
+                                     //    {
+                                     //        Id = op.Id,
+                                     //        OptionName = op.OptionName,
+                                     //        Anwsers = anwser,
+                                     //    }
+                                     //}
+                             });
+          // };
+                    //});
+
+
+                //}
+            }
+            return new EntityResponseModel<object>
+            {
+                Data = paperList,
+            };
+        }
 
 
         //[Route("ReadFile")]

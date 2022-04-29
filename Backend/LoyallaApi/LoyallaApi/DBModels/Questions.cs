@@ -7,6 +7,10 @@ namespace LoyallaApi.DBModels
 {
     public class Questions
     {
+        public Questions()
+        {
+            Options = new HashSet<Options>();
+        }
         [Key]
         public int QuestionId { get; set; }
         public string Topic { get; set; }
