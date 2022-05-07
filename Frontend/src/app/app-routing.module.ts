@@ -24,7 +24,7 @@ const routes: Routes = [
    {path: 'Setting', component: SettingsComponent},
    {path: 'WorkListAdmin', component: WorkListAdminComponent},
    {path: 'Explanation', component: ExplanationComponent},
-   {path: 'AdminGradedReport', component: AdminGradedReportComponent}
+   {path: 'AdminGradedReport/:id', component: AdminGradedReportComponent}
 ]},
 {path: '', component: LoginComponent},
 {path: 'signup', component: SignUpComponent},

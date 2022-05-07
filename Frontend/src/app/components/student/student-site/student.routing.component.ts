@@ -1,3 +1,4 @@
+import { StudentPaperComponent } from './student-paper/student-paper.component';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentNavBarComponent } from './student-nav-bar/student-nav-bar.component';
@@ -17,7 +18,8 @@ const routes: Routes = [
 {path: 'FeedbackOptional', component: FeedbackoptionalComponent},
 {path: 'result', component: ResultsComponent},
 {path: 'ReadStudy', component: ReadStudyComponent},
-{path: 'ReviewReport', component: GradedReportComponent}
+{path: 'ReviewReport', component: GradedReportComponent},
+{path:'studentPaper/:id',component: StudentPaperComponent}
 ]},
 ];
 

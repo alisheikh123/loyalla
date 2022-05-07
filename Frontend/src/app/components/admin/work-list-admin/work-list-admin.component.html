@@ -22,12 +22,12 @@
                     <tbody>
                         <tr class="bg-white" *ngFor="let item of allCases  let i=index">
                             <td class="text-center">{{i+1}}</td>
-                            <td class="text-center">{{item.title}}</td>
-                            <td class="text-center">{{item.description}}</td>
-                            <td class="text-center">{{item.creationDateTime | date}}</td>
+                            <td class="text-center">{{item.caseName}}</td>
+                            <td class="text-center">{{item.comments}}</td>
+                            <td class="text-center">{{item.creationDate | date}}</td>
                             <td class="text-center">
                                 <ul class="d-flex justify-content-center">
-                                    <li><a href="" [routerLink]="['/adminNavbar/AdminGradedReport'+item]"><img src="assets/img/answer1.png" class="imgtop"></a></li>
+                                    <li><a placement="top" ngbTooltip="Tooltip on top" title="{{item.paperName}}" [routerLink]="['/adminNavbar/AdminGradedReport/'+item.paperId]"><img src="assets/img/answer1.png" class="imgtop"></a></li>
                                     <li><a href="" routerLink="/AdminGradedReport"><img src="assets/img/edit.png" class="imgtop"></a></li>
                                     <li><img src="assets/img/delete.png" class="imagedelete" (click)="deleteCase(item.case_Id)"></li>
                                 </ul>

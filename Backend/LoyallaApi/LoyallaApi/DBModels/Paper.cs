@@ -15,6 +15,7 @@ namespace LoyallaApi.DBModels
         public string PaperName { get; set; }
         public string Title { get; set; }
         public string Description{ get; set; }
+        public int CaseId { get; set; }
         public ICollection<Questions> Questions { get; set; }
     }
 }

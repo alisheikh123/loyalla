@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,7 +22,9 @@ namespace LoyallaApi.DBModels
         public int? Updated_By { get; set; }
         public Nullable<System.DateTime> UpdateDateTime { get; set; }
 
+        public ICollection<Paper> Paper { get; set; }
 
-       
+
+
     }
 }

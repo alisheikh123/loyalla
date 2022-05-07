@@ -28,6 +28,7 @@ import { QuestionComponent } from './components/admin/question/question.componen
 import { PaperComponent } from './components/admin/paper/paper.component';
 import { OptionComponent } from './components/admin/option/option.component';
 import { ToastrModule } from 'ngx-toastr';
+import { StudentPaperComponent } from './components/student/student-site/student-paper/student-paper.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     QuestionComponent,
     PaperComponent,
-    OptionComponent
+    OptionComponent,
+    StudentPaperComponent
   ],
   imports: [
     BrowserModule,

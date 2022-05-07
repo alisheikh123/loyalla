@@ -21,6 +21,10 @@ export class CasesService {
     return this.http.get<any>(this.apiUrl + '/api/Loyalla/AdminCaseList').pipe(
       catchError(this.errorService.handleError));
   }
+  getStudentPaperList() {
+    return this.http.get<any>(this.apiUrl + '/api/Loyalla/StudentPaperList').pipe(
+      catchError(this.errorService.handleError));
+  }
   deleteCase(id:any) {
     debugger;
     return this.http.delete(this.apiUrl + '/api/Loyalla/DeleteCase'+'?Case_Id='+id).pipe(
@@ -41,9 +45,13 @@ export class CasesService {
   return this.http.get(this.apiUrl+'/api/Question/GetAllQuestion').pipe(catchError(this.errorService.handleError));
 
  }
- getQuestions()
+ getQuestionsWithoutAnwser(paperId:number)
  {
-  return this.http.get(this.apiUrl+'/api/Loyalla/GetTopic').pipe(catchError(this.errorService.handleError));
+  return this.http.get(this.apiUrl+'/api/Loyalla/getQuestionDetailWithoutAnwser?paperId='+paperId).pipe(catchError(this.errorService.handleError));
+ }
+ getQuestionsWithAnwser(paperId:number)
+ {
+  return this.http.get(this.apiUrl+'/api/Loyalla/getQuestionDetailWithAnwser?paperId='+paperId).pipe(catchError(this.errorService.handleError));
  }
  getOption(questionId:number)
  {
@@ -58,10 +66,6 @@ return this.http.get(this.apiUrl+'/api/Loyalla/GetOption?questionId='+`{question
    debugger;
   return this.http.get<any>(this.apiUrl+'/api/Question/GetPaperById?Id='+id).pipe(catchError(this.errorService.handleError));
  }
-//  uploadExcel(formFile:any) {
-//    debugger;
-//   return this.http.post(this.apiUrl + '/api/Question/UploadExcel', formFile)
-// }
 getAnwsers()
 {
   return this.http.get(this.apiUrl+'/api/Loyalla/GetAnwsers').pipe(catchError(this.errorService.handleError))
