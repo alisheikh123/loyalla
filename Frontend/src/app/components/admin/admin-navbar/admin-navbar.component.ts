@@ -16,6 +16,7 @@ export class AdminNavbarComponent implements OnInit {
     this.showlist = true;
   }
   logout(){
+    localStorage.removeItem("userid")
     this.route.navigate([""]);
   }
 }

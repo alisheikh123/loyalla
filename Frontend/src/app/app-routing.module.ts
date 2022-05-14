@@ -13,22 +13,24 @@ import { StudentResultListComponent } from './components/admin/student-result-li
 import { UploadClassesComponent } from './components/admin/upload-classes/upload-classes.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { QuestionComponent } from './components/admin/question/question.component';
+import { AuthGuard } from './shared/guards/auth.guard'
+import { Role } from './shared/model/role';
 
 const routes: Routes = [
-  { path: 'adminNavbar', component: AdminNavbarComponent, children: [
-  {path: 'AddCase', component: UploadClassesComponent},
-  {path: 'AddPaper', component: PaperComponent},
-  {path: 'AddOption', component: OptionComponent},
-  {path: 'AddQuestion', component: QuestionComponent},
-  {path: 'StudentResultList', component: StudentResultListComponent},
-   {path: 'Setting', component: SettingsComponent},
-   {path: 'WorkListAdmin', component: WorkListAdminComponent},
-   {path: 'Explanation', component: ExplanationComponent},
-   {path: 'AdminGradedReport/:id', component: AdminGradedReportComponent}
+  { path: 'adminNavbar',canActivate: [AuthGuard], component: AdminNavbarComponent, children: [
+  {path: 'AddCase',canActivate: [AuthGuard], component: UploadClassesComponent},
+  {path: 'AddPaper',canActivate: [AuthGuard], component: PaperComponent},
+  {path: 'AddOption',canActivate: [AuthGuard], component: OptionComponent},
+  {path: 'AddQuestion',canActivate: [AuthGuard], component: QuestionComponent},
+  {path: 'StudentResultList', canActivate: [AuthGuard],component: StudentResultListComponent},
+   {path: 'Setting',canActivate: [AuthGuard], component: SettingsComponent},
+   {path: 'WorkListAdmin',canActivate: [AuthGuard], component: WorkListAdminComponent},
+   {path: 'Explanation',canActivate: [AuthGuard], component: ExplanationComponent},
+   {path: 'AdminGradedReport/:id',canActivate: [AuthGuard], component: AdminGradedReportComponent}
 ]},
 {path: '', component: LoginComponent},
 {path: 'signup', component: SignUpComponent},
-{ path: 'studentNavbar', component: StudentNavBarComponent, children: [
+{ path: 'studentNavbar', canActivate: [AuthGuard] ,component: StudentNavBarComponent, children: [
 
 ]},
 ];
