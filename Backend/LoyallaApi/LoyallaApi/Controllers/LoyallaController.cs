@@ -35,9 +35,25 @@ namespace LoyallaApi.Controllers
         public async Task<IActionResult> addCase([FromForm] caseDto cases)
         {
             var result = _objectMapper.Map<caseDto, Cases>(cases);
-            result.CreationDateTime = DateTime.Now;
-            _context.Case_tbl.Add(result);
-            await _context.SaveChangesAsync();
+            try
+            {
+                result.CreationDateTime = DateTime.Now;
+                _context.Case_tbl.Add(result);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
             int caseId = result.Case_Id; 
 
 
