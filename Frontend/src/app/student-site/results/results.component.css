@@ -1,0 +1,112 @@
+.fluid_title h4{
+    font-weight: 700;
+}
+.inputfield h5{
+    font-weight: 600;
+}
+label.d-grid{
+    position: relative;
+    top: -5px;
+    display: grid !important;
+}.congra{
+    font-weight: 800;
+}
+.score{
+    font-weight: 600;
+}
+.congrat{
+    color: #f2bd30;
+}.btnpnk a {
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+  color: white;
+  background-color: #a30046;
+}
+.btnsil a{
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+  color: white;
+  background-color: #547b8c;
+}
+.btnblk a{
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+  color: white;
+  background-color: black;
+}
+.padd3{
+    padding: 10rem 1rem;
+}
+.checkcorrect {
+    -webkit-appearance: none; /*hides the default checkbox*/
+    height: 15px;
+    width: 15px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  
+    background-color: transparent;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 50px;
+    outline: none;
+  }
+  .checkcorrect:checked{
+      background-color: #9ac655;
+  }
+  .checkcorrect:checked + label span {
+      color: #9ac655;
+  }
+  .checkmoderate{
+    -webkit-appearance: none; /*hides the default checkbox*/
+    height: 15px;
+    width: 15px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  
+    background-color: transparent;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 50px;
+    outline: none;  
+  }
+  .checkmoderate:checked{
+    background-color: #a40046;
+}
+.checkmoderate:checked + label span {
+    color: #a40046;
+}
+label {
+  display: contents;
+  margin-bottom: 0.5rem;
+}
+@-moz-document url-prefix() { 
+    .radios {
+        margin-top: -2rem !important;
+      }
+    .fs-15 {
+        font-size: 12px;
+      }
+    body{
+        line-height: 1rem !important;
+    }
+  }
+
+  @media only screen and (max-width: 576px){
+    .container{
+      padding-left: 0px !important;
+    }
+    .btnblk{
+      margin-top: 1.5rem !important;
+    }
+    .btnsil{
+      margin-top: 1.58rem !important;
+    }
+    .btnpnk{
+      margin-top: 1.5rem !important;
+    }
+  }
+  @media only screen and (min-width: 576.98px) and (max-width: 767.98px){
+    .container {
+        max-width: 642px !important;
+    }
+}

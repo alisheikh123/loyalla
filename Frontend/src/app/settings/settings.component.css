@@ -1,0 +1,87 @@
+.admin_Setting{
+    background-color: white;
+}
+.btn_col1 a{
+    
+    padding: 0.75rem 2.5rem;
+    color: white; 
+    background-color: #8b003a; 
+    border-radius: 5px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 36px;
+  }
+  .containers{
+    margin: 0rem 6rem;
+  }
+  .checb_toggle{
+    position: relative;
+    top: 13px;
+  }
+  .switch input {display:none;}
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8b003a;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 28px;
+    width: 28px;
+    top: 4px;
+    left: 5px;
+    right: 1px;
+    bottom: 1px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+  
+  input:checked + .slider {
+    background-color: #2ab934;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(55px);
+  }
+  
+  .slider:after {
+    content:'OFF';
+    color: white;
+    display: block;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 60%;
+    font-size: 15px;
+  }
+  input:checked + .slider:after {
+    content:'ON';
+    left: 50%;
+  }
+  @media only screen and (max-width: 430px){
+    .dblock{
+      padding: 1rem 0rem;
+      display: block;
+    }
+   
+  }
