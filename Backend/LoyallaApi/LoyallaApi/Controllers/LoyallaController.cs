@@ -180,14 +180,42 @@ namespace LoyallaApi.Controllers
         [HttpDelete, Route("DeleteCase")]
         public async Task<ActionResult<Cases>> delCase(int Case_Id)
         {
-            var CaseData = _context.Case_tbl.Where(x => x.Case_Id == Case_Id).FirstOrDefault();
-            if (CaseData == null)
+
+            List<Paper> paperagainstcase = new List<Paper>();
+            List<Questions> questionagainstpaper = new List<Questions>();
+            List<Options> optionsagainstquestions = new List<Options>();
+            List<Anwser> anwserssagainstoptions = new List<Anwser>();
+            var cases = _context.Case_tbl.Where(x => x.Case_Id == Case_Id).FirstOrDefault();
+            if (cases == null)
             {
                 return Ok("Bad Request");
             }
-            _context.Case_tbl.Remove(CaseData);
-            await _context.SaveChangesAsync();
-            return Ok("Deleted");
+            else
+            {
+                paperagainstcase = _context.Paper_tbl.Where(x => x.CaseId == Case_Id).ToList();
+                foreach (var p in paperagainstcase)
+                {
+                    questionagainstpaper = _context.Question_tbl.Where(x => x.PaperId == p.Id).ToList();
+                    foreach (var q in questionagainstpaper)
+                    {
+                        optionsagainstquestions = _context.Options_tbl.Where(x => x.QuestionId == q.QuestionId).ToList();
+                        foreach (var o in optionsagainstquestions)
+                        {
+                            anwserssagainstoptions = _context.Anwser_tbl.Where(x => x.OptionId == o.Id).ToList();
+                            _context.Anwser_tbl.RemoveRange(anwserssagainstoptions);
+                        }
+                        _context.Options_tbl.RemoveRange(optionsagainstquestions);
+
+                    }
+                    _context.Question_tbl.RemoveRange(questionagainstpaper);
+                }
+
+
+                _context.Paper_tbl.RemoveRange(paperagainstcase);
+                _context.Case_tbl.Remove(cases);
+                await _context.SaveChangesAsync();
+                return Ok("Deleted");
+            }
         }
 
 
