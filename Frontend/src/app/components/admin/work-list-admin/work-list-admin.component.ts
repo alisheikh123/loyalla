@@ -27,6 +27,7 @@ export class WorkListAdminComponent implements OnInit {
 
   deleteCase(caseId:number)
   {
+
     debugger;
     this.service.deleteCase(caseId).subscribe((res:any)=>{
       window.location.reload();
