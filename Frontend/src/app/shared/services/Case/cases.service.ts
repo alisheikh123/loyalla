@@ -21,6 +21,15 @@ export class CasesService {
     return this.http.get<any>(this.apiUrl + '/api/Loyalla/AdminCaseList').pipe(
       catchError(this.errorService.handleError));
   }
+  UpdateStatus(model:any) {
+    return this.http.post<any>(this.apiUrl + '/api/Loyalla/UpdateCaseStatus',model).pipe(
+      catchError(this.errorService.handleError));
+  }
+  getStatus(studentId : number , CaseId : number) {
+
+    return this.http.get<any>(this.apiUrl + '/api/Loyalla/GetCaseStatus?Student_Id='+studentId+'&Case_Id= '+CaseId+'').pipe(
+      catchError(this.errorService.handleError));
+  }
   getStudentPaperList() {
     return this.http.get<any>(this.apiUrl + '/api/Loyalla/StudentPaperList').pipe(
       catchError(this.errorService.handleError));

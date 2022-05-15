@@ -36,7 +36,7 @@ ul li .imgtop{
     position: relative;
     top: 6px;
 }
-.checkedbox {
+.Unread {
   -webkit-appearance: none; /*hides the default checkbox*/
   height: 20px;
   width: 20px;
@@ -46,6 +46,32 @@ ul li .imgtop{
 
   background-color: #8b003a;
   border:1px solid #8b003a;
+  border-radius: 50px;
+  outline: none;
+}
+.Read {
+  -webkit-appearance: none; /*hides the default checkbox*/
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 0px;
+  left: 35px;
+
+  background-color: #eded4e;
+  border:1px solid #eded4e;
+  border-radius: 50px;
+  outline: none;
+}
+.Submitted {
+  -webkit-appearance: none; /*hides the default checkbox*/
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 0px;
+  left: 35px;
+
+  background-color: green;
+  border:1px solid green;
   border-radius: 50px;
   outline: none;
 }
