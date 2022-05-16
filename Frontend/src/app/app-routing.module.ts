@@ -1,6 +1,7 @@
 import { OptionComponent } from './components/admin/option/option.component';
 import { PaperComponent } from './components/admin/paper/paper.component';
 import { StudentNavBarComponent } from './components/student/student-site/student-nav-bar/student-nav-bar.component';
+import { UserWorkListComponent } from './components/student/student-site/user-work-list/user-work-list.component';
 import { LoginComponent } from './auth/Login/login/login.component';
 import { AdminGradedReportComponent } from './components/admin/admin-graded-report/admin-graded-report.component';
 import { ExplanationComponent } from './components/admin/explanation/explanation.component';
@@ -13,24 +14,29 @@ import { StudentResultListComponent } from './components/admin/student-result-li
 import { UploadClassesComponent } from './components/admin/upload-classes/upload-classes.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { QuestionComponent } from './components/admin/question/question.component';
+import { AuthGuard } from './shared/guards/auth.guard'
+import { Role } from './shared/model/role';
+import { EditcasesComponent } from './components/admin/editcases/editcases.component';
 
 const routes: Routes = [
-  { path: 'adminNavbar', component: AdminNavbarComponent, children: [
-  {path: 'AddCase', component: UploadClassesComponent},
-  {path: 'AddPaper', component: PaperComponent},
-  {path: 'AddOption', component: OptionComponent},
-  {path: 'AddQuestion', component: QuestionComponent},
-  {path: 'StudentResultList', component: StudentResultListComponent},
-   {path: 'Setting', component: SettingsComponent},
-   {path: 'WorkListAdmin', component: WorkListAdminComponent},
-   {path: 'Explanation', component: ExplanationComponent},
-   {path: 'AdminGradedReport/:id', component: AdminGradedReportComponent}
+  { path: 'adminNavbar',canActivate: [AuthGuard], component: AdminNavbarComponent, children: [
+  {path: 'AddCase',canActivate: [AuthGuard], component: UploadClassesComponent},
+  {path: 'EditCase/:id',canActivate: [AuthGuard], component: EditcasesComponent},
+  {path: 'AddPaper',canActivate: [AuthGuard], component: PaperComponent},
+  {path: 'AddOption',canActivate: [AuthGuard], component: OptionComponent},
+  {path: 'AddQuestion',canActivate: [AuthGuard], component: QuestionComponent},
+  {path: 'StudentResultList', canActivate: [AuthGuard],component: StudentResultListComponent},
+   {path: 'Setting',canActivate: [AuthGuard], component: SettingsComponent},
+   {path: 'WorkListAdmin',canActivate: [AuthGuard], component: WorkListAdminComponent},
+   {path: 'Explanation',canActivate: [AuthGuard], component: ExplanationComponent},
+   {path: 'AdminGradedReport/:id',canActivate: [AuthGuard], component: AdminGradedReportComponent}
 ]},
 {path: '', component: LoginComponent},
 {path: 'signup', component: SignUpComponent},
-{ path: 'studentNavbar', component: StudentNavBarComponent, children: [
-
+{ path: 'studentNavbar', canActivate: [AuthGuard] ,component: StudentNavBarComponent, children: [
+  {path: 'UserWorkList',canActivate: [AuthGuard], component: UserWorkListComponent},
 ]},
+
 ];
 
 @NgModule({

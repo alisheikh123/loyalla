@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\work.hassan\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {}
+    "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {}
   },
   "projects": {
-    "E:\\work.hassan\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {
+    "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\work.hassan\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+        "projectUniqueName": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
         "projectName": "LoyallaApi",
-        "projectPath": "E:\\work.hassan\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
-        "packagesPath": "C:\\Users\\as\\.nuget\\packages\\",
-        "outputPath": "E:\\work.hassan\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
+        "projectPath": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+        "packagesPath": "C:\\Users\\Zaid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\as\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Zaid\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +25,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -106,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200-preview.22055.15\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

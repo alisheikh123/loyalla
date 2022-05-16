@@ -1,0 +1,97 @@
+.heading h3{
+    font-weight: 600;
+}
+.form-control{
+    padding: 0.375rem 0rem;
+}
+.tittle-input h4{
+    margin-bottom: 0rem;
+}
+.cloud-img img.w-40{
+    width: 30%;
+}
+.dragin_drop .inner{
+    padding: 0px !important;
+}
+.dragin_drop .label{
+    height: 46%;
+}
+.checboxonline{
+    height: 25px;
+    width: 25px;
+    background-color: transparent !important;
+}
+.btn_br a
+    {
+        border: 1px solid black;
+        padding: 0.5rem 1.5rem;
+        color: black;
+    }
+.btn_br a:hover{
+    background-color: #8b003a;
+    color: white;
+    border-color: #8b003a;
+}
+textarea{
+    margin: 0rem 0rem;
+    border: none;
+    background-color: white;
+    width: 100%;
+    height: 150px;
+}
+.btn_col1 a{
+
+    padding: 0.5rem 1.5rem;
+    color: white;
+    background-color: #8b003a;
+}
+.btn_col1 button{
+
+    padding: 0.5rem 1.5rem;
+    color: white;
+    background-color: #8b003a;
+}
+.rhead .col-md-2{
+    max-width: 5% !important;
+}
+.section_row .col-md-2{
+    max-width: 5% !important;
+}
+.w-38{
+    width: 38% !important;
+}
+.w-60{
+    width: 60% !important;
+}
+.w-80{width: 80%;}
+
+input[type="text"]{
+    width: 100% !important;
+}
+.form-control:focus {
+    color: none;
+    background-color: none;
+    border-color: none;
+  outline: none;
+  box-shadow: none;
+}
+.containers{
+    margin: 0rem 6rem;
+}
+.dragin_drop .inner{
+    font-size: 15px;
+}
+@media only screen and (min-width: 577px) and (max-width: 768px){
+    .containers{
+        margin: 0rem !important;
+}}
+@media only screen and (max-width: 576.98px){
+    .containers{
+         margin: 0rem !important;
+    }
+}
+.upload{
+    font-weight:bold;
+    color:#28a745;
+    margin-left: 15px;
+}

@@ -3,14 +3,15 @@
     font-size: 0.7rem;
     color: #bbb;
     font-weight: 500;
+    margin: 0;
 }
 .admin-role p{
     line-height: 1.4;
 
 }
 .imges{
-    width: 30%;
-    height: 43px;
+    width: 40px;
+    height: 40px;
 }
 .navbar{
     height: 102px;
