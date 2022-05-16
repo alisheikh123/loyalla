@@ -580,5 +580,28 @@ namespace LoyallaApi.Controllers
             };
         }
 
+        
+        [HttpPost, Route("UpdateCaseStatus")]
+        public async Task UpdateCaseStatus(StudentCaseAttemptStatus model)
+        {
+            model.CreationDateTime = DateTime.Now;
+            model.UpdateDateTime = DateTime.Now;
+
+            _context.StudentCaseAttemptStatus_tbl.Add(model);
+            await _context.SaveChangesAsync();
+
+        }
+
+        [HttpGet, Route("GetCaseStatus")]
+        public async Task<EntityResponseModel<object>> GetCaseStatus(int Student_Id, int Case_Id)
+        {
+
+            var status =  _context.StudentCaseAttemptStatus_tbl.Where(x => x.Case_Id == Case_Id && x.Student_Id == Student_Id).ToList();
+         
+            return new EntityResponseModel<object>
+            {
+                Data = status,
+            };
+        }
     }
 }

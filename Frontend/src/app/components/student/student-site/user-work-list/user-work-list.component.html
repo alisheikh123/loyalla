@@ -21,7 +21,7 @@
                     <tbody>
                         <tr class="bg-white" *ngFor="let item of allCases  let i=index">
                             <td class="text-center">{{i+1}}</td>
-                            <td class="text-center">{{item.caseName}}</td>
+                            <td class="text-center">{{item.paperName}}</td>
                             <td class="text-center">{{item.comments}}</td>
                             <td class="text-center">{{item.creationDate | date}}</td>
                             <td class="text-center"><ul class="d-flex justify-content-center">
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="tooltips">
                                     <!-- routerLink="/StudentSite/ReadStudy" -->
-                                    <li><a  [routerLink]="['/studentNavbar/studentPaper/'+item.paperId]"><img src="assets/img/read.png"></a></li>
+                                    <li><a (click)="changeStatus(item)" ><img src="assets/img/read.png"></a></li>
                                     <span class="tooltiptext" >Read</span>
                                   </div>
                                 <li><div class="tooltips"><a href="" routerLink="/StudentSite/ReadReport" routerLinkActive="active"><img src="assets/img/reload.png"></a>
@@ -43,7 +43,10 @@
                     </td>
 
                             <td class="text-center">
-                                <div class="checkedbox">
+                                <div  [ngClass]="{'Unread': item.Status == 'Unread',
+                                'Read' : item.Status == 'Read',
+                                'Submitted' : item.Status == 'Submitted'}">
+                              
                                 </div>
                             </td>
                         </tr>

@@ -1,6 +1,7 @@
 import { OptionComponent } from './components/admin/option/option.component';
 import { PaperComponent } from './components/admin/paper/paper.component';
 import { StudentNavBarComponent } from './components/student/student-site/student-nav-bar/student-nav-bar.component';
+import { UserWorkListComponent } from './components/student/student-site/user-work-list/user-work-list.component';
 import { LoginComponent } from './auth/Login/login/login.component';
 import { AdminGradedReportComponent } from './components/admin/admin-graded-report/admin-graded-report.component';
 import { ExplanationComponent } from './components/admin/explanation/explanation.component';
@@ -33,8 +34,9 @@ const routes: Routes = [
 {path: '', component: LoginComponent},
 {path: 'signup', component: SignUpComponent},
 { path: 'studentNavbar', canActivate: [AuthGuard] ,component: StudentNavBarComponent, children: [
-
+  {path: 'UserWorkList',canActivate: [AuthGuard], component: UserWorkListComponent},
 ]},
+
 ];
 
 @NgModule({
