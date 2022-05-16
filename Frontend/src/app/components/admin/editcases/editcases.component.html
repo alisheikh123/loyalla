@@ -1,0 +1,158 @@
+<div class="position-relative p-5" style="background-color: #f5f5f5">
+    <div class="row">
+        <div class="container containers py-4 px-5">
+            <div class="heading">
+                <h3 class="fs-30 text-dark fw-semibold">Upload Classes</h3>
+            </div>
+
+            <form class="form" [formGroup]="caseForm" novalidate="novalidate" enctype="multipart/form-data">
+
+                <!-- Title -->
+                <div class="tittle-input bg-white pt-2 px-5 my-4">
+                    <h4 class="fs-20 text-dark">Title</h4>
+                    <input type="text" class="form-control w-25 border-0" maxlength="100" name="lastname"
+                        formControlName="title" placeholder="Enter the case Title" required>
+                </div>
+
+                <!-- Upload Files Section -->
+                <div class="row mb-3">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="bg-white pt-5 pb-4 px-5 mb-md-2">
+                            <div class="d-flex">
+                                <div class="images">
+                                    <img src="assets/img/dicom.png" class="w-80">
+                                </div>
+                                <div class="dragin_drop">
+                                    <label class="label" id="label" for="input">
+                                        <div class="cloud-img text-center">
+                                            <img src="assets/img/upload.png" class="w-38">
+                                        </div>
+
+                                    </label>
+                                    <div class="text-center">
+                                        <label class="fs-18 color1 fw-bold">DICOM File </label>
+                                    </div>
+                                    <div class="inner border-0 text-center fs-12">Drop your files here "or"<br>
+                                        <p class="fs-12">Click here to upload.</p>
+                                    </div>
+                                    <input id="input" #file class="input" type="file" required="true" multiple="true"
+                                        hidden="true">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-12">
+                        <div class="bg-white pt-5 pb-4 px-5">
+                            <div class="d-flex">
+                                <div class="images">
+                                    <img src="assets/img/answer.png" class="w-60">
+                                </div>
+                                <div class="dragin_drop">
+                                    <label class="label" id="label" for="fileInput">
+                                        <div class="cloud-img text-center">
+                                            <img src="assets/img/upload.png" class="w-38">
+                                        </div>
+
+                                    </label>
+                                    <div class="text-center">
+                                        <label class="fs-18 color1 fw-bold">Excel File </label>
+                                    </div>
+                                    <div class="inner border-0 text-center fs-12">Drop your files here "or"<br>
+                                        <p class="fs-15">Click here to upload.</p>
+                                    </div>
+                                    <!-- (change)="uploadFile(fileInput.files);" -->
+                                    <input type="file" (change)="uploadExcel(fileInput.files);" formControlName="file" id="fileInput" class="fileInput"
+                                        required="true" multiple="true" hidden="true"
+                                        #fileInput>
+                                            <span class="upload" *ngIf="message"> {{message}}</span>
+                                    <div *ngIf="isExcelFile === false">
+                                        This is not an Excel file
+                                    </div>
+                                    <span *ngIf="spinnerEnabled" class="k-i-loading k-icon"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Question List -->
+                <div class="row mb-2 mx-0">
+                    <div class="col-md-6 px-0">
+                        <div class="checkbox d-flex">
+                            <input type="checkbox" class="checboxonline mr-3" placeholder="DICOM FILE">
+                            <p class="fs-15 text-dark fw-bold">DICOM FILE</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn_br text-right">
+                            <a href="#">Delete</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <section class="section_row">
+                    <div class="pb-2">
+                        <div class="row d-flex align-item-center bg-white pt-4 mt-2 mx-0">
+                            <div class="col-md-2">
+                                <input type="checkbox" class="checboxonline" placeholder="DICOM FILE">
+                            </div>
+                            <div class="col-md-10 d-flex justify-content-between">
+                                <p>Image name.dcm</p>
+                            </div>
+                            <div class="pl-lg-5 pl-md-0 pl-sm-0">
+                                <img src="assets/img/delete.png">
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- Anwser List -->
+
+                <div class="row mb-2 mx-0">
+                    <div class="col-md-6 px-0">
+                        <div class="checkbox d-flex">
+                            <input type="checkbox" class="checboxonline mr-3" placeholder="DICOM FILE">
+                            <p class="fs-15 text-dark fw-bold">Answer Sheet</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn_br text-right">
+                            <a href="#">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row rhead d-flex align-items-center bg-white py-2 mb-2 mx-0" *ngIf="AnwserFileName!=null">
+
+                    <div class="col-md-2" >
+                        <input type="checkbox" class="checboxonline" placeholder="DICOM FILE">
+                    </div>
+                    <div class="col-md-10 d-flex justify-content-between">
+                        <p class="pt-2">{{AnwserFileName}}</p>
+                    </div>
+                    <div class="pl-lg-5 pl-md-0 pl-sm-0">
+                        <img src="assets/img/delete.png">
+                    </div>
+                </div>
+
+                <!-- Comments List -->
+
+                <div class="row mx-0">
+                    <p class="fs-18 text-dark fw-bold">Comments</p>
+                    <textarea class="bgmar p-3" formControlName="description"></textarea>
+                </div>
+                <div class="row mx-0 my-4 d-flex justify-content-end">
+                    <div class="btn_col1">
+                        <button class="btn" (click)="submit(fileInput.files)" routerLinkActive="active">Upload Case</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

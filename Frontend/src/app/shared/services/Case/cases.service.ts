@@ -13,8 +13,13 @@ export class CasesService {
 
    constructor(private http: HttpClient,private errorService: ErrorService) { }
 
-   addNewCase(cases: any) {
+  addNewCase(cases: any) {
     return this.http.post(this.apiUrl + '/api/Loyalla/AddCase', cases).pipe(
+      catchError(this.errorService.handleError));
+  }
+  getCaseDetailById(caseId:number)
+  {
+    return this.http.get<any>(this.apiUrl + '/api/Loyalla/GetCaseDetail'+'?caseId='+caseId).pipe(
       catchError(this.errorService.handleError));
   }
   getCaseList() {

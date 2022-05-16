@@ -7,8 +7,9 @@ namespace LoyallaApi.DBModels
         [Key]
         public int Id { get; set; }
 
-        public double OptionId { get; set; }
-        public Options Options { get; set; }
+        public int QuestionId { get; set; }
+
+        public Questions Questions { get; set; }
         public double IsAnwsers { get; set; }
     }
 }
