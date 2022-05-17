@@ -29,15 +29,20 @@ namespace LoyallaApi.Migrations
                     b.Property<double>("IsAnwsers")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("OptionId")
-                        .HasColumnType("double precision");
-
                     b.Property<int?>("OptionsId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("QuestionsQuestionId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OptionsId");
+
+                    b.HasIndex("QuestionsQuestionId");
 
                     b.ToTable("Anwser_tbl");
                 });
@@ -281,11 +286,15 @@ namespace LoyallaApi.Migrations
 
             modelBuilder.Entity("LoyallaApi.DBModels.Anwser", b =>
                 {
-                    b.HasOne("LoyallaApi.DBModels.Options", "Options")
+                    b.HasOne("LoyallaApi.DBModels.Options", null)
                         .WithMany("Anwsers")
                         .HasForeignKey("OptionsId");
 
-                    b.Navigation("Options");
+                    b.HasOne("LoyallaApi.DBModels.Questions", "Questions")
+                        .WithMany()
+                        .HasForeignKey("QuestionsQuestionId");
+
+                    b.Navigation("Questions");
                 });
 
             modelBuilder.Entity("LoyallaApi.DBModels.Options", b =>
