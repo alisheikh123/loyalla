@@ -29,7 +29,6 @@ import { PaperComponent } from './components/admin/paper/paper.component';
 import { OptionComponent } from './components/admin/option/option.component';
 import { ToastrModule } from 'ngx-toastr';
 import { StudentPaperComponent } from './components/student/student-site/student-paper/student-paper.component';
-import { EditcasesComponent } from './components/admin/editcases/editcases.component';
 
 @NgModule({
   declarations: [
@@ -54,8 +53,7 @@ import { EditcasesComponent } from './components/admin/editcases/editcases.compo
     QuestionComponent,
     PaperComponent,
     OptionComponent,
-    StudentPaperComponent,
-    EditcasesComponent
+    StudentPaperComponent
   ],
   imports: [
     BrowserModule,
