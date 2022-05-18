@@ -12,20 +12,18 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './upload-classes.component.html',
   styleUrls: ['./upload-classes.component.css']
 })
-export class UploadClassesComponent implements OnInit {
+export class UploadClassesComponent implements OnInit  {
   isExcelFile!: boolean;
   // @ViewChild('fileInput') fileInput;
-  message: boolean = false;
+  message!: string;
   spinnerEnabled = false;
-  showAlert: boolean = false;
-  progressBar: boolean = false;
-  excelFile: any;
+  excelFile:any;
   AnwserFileName: string = '';
   caseForm!: FormGroup;
   @ViewChild('inputFile')
   inputFile!: ElementRef;
   constructor(private fb: FormBuilder,
-    private service: CasesService, private toast: ToastrService, private route: Router) { }
+    private service: CasesService,private toast:ToastrService,private route:Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -42,42 +40,30 @@ export class UploadClassesComponent implements OnInit {
   get f() {
     return this.caseForm.controls;
   }
-  uploadExcel(files: any) {
+uploadExcel(files:any)
+{
 
-    let fileToUpload = <File>files[0];
-    this.AnwserFileName = fileToUpload.name;
-    this.progressBar = true;
-    setTimeout(() => (this.progressBar = false), 1000)
-
-    // this.message = true;
-    setTimeout(() => (this.message = true), 1000)
-    setTimeout(() => (this.message = false), 10000)
-
-  }
+  let fileToUpload = <File>files[0];
+  this.AnwserFileName = fileToUpload.name;
+  this.message = "File upload Successfully!";
+}
   submit(files) {
     let fileToUpload = <File>files[0];
-    let formData: FormData = new FormData();
+    let formData:FormData = new FormData();
     formData.append('title', this.caseForm.controls['title'].value);
     formData.append('description', this.caseForm.controls['description'].value);
     formData.append('fileName', fileToUpload.name);
     formData.append('file', fileToUpload);
-    formData.append('created_By', '');
+    formData.append('created_By','');
     formData.append('creationDateTime', '');
     formData.append('updated_By', '');
     formData.append('updateDateTime', '');
     this.service.addNewCase(formData).subscribe(res => {
       this.caseForm.reset();
+      alert("Add Case Successfully!");
       this.reload("UploadClassesComponent");
 
-      this.showAlert = true;
-      setTimeout(() => {
-        this.showAlert = false;
-      }, 2000);
-
-    })
-
-
-    // alert("Add Case Successfully!");
+    });
 
     return 0;
   }

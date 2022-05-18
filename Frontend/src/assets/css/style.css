@@ -645,7 +645,7 @@ cursor: pointer;}.inputfeild_profile img { cursor: pointer;}section.commet_sec .
 .col-lg-6.scnd_22290.right_con { padding: 4%;}.inputfeild_9_btn.Profie_btn.contact_09 { width: 20%; margin-top: 0;}
 .inputfeild_9_btn:hover { background: #dc3545; cursor: pointer;}
 :root {--bgColor: #3a3a3a;--hoverBg: #616161;--text: #bbb;}
-.dragin_drop .label { width: 100%;margin: 0px auto;cursor: pointer;color: #898484; text-align: center;background-color: white;}
+.dragin_drop .label { width: 100%;height: 100%;margin: 0px auto;cursor: pointer;color: #898484; text-align: center;background-color: white;}
 .dragin_drop .inner { width: 100%;height: 100px;margin: 0px 0px;border-radius: 8px;font-size: 20px;line-height: normal;background-color: white !important;border: 2px dashed gainsboro; padding: 21px 0px;}
 
 @media (any-hover: hover){

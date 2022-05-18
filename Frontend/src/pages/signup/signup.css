@@ -1,0 +1,78 @@
+.gridContainer {
+  min-height: 100vh;
+  display: flex;
+}
+.leftGrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.leftGrid div:first-child {
+  text-align: center;
+  margin-bottom: 10%;
+}
+.dividerGrid {
+  display: flex;
+  justify-content: center;
+}
+.dividerGrid .divider {
+  width: 6px !important;
+  background-color: #ff525f !important;
+}
+.dividerGrid .MuiDivider-flexItem {
+  height: 100% !important;
+}
+.rightGrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.rightGrid span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.rightGrid span div a {
+  color: #ff525f;
+  font-weight: 500;
+  text-decoration: none;
+}
+.rightGrid .MuiFormLabel-root.Mui-focused{
+  color: rgba(0, 0, 0, 0.54);
+}
+.rightGrid .MuiInput-underline:before, .rightGrid .MuiInput-underline:after{
+  border-bottom: 1px solid #ff525f
+}
+.react-tel-input .special-label {
+  position: initial;
+  margin-top: 20px;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiFormControl-root,
+.react-tel-input {
+  margin: 5px 0 !important;
+}
+.react-tel-input .form-control {
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid #ff525f;
+}
+.react-tel-input .selected-flag .flag {
+  top: 60%;
+}
+.actionBtns {
+  display: flex;
+  flex-direction: column;
+}
+.actionBtns button {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ff525f;
+  color: #ffff;
+}
+.note {
+  padding: 10px 20px;
+}

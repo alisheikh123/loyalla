@@ -158,6 +158,9 @@ namespace LoyallaApi.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
+                    b.Property<int>("correctOptionId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CasesCase_Id");
@@ -171,6 +174,9 @@ namespace LoyallaApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("CorrectOptionId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Created_By")
                         .HasColumnType("integer");

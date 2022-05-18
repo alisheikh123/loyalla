@@ -297,3 +297,4 @@ C:\Users\Zaid\Documents\GitHub\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\ne
 C:\Users\Zaid\Documents\GitHub\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\ref\LoyallaApi.dll
 C:\Users\Zaid\Documents\GitHub\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\LoyallaApi.pdb
 C:\Users\Zaid\Documents\GitHub\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\LoyallaApi.genruntimeconfig.cache
+C:\Users\Zaid\Documents\GitHub\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\LoyallaApi.csproj.AssemblyReference.cache

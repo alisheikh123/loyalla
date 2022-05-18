@@ -1,0 +1,223 @@
+.page-title{
+    color: #0066FF ;
+}
+
+
+.dashboard-card{
+background-color: #0066FF;
+}
+
+.dashboard-container {
+width: 100%;
+height:auto;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 2px 6px #00000033;
+border-radius: 20px;
+opacity: 1;
+padding: 12px;
+margin-bottom: 30px;
+
+}
+
+.dash-card{
+position: relative;
+width: calc(50% - 10px);
+max-width: 100%;
+margin: 10px 5px;
+transition: .5s transform cubic-bezier(.155,1.105,.295,1.12),.5s box-shadow,.5s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+padding: 35px 20px;
+cursor: pointer;
+background: #A244FF 0% 0% no-repeat padding-box;
+border-radius: 8px;
+opacity: 1;
+
+}
+
+.dash-card.bubble:before{
+  position: absolute;
+  content: '';
+  width: 35px;
+  height: 35px;
+  background: #ffffff42;
+  right: 15px;
+  top: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ececec91;
+  border: 1px solid #adadad08;
+  transition: all 1s;
+}
+.dash-card.bubble:after{
+  position: absolute;
+  content: '';
+  width: 25px;
+  height: 25px;
+  background: #ffffff8c;
+  right: 10px;
+  top: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ececec91;
+  border: 1px solid #adadad08;
+  transition: all 1s;
+}
+.dash-card.bubble:hover:before{
+  transition: all 1s;
+  right: 30px;
+  bottom: 15px;
+}
+.dash-card.bubble:hover:after{
+  transition: all 1s;
+  right: 30px;
+  bottom: 15px;
+}
+.dash-card.bubble:hover i{
+  transition: all 1s;
+  box-shadow: 0 -14px 30px rgb(255 254 254 / 39%);
+}
+
+.dash-card:hover{
+   transform: scale(1.05);
+box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.card-1{
+  background-color: #A244FF;
+}
+.card-2{
+ background-color: #0DA3ED;
+}
+.card-3{
+ background-color: #FF8800;
+}
+.card-4{
+ background-color: #ff6254;
+}
+
+.dash-card i.material-icons{
+  color: #FFF;
+  transition: all 1s;
+  font-size: 25px !important;
+}
+
+.dash-icon-video{
+  border-radius: 12px;
+  padding: 12px;
+  background: #ffae52;
+  box-shadow: 0 14px 30px rgb(0 0 0 / 10%);
+  color: white;
+}
+.dash-icon-clock{
+  border-radius: 12px;
+  padding: 12px;
+  background: #b772fb;
+  box-shadow: 0 14px 30px rgb(0 0 0 / 10%);
+  color: white;
+}
+.dash-icon-plus{
+  border-radius: 12px;
+  padding: 12px;
+  background: #52c6ff;
+  box-shadow: 0 14px 30px rgb(0 0 0 / 10%);
+  color: white;
+}
+.dash-icon-screen{
+  border-radius: 12px;
+  padding: 12px;
+  background: #ef8a81;
+  box-shadow: 0 14px 30px rgb(0 0 0 / 10%);
+  color: white;
+}
+.dash-card h1{
+  margin-bottom: 0;
+  letter-spacing: 0.2px;
+  color: white;
+  font-size: 16px;
+  padding-top: 25px;
+  text-align: center;
+}
+.dash-card span{
+  letter-spacing: 0.3px;
+  color: white;
+  font-size: 13px;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+}
+.main-dash-card{
+  padding : 0 15px;
+ }
+@media(max-width: 990px){
+  .dash-card{
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .dash-card i.material-icons {
+    color: #FFF;
+    font-size: 25px !important;
+    margin-right: 5px;
+    padding: 5px;
+  }
+  .dash-card div{
+    text-align: left;
+  }
+  .dash-card div h1{
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    text-align:left;
+  }
+} 
+
+.custom-dialog{
+  height: 300px !important;
+  border-radius: 0px !important;
+
+}
+.custom-dialog .custom-dialoge-heading{
+  margin-bottom: 13px;
+}
+.custom-dialog .custom-dialoge-heading span{
+  
+  font-size: 37px;
+  background-size: 100% 14%;
+  background-repeat: repeat-x;
+  background-position: left 0% bottom 2%;
+}
+.custom-dialog .custom-dialoge-heading .tapered {
+
+  background-image:linear-gradient(179deg,rgb(218 186 249) 0%, rgb(172 115 229) 50%,transparent 54%, transparent 100%);
+}
+
+.custom-dialog h1{
+  text-align: center;
+}
+.main-dialog{
+  margin: 0;
+  padding: 26px;
+  color: #525252 !important;
+}
+.dialog-content{
+  font-size: 18px !important;
+  margin: 0;
+  padding: 26px;
+  color: #525252 !important;
+  /* border-radius: 7px; */
+  border: none !important;
+  padding: 14px !important;
+  font-weight: 500 !IMPORTANT;
+}
+.dialog-link .material-icons {
+  display:flex;
+}
+.dialog-copied{
+  text-align:center;
+  padding-top: 20px;
+}
+.dialog-copied span{
+  border-radius: 15px;
+  padding: 5px 16px 4px 16px;
+  background: #6cc96c;
+  color: white;
+}

@@ -1,0 +1,19 @@
+.MuiButton-label {
+    justify-content: start !important;
+}
+ul{
+    padding: 0;
+}
+ul .MuiCard-root{
+    margin: 10px;
+}
+
+/* SOS CARD */
+.sos-alerts{
+    margin-top: 20px;
+    display: flex;
+    /* overflow-x: scroll; */
+}
+.sos-alerts .MuiCard-root{
+    margin: 0 10px 10px;
+}
