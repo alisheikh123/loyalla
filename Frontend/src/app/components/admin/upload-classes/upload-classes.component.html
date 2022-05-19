@@ -67,6 +67,14 @@
                                     <input type="file" (change)="uploadExcel(fileInput.files);" formControlName="file" id="fileInput" class="fileInput"
                                         required="true" multiple="true" hidden="true"
                                         #fileInput>
+                                            
+
+                                            <div class="wrapper" *ngIf="progressBar">
+                                                <div class="bar">
+                                                    <div id="html-bar">
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <span class="upload" *ngIf="message"> {{message}}</span>
                                     <div *ngIf="isExcelFile === false">
                                         This is not an Excel file

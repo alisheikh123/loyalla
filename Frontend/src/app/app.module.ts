@@ -29,7 +29,8 @@ import { PaperComponent } from './components/admin/paper/paper.component';
 import { OptionComponent } from './components/admin/option/option.component';
 import { ToastrModule } from 'ngx-toastr';
 import { StudentPaperComponent } from './components/student/student-site/student-paper/student-paper.component';
-import { EditcasesComponent } from './components/admin/editcases/editcases.component';
+import { CommonModule } from '@angular/common';
+import { EditUploadClassesComponent } from './components/admin/edit-upload-classes/edit-upload-classes.component';
 
 @NgModule({
   declarations: [
@@ -55,9 +56,11 @@ import { EditcasesComponent } from './components/admin/editcases/editcases.compo
     PaperComponent,
     OptionComponent,
     StudentPaperComponent,
-    EditcasesComponent
+    EditUploadClassesComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     StudentRoutingModule,
@@ -66,11 +69,14 @@ import { EditcasesComponent } from './components/admin/editcases/editcases.compo
       {timeOut: 10000,
       positionClass: 'toast-top-left',
       preventDuplicates: true,}),
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [CasesService],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

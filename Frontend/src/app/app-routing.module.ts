@@ -16,12 +16,12 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { QuestionComponent } from './components/admin/question/question.component';
 import { AuthGuard } from './shared/guards/auth.guard'
 import { Role } from './shared/model/role';
-import { EditcasesComponent } from './components/admin/editcases/editcases.component';
+import { EditUploadClassesComponent } from './components/admin/edit-upload-classes/edit-upload-classes.component';
 
 const routes: Routes = [
   { path: 'adminNavbar',canActivate: [AuthGuard], component: AdminNavbarComponent, children: [
   {path: 'AddCase',canActivate: [AuthGuard], component: UploadClassesComponent},
-  {path: 'EditCase/:id',canActivate: [AuthGuard], component: EditcasesComponent},
+  {path: 'Edit-Case/:id/:paperId',canActivate: [AuthGuard], component: EditUploadClassesComponent},
   {path: 'AddPaper',canActivate: [AuthGuard], component: PaperComponent},
   {path: 'AddOption',canActivate: [AuthGuard], component: OptionComponent},
   {path: 'AddQuestion',canActivate: [AuthGuard], component: QuestionComponent},

@@ -28,7 +28,7 @@
                             <td class="text-center">
                                 <ul class="d-flex justify-content-center">
                                     <li><a placement="top" ngbTooltip="Tooltip on top" title="{{item.paperName}}" [routerLink]="['/adminNavbar/AdminGradedReport/'+item.paperId]"><img src="assets/img/answer1.png" class="imgtop"></a></li>
-                                    <li><a href=""   [routerLink]="['/adminNavbar/EditCase/'+item.caseId]"><img src="assets/img/edit.png" class="imgtop"></a></li>
+                                    <li><a  [routerLink]="['/adminNavbar/Edit-Case/'+item.caseId+'/'+item.paperId]" ><img src="assets/img/edit.png" class="imgtop" ></a></li>
                                     <li><img src="assets/img/delete.png" class="imagedelete" (click)="deleteCase(item.caseId)"></li>
                                 </ul>
                             </td>

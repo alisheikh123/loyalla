@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LoyallaApi.DBModels.DTO
 {
     public class caseDto {
+        public int? id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
 
@@ -14,6 +15,7 @@ namespace LoyallaApi.DBModels.DTO
         public Nullable<System.DateTime> creationDateTime { get; set; }
         public int? updated_By { get; set; }
         public Nullable<System.DateTime> updateDateTime { get; set; }
+        public string paperId { get; set; }
 
     }
 }

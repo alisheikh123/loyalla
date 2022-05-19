@@ -446,6 +446,138 @@ namespace LoyallaApi.Controllers
             }
         }
 
+        [HttpGet,Route("EditCase")]
+        public async Task<ActionResult<object>> EditCase(int Case_Id) 
+        {
+            var caseDetail =  _context.Case_tbl.Where(x => x.Case_Id == Case_Id).FirstOrDefault();
+            //string path = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\" + caseDetail.FileName);
+            //using (var stream = System.IO.File.OpenRead(path))
+            //{
+            //    caseDetail.file = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(stream.Name));
+            //    caseDetail.file.ContentType = 
+            //}
+            return Ok(caseDetail);
+        }
+        [HttpPost,Route("UpdateCase")]
+        public async Task<ActionResult> UpdateCase([FromForm] caseDto cases) 
+        {
+            var caseDetail = _context.Case_tbl.Find(cases.id);
+            if (caseDetail != null) 
+            {
+                caseDetail.Title = cases.title;
+                caseDetail.Description = cases.description;
+                caseDetail.FileName = cases.fileName;
+                caseDetail.UpdateDateTime = DateTime.Now;
+                caseDetail.file = cases.file;
+                _context.Case_tbl.Update(caseDetail);
+                await _context.SaveChangesAsync();
+                int caseId = caseDetail.Case_Id;
+                if (cases.file != null)
+                {
+                    string path = Path.Combine(Directory.GetCurrentDirectory(), "Upload");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    path = Path.Combine(path, Path.GetFileName(cases.file.FileName));
+                    using (FileStream stream = new FileStream(path, FileMode.Create))
+                    {
+                        cases.file.CopyTo(stream);
+                    }
+                    FileInfo file = new FileInfo(path);
+
+                    using (ExcelPackage package = new ExcelPackage(file))
+                    {
+                        ExcelPackage.LicenseContext = LicenseContext.Commercial;
+                        // add a new worksheet to the empty workbook
+
+                        ExcelWorksheet paper = package.Workbook.Worksheets[0];
+                        ExcelWorksheet question = package.Workbook.Worksheets[1];
+                        ExcelWorksheet option = package.Workbook.Worksheets[2];
+                        ExcelWorksheet anwser = package.Workbook.Worksheets[3];
+
+
+                        var paperRowCount = paper.Dimension.Rows;
+                        var questionRowCount = question.Dimension.Rows;
+                        var optionRowCount = option.Dimension.Rows;
+                        var anwserRowCount = anwser.Dimension.Rows;
+
+                        #region Upload Paper
+                        for (int row = 2; row <= paperRowCount; row++)
+                        {
+                            var paperDetail = await _context.Paper_tbl.FindAsync(int.Parse(cases.paperId));
+                            if (paperDetail != null)
+                            {
+                                paperDetail.PaperName = paper.Cells[row, 1].Value.ToString().Trim();
+                                paperDetail.Title = paper.Cells[row, 2].Value.ToString().Trim();
+                                paperDetail.Description = paper.Cells[row, 3].Value.ToString().Trim();
+                                paperDetail.CaseId = caseId;
+                                _context.Paper_tbl.Update(paperDetail);
+                                await _context.SaveChangesAsync();
+
+                                // Upload Questions
+                                #region Upload Questions
+                                for (int questionRow = 2; questionRow <= questionRowCount; questionRow++)
+                                {
+                                    var questionDetail = await _context.Question_tbl.FindAsync(paperDetail.Id);
+                                    if (questionDetail != null)
+                                    {
+                                        int questionserialNo = int.Parse(question.Cells[questionRow, 1].Value.ToString().Trim());
+                                        questionDetail.Topic = question.Cells[questionRow, 2].Value.ToString().Trim();
+                                        questionDetail.QuestionName = question.Cells[questionRow, 3].Value.ToString().Trim();
+                                        questionDetail.PaperId = paperDetail.Id;
+                                        questionDetail.Description = question.Cells[questionRow, 4].Value.ToString().Trim();
+                                        _context.Question_tbl.Update(questionDetail);
+                                        await _context.SaveChangesAsync();
+
+                                            #region Add Options
+                                            for (int optionRow = 2; optionRow <= optionRowCount; optionRow++)
+                                            {
+                                            var optionDetail = await _context.Options_tbl.FindAsync(questionDetail.QuestionId);
+                                            int questionForignSerialNo = int.Parse(option.Cells[optionRow, 1].Value.ToString().Trim());
+                                                if (questionserialNo == questionForignSerialNo)
+                                                {
+                                                optionDetail.QuestionId = questionDetail.QuestionId;
+                                                optionDetail.OptionName = option.Cells[optionRow, 2].Value.ToString().Trim();
+                                                 _context.Options_tbl.Update(optionDetail);
+                                                 await _context.SaveChangesAsync();
+                                                }
+
+                                            }
+                                            #endregion
+                                            // Add Anwsers
+                                            #region Add Anwsers
+                                            for (int anwserRow = 2; anwserRow <= anwserRowCount; anwserRow++)
+                                            {
+                                            var anwserDetail = await _context.Anwser_tbl.FindAsync(questionDetail.QuestionId);
+                                            int questionForignSerialNo = int.Parse(anwser.Cells[anwserRow, 1].Value.ToString().Trim());
+                                                if (questionserialNo == questionForignSerialNo)
+                                                {
+                                                anwserDetail.QuestionId = questionDetail.QuestionId;
+                                                anwserDetail.IsAnwsers = int.Parse(anwser.Cells[anwserRow, 2].Value.ToString().Trim());
+                                                _context.Anwser_tbl.Update(anwserDetail);
+                                                await _context.SaveChangesAsync();
+                                                }
+                                            }
+                                            #endregion
+
+                                        
+                                    }
+
+                                   
+                                }
+                                #endregion
+                            }
+
+                        }
+                        #endregion
+                        return Ok();
+                    }
+                }
+            }
+            return Ok();
+        }
+
 
         [HttpPost, Route("AddQuestion")]
         public async Task<ActionResult<Questions>> addQuest([FromForm] Questions quest)

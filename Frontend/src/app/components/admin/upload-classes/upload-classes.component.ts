@@ -15,7 +15,10 @@ import { ToastrService } from 'ngx-toastr';
 export class UploadClassesComponent implements OnInit  {
   isExcelFile!: boolean;
   // @ViewChild('fileInput') fileInput;
-  message!: string;
+  // message!: string;
+  message: boolean = false;
+  progressBar: boolean = false;
+  showAlert:any;
   spinnerEnabled = false;
   excelFile:any;
   AnwserFileName: string = '';
@@ -45,7 +48,12 @@ uploadExcel(files:any)
 
   let fileToUpload = <File>files[0];
   this.AnwserFileName = fileToUpload.name;
-  this.message = "File upload Successfully!";
+  this.progressBar = true;
+  setTimeout(() => (this.progressBar = false), 1000)
+
+  //this.message = true;
+  setTimeout(() => (this.message = true), 1000)
+  setTimeout(() => (this.message = false), 10000)
 }
   submit(files) {
     let fileToUpload = <File>files[0];
@@ -60,10 +68,16 @@ uploadExcel(files:any)
     formData.append('updateDateTime', '');
     this.service.addNewCase(formData).subscribe(res => {
       this.caseForm.reset();
-      alert("Add Case Successfully!");
       this.reload("UploadClassesComponent");
+   
+      this.showAlert = true;
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 2000);
+      this.route.navigate(['/adminNavbar/WorkListAdmin']);
 
-    });
+      
+    })
 
     return 0;
   }
