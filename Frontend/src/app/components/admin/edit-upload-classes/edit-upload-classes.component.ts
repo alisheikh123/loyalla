@@ -73,7 +73,7 @@ export class EditUploadClassesComponent implements OnInit {
     this.progressBar = true;
     setTimeout(() => (this.progressBar = false), 1000)
 
-    // this.message = true;
+    this.message = true;
     setTimeout(() => (this.message = true), 1000)
     setTimeout(() => (this.message = false), 10000)
 

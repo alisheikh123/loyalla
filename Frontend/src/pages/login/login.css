@@ -1,0 +1,9 @@
+.loginPage {
+  width: 65%;
+}
+.loginForm .loginFormItem {
+  margin-bottom: 10px;
+}
+p{
+  color: #f44336;
+}

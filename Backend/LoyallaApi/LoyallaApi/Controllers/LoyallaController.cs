@@ -589,6 +589,16 @@ namespace LoyallaApi.Controllers
             return Ok(quest);
         }
 
+        [HttpPost, Route("SubmitPaper")]
+        public async Task<ActionResult<Questions>> SubmitPaper(Submissions model)
+        {
+            var CurrentDateTime = DateTime.Now;
+            model.CreationDateTime = CurrentDateTime;
+            _context.Submission_tbl.Add(model);
+            await _context.SaveChangesAsync();
+            return Ok("Submitted");
+        }
+
        
 
         [HttpGet, Route("GetAnwsers")]
@@ -683,17 +693,26 @@ namespace LoyallaApi.Controllers
             foreach (var item in questions)
             {
                 var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).ToList();
-                    paperList.Id = paper.Id;
-                    paperList.PaperName = paper.PaperName;
-                    paperList.Questions.Add(
-                             new Questions
-                             {
-                                     QuestionId = item.QuestionId,
-                                     Topic = item.Topic,
-                                     Description = item.Description,
-                                     QuestionName =item.QuestionName,
-                                     Options = options,
-                             });
+                var answer = _context.Anwser_tbl.Where(x => x.QuestionId == item.QuestionId).ToList();
+                paperList.Id = paper.Id;
+                paperList.PaperName = paper.PaperName;
+                int index = answer.FindIndex(a => a.IsAnwsers == 1);
+                if(index == -1)
+                {
+                    index = 0;
+                }
+               
+                paperList.Questions.Add(
+                         new Questions
+                         {
+                             QuestionId = item.QuestionId,
+                             Topic = item.Topic,
+                             Description = item.Description,
+                             QuestionName = item.QuestionName,
+                             Options = options,
+                             CorrectOptionId= options[index].Id
+            });
+                
             }
             return new EntityResponseModel<object>
             {

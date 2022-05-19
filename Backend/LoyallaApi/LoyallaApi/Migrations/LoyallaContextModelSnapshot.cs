@@ -158,6 +158,9 @@ namespace LoyallaApi.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
+                    b.Property<int>("correctOptionId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CasesCase_Id");
@@ -171,6 +174,9 @@ namespace LoyallaApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("CorrectOptionId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Created_By")
                         .HasColumnType("integer");
@@ -284,6 +290,59 @@ namespace LoyallaApi.Migrations
                     b.ToTable("StudentCaseAttemptStatus_tbl");
                 });
 
+            modelBuilder.Entity("LoyallaApi.DBModels.SubmissionDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("AttemptedOptionId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CorrectOptionId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SubmissionId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("SubmissionsSubmissionId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubmissionsSubmissionId");
+
+                    b.ToTable("SubmissionDetails_tbl");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Submissions", b =>
+                {
+                    b.Property<int>("SubmissionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<DateTime?>("CreationDateTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("PaperId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("SubmissionId");
+
+                    b.ToTable("Submission_tbl");
+                });
+
             modelBuilder.Entity("LoyallaApi.DBModels.Anwser", b =>
                 {
                     b.HasOne("LoyallaApi.DBModels.Options", null)
@@ -324,6 +383,13 @@ namespace LoyallaApi.Migrations
                     b.Navigation("Paper");
                 });
 
+            modelBuilder.Entity("LoyallaApi.DBModels.SubmissionDetails", b =>
+                {
+                    b.HasOne("LoyallaApi.DBModels.Submissions", null)
+                        .WithMany("Submission")
+                        .HasForeignKey("SubmissionsSubmissionId");
+                });
+
             modelBuilder.Entity("LoyallaApi.DBModels.Cases", b =>
                 {
                     b.Navigation("Paper");
@@ -342,6 +408,11 @@ namespace LoyallaApi.Migrations
             modelBuilder.Entity("LoyallaApi.DBModels.Questions", b =>
                 {
                     b.Navigation("Options");
+                });
+
+            modelBuilder.Entity("LoyallaApi.DBModels.Submissions", b =>
+                {
+                    b.Navigation("Submission");
                 });
 #pragma warning restore 612, 618
         }

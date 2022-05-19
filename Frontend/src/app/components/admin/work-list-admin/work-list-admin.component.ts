@@ -21,7 +21,6 @@ export class WorkListAdminComponent implements OnInit {
   {
     this.service.getCaseList().subscribe((res:any)=>{
         this.allCases = res;
-        console.log(this.allCases);
     });
   }
 

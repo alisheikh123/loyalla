@@ -15,6 +15,7 @@ import { UploadClassesComponent } from './components/admin/upload-classes/upload
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { QuestionComponent } from './components/admin/question/question.component';
 import { AuthGuard } from './shared/guards/auth.guard'
+import { Role } from './shared/model/role';
 import { EditUploadClassesComponent } from './components/admin/edit-upload-classes/edit-upload-classes.component';
 
 const routes: Routes = [

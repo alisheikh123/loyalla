@@ -13,6 +13,7 @@ export class StudentNavBarComponent implements OnInit {
   ngOnInit(): void {
   }
   logout(){
+    localStorage.removeItem("userid")
     this.router.navigate([""]);
   }
 }

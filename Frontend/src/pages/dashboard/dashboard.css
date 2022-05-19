@@ -1,0 +1,20 @@
+#logo img{
+  width: 25px;
+}
+.logoutBtn {
+  height: "30px";
+  width: "100px";
+}
+
+.dashboardPage {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+p{
+  text-align: center;
+}
+h2{
+  color: #f44336;
+  text-align: center;
+}
