@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AliRazaTahir\\Source\\Repos\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {}
+    "D:\\My.Work\\Projects\\Remote\\Emad\\Code-Git\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AliRazaTahir\\Source\\Repos\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {
+    "D:\\My.Work\\Projects\\Remote\\Emad\\Code-Git\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AliRazaTahir\\Source\\Repos\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+        "projectUniqueName": "D:\\My.Work\\Projects\\Remote\\Emad\\Code-Git\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
         "projectName": "LoyallaApi",
-        "projectPath": "C:\\Users\\AliRazaTahir\\Source\\Repos\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
-        "packagesPath": "C:\\Users\\AliRazaTahir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AliRazaTahir\\Source\\Repos\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
+        "projectPath": "D:\\My.Work\\Projects\\Remote\\Emad\\Code-Git\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+        "packagesPath": "C:\\Users\\Rehan\\.nuget\\packages\\",
+        "outputPath": "D:\\My.Work\\Projects\\Remote\\Emad\\Code-Git\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\AliRazaTahir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rehan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\My.Work\\Radiology Workflow\\Rad v1\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
