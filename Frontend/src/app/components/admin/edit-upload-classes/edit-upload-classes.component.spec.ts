@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditcasesComponent } from './editcases.component';
+import { EditUploadClassesComponent } from './edit-upload-classes.component';
 
-describe('EditcasesComponent', () => {
-  let component: EditcasesComponent;
-  let fixture: ComponentFixture<EditcasesComponent>;
+describe('EditUploadClassesComponent', () => {
+  let component: EditUploadClassesComponent;
+  let fixture: ComponentFixture<EditUploadClassesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditcasesComponent ]
+      declarations: [ EditUploadClassesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditcasesComponent);
+    fixture = TestBed.createComponent(EditUploadClassesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

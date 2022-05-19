@@ -32,6 +32,7 @@ export class WorkListAdminComponent implements OnInit {
     });
     window.location.reload();
   }
+ 
 
 }
 

@@ -35,16 +35,19 @@ login()
 
   if((userNm =="admin" && pwd=="admin"))
   {
-    localStorage.setItem("userid", "0");
     this.router.navigate(["/adminNavbar"]);
   }
   else{
 
     this.service.login(this.loginform.value).subscribe(response=>{
       debugger;
-      if(parseInt(response) > 0)
+      if(response!="")
       {
         this.invalidLogin = false;
+        const userid = (<any>response).user_Id;
+        const name = (<any>response).email;
+        localStorage.setItem("userid", userid);
+        localStorage.setItem("email", name);
         this.router.navigate(["/studentNavbar"]);
       }
       else
