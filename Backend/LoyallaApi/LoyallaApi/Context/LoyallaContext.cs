@@ -16,5 +16,7 @@ namespace LoyallaApi.Context
 
         public DbSet<Anwser> Anwser_tbl { get; set; }
         public DbSet<Paper> Paper_tbl{ get; set; }
+        public DbSet<Submissions> Submission_tbl{ get; set; }
+        public DbSet<SubmissionDetails> SubmissionDetails_tbl { get; set; }
     }
 }

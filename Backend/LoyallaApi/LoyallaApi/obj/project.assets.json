@@ -7113,12 +7113,11 @@
       ]
     },
     "System.Net.NameResolution/4.3.0": {
-      "sha512": "AFYl08R7MrsrEjqpQWTZWBadqXyTzNDaWpMqyxhb0d6sGhV6xMDKueuBXlLL30gz+DIRY6MpdgnHWlCh5wmq9w==",
+      "sha512": "Ajle43tyQpdCTfxvKjkSZxpupwZLEwiSl1OTEKkZ2Uug+qwGY86x3m7lTXdEpxehBMU5mcxCv0gNwhKzbsTzkw==",
       "type": "package",
       "path": "system.net.nameresolution/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9878,24 +9877,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Rehan\\.nuget\\packages\\": {},
-    "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Zaid\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My.Work\\Projects\\Remote\\Emad\\Code-Git\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+      "projectUniqueName": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
       "projectName": "LoyallaApi",
-      "projectPath": "D:\\My.Work\\Projects\\Remote\\Emad\\Code-Git\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
-      "packagesPath": "C:\\Users\\Rehan\\.nuget\\packages\\",
-      "outputPath": "D:\\My.Work\\Projects\\Remote\\Emad\\Code-Git\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
+      "projectPath": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+      "packagesPath": "C:\\Users\\Zaid\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Rehan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Zaid\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9903,8 +9901,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "D:\\My.Work\\Radiology Workflow\\Rad v1\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9988,7 +9984,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

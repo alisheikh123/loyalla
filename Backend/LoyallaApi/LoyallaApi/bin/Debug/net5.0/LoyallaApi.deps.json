@@ -5130,7 +5130,7 @@
     "System.Net.NameResolution/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AFYl08R7MrsrEjqpQWTZWBadqXyTzNDaWpMqyxhb0d6sGhV6xMDKueuBXlLL30gz+DIRY6MpdgnHWlCh5wmq9w==",
+      "sha512": "sha512-Ajle43tyQpdCTfxvKjkSZxpupwZLEwiSl1OTEKkZ2Uug+qwGY86x3m7lTXdEpxehBMU5mcxCv0gNwhKzbsTzkw==",
       "path": "system.net.nameresolution/4.3.0",
       "hashPath": "system.net.nameresolution.4.3.0.nupkg.sha512"
     },

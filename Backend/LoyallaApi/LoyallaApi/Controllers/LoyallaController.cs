@@ -457,6 +457,16 @@ namespace LoyallaApi.Controllers
             return Ok(quest);
         }
 
+        [HttpPost, Route("SubmitPaper")]
+        public async Task<ActionResult<Questions>> SubmitPaper(Submissions model)
+        {
+            var CurrentDateTime = DateTime.Now;
+            model.CreationDateTime = CurrentDateTime;
+            _context.Submission_tbl.Add(model);
+            await _context.SaveChangesAsync();
+            return Ok("Submitted");
+        }
+
        
 
         [HttpGet, Route("GetAnwsers")]
