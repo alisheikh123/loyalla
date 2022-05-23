@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3NLJcKLdJoO72vGIYjJJirWckBhs/NDVLmaQtOetowX5IF7n47ZFEYtMxCR2z2b+/PJo0pG83jfgMe9ZedJK+g==",
+  "dgSpecHash": "piPICvFntDEaFPebCb3pS+OiOl9+Y3rq53OV5wwWlRa8D2rDgW8aZp1MaaQuFAj+gfCb8ynvQMd5DOrDMehZtw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AliRazaTahir\\Source\\Repos\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+  "projectFilePath": "C:\\Users\\AliRazaTahir\\source\\repos\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AliRazaTahir\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\AliRazaTahir\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
