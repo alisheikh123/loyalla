@@ -16,6 +16,7 @@ export class StudentPaperComponent implements OnInit {
   optionList: any;
   status:any;
   paperId:number=0;
+  TotalQuestions:number=0;
   caseId:number=0;
   form: FormGroup;
   options =[];
@@ -48,6 +49,7 @@ export class StudentPaperComponent implements OnInit {
       debugger
       this.questionsList = res?.data;
       this.caseId = res?.data.caseId;
+      this.TotalQuestions = this.questionsList.questions.length;
       this.questionsList.questions.forEach(question => {
         this.form.addControl(question.questionId, this._fb.control(null, Validators.required));
       })
@@ -108,6 +110,8 @@ export class StudentPaperComponent implements OnInit {
     let model = {
       "submissionId": 0,
       "paperId": this.paperId,
+      "caseId": this.caseId,
+      "totalQuestions" : this.TotalQuestions,
       "studentId": parseInt(studentid),
       "submission" : this.answers 
     }
