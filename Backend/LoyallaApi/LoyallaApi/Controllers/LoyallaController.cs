@@ -35,10 +35,10 @@ namespace LoyallaApi.Controllers
         public async Task<IActionResult> addCase([FromForm] caseDto cases)
         {
             var result = _objectMapper.Map<caseDto, Cases>(cases);
-                result.CreationDateTime = DateTime.Now;
-                _context.Case_tbl.Add(result);
-                await _context.SaveChangesAsync();
-            int caseId = result.Case_Id; 
+            result.CreationDateTime = DateTime.Now;
+            _context.Case_tbl.Add(result);
+            await _context.SaveChangesAsync();
+            int caseId = result.Case_Id;
             if (cases.file != null)
             {
                 string path = Path.Combine(Directory.GetCurrentDirectory(), "Upload");
@@ -256,7 +256,7 @@ namespace LoyallaApi.Controllers
 
 
 
-                    } 
+                    }
                     #endregion
                     return Ok();
                 }
@@ -270,17 +270,17 @@ namespace LoyallaApi.Controllers
         {
             var response = new EntityResponseModel<object>();
             var CaseList = (from p in _context.Paper_tbl
-                           join c in _context.Case_tbl on p.CaseId equals c.Case_Id
-                           select new CaseList
-                           { 
-                           CaseName = c.Title,
-                           Comments = c.Description,
-                           CreationDate = c.CreationDateTime,
-                           CaseId = p.CaseId,
-                           PaperId = p.Id,
-                           PaperName = p.PaperName
-                           
-                           }).ToList();
+                            join c in _context.Case_tbl on p.CaseId equals c.Case_Id
+                            select new CaseList
+                            {
+                                CaseName = c.Title,
+                                Comments = c.Description,
+                                CreationDate = c.CreationDateTime,
+                                CaseId = p.CaseId,
+                                PaperId = p.Id,
+                                PaperName = p.PaperName
+
+                            }).ToList();
 
             return CaseList;
         }
@@ -340,10 +340,10 @@ namespace LoyallaApi.Controllers
             }
         }
 
-        [HttpGet,Route("EditCase")]
-        public async Task<ActionResult<object>> EditCase(int Case_Id) 
+        [HttpGet, Route("EditCase")]
+        public async Task<ActionResult<object>> EditCase(int Case_Id)
         {
-            var caseDetail =  _context.Case_tbl.Where(x => x.Case_Id == Case_Id).FirstOrDefault();
+            var caseDetail = _context.Case_tbl.Where(x => x.Case_Id == Case_Id).FirstOrDefault();
             //string path = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\" + caseDetail.FileName);
             //using (var stream = System.IO.File.OpenRead(path))
             //{
@@ -352,11 +352,11 @@ namespace LoyallaApi.Controllers
             //}
             return Ok(caseDetail);
         }
-        [HttpPost,Route("UpdateCase")]
-        public async Task<ActionResult> UpdateCase([FromForm] caseDto cases) 
+        [HttpPost, Route("UpdateCase")]
+        public async Task<ActionResult> UpdateCase([FromForm] caseDto cases)
         {
             var caseDetail = _context.Case_tbl.Find(cases.id);
-            if (caseDetail != null) 
+            if (caseDetail != null)
             {
                 caseDetail.Title = cases.title;
                 caseDetail.Description = cases.description;
@@ -422,18 +422,18 @@ namespace LoyallaApi.Controllers
                                         _context.Question_tbl.Update(questionDetail);
                                         await _context.SaveChangesAsync();
 
-                                            #region Add Options
-                                            for (int optionRow = 2; optionRow <= optionRowCount; optionRow++)
-                                            {
+                                        #region Add Options
+                                        for (int optionRow = 2; optionRow <= optionRowCount; optionRow++)
+                                        {
                                             var optionDetail = await _context.Options_tbl.FindAsync(questionDetail.QuestionId);
                                             int questionForignSerialNo = int.Parse(option.Cells[optionRow, 1].Value.ToString().Trim());
-                                                if (questionserialNo == questionForignSerialNo)
-                                                {
+                                            if (questionserialNo == questionForignSerialNo)
+                                            {
                                                 optionDetail.QuestionId = questionDetail.QuestionId;
                                                 optionDetail.OptionName = option.Cells[optionRow, 2].Value.ToString().Trim();
-                                                 _context.Options_tbl.Update(optionDetail);
-                                                 await _context.SaveChangesAsync();
-                                                }
+                                                _context.Options_tbl.Update(optionDetail);
+                                                await _context.SaveChangesAsync();
+                                            }
 
                                             }
                                             #endregion
@@ -442,7 +442,7 @@ namespace LoyallaApi.Controllers
                                         
                                     }
 
-                                   
+
                                 }
                                 #endregion
                             }
@@ -467,6 +467,11 @@ namespace LoyallaApi.Controllers
             return Ok(quest);
         }
 
+        //[HttpGet, Route("GetAnwsers")]
+        //public async Task<ActionResult<List<Anwser>>> getAnwsers()
+        //{
+        //    return _context.Anwser_tbl.OrderBy(x => x.QuestionId).ToList();
+        //}
         [HttpPost, Route("SubmitPaper")]
         public async Task<EntityResponseModel<object>> SubmitPaper(Submissions model)
         {
@@ -480,7 +485,7 @@ namespace LoyallaApi.Controllers
             };
         }
 
-       
+   
 
         //[HttpGet, Route("GetAnwsers")]
         //public async Task<ActionResult<List<Anwser>>> getAnwsers()
@@ -544,6 +549,7 @@ namespace LoyallaApi.Controllers
             };
         }
 
+
         [HttpGet, Route("getQuestionDetailWithoutAnwser")]
         public async Task<EntityResponseModel<object>> getQuestionDetailWithoutAnwser(int paperId)
         {
@@ -588,14 +594,14 @@ namespace LoyallaApi.Controllers
         public async Task<EntityResponseModel<Cases>> getCaseDetail(int caseId)
         {
             var caseDetail = new Cases();
-            caseDetail =  _context.Case_tbl.Where(x => x.Case_Id.Equals(caseId)).FirstOrDefault();
-            return new  EntityResponseModel<Cases>
+            caseDetail = _context.Case_tbl.Where(x => x.Case_Id.Equals(caseId)).FirstOrDefault();
+            return new EntityResponseModel<Cases>
             {
                 Data = caseDetail,
             };
         }
 
-        
+
         [HttpPost, Route("UpdateCaseStatus")]
         public async Task UpdateCaseStatus(StudentCaseAttemptStatus model)
         {
@@ -612,7 +618,7 @@ namespace LoyallaApi.Controllers
             model.CreationDateTime = DateTime.Now;
             model.UpdateDateTime = DateTime.Now;
 
-            var dbstatus = _context.StudentCaseAttemptStatus_tbl.FirstOrDefault(s => s.Student_Id.Equals(model.Student_Id) && s.Case_Id.Equals(model.Student_Id));
+            var dbstatus = _context.StudentCaseAttemptStatus_tbl.FirstOrDefault(s => s.Student_Id.Equals(model.Student_Id) && s.Case_Id.Equals(model.Case_Id));
             dbstatus.CreationDateTime = model.CreationDateTime;
             dbstatus.Student_Id = model.Student_Id;
             dbstatus.Created_By = model.Created_By;
@@ -631,14 +637,107 @@ namespace LoyallaApi.Controllers
         public async Task<EntityResponseModel<object>> GetCaseStatus(int Student_Id, int Case_Id)
         {
 
-            var status =  _context.StudentCaseAttemptStatus_tbl.Where(x => x.Case_Id == Case_Id && x.Student_Id == Student_Id).ToList();
-         
+            var status = _context.StudentCaseAttemptStatus_tbl.Where(x => x.Case_Id == Case_Id && x.Student_Id == Student_Id).ToList();
+
             return new EntityResponseModel<object>
             {
                 Data = status,
             };
         }
 
+
+     
+
+        [HttpGet, Route("GetStudentResultList")]
+        public async Task<List<ResultListResponse>> GetStudentResultList()
+        {
+            //var response = new EntityResponseModel<object>();
+            var ResultList = (from p in _context.Paper_tbl
+                              join c in _context.Case_tbl on p.CaseId equals c.Case_Id
+                              join at in _context.StudentCaseAttemptStatus_tbl on c.Case_Id equals at.Case_Id
+                              join st in _context.Signup on at.Student_Id equals st.Id
+                              select new ResultListResponse
+                              {
+                                  Title = c.Title,
+                                  CaseId = c.Case_Id,
+                                  StudentID = st.Id,
+                                  StudentFeedback = "",
+                                  StudentName = st.Username,
+                                  Date = at.UpdateDateTime,
+                                  Status = at.Status,
+                                  Attempts = 0,
+                                  Grades = "0",
+                              }).ToList();
+
+            foreach (var item in ResultList)
+            {
+                if (item.Status == "Submitted")
+                {
+                    var response = (from s in _context.Submission_tbl
+                                    join sd in _context.SubmissionDetails_tbl on s.SubmissionId equals sd.SubmissionsSubmissionId
+                                    where s.CaseId == item.CaseId && s.StudentId == item.StudentID
+
+                                    select new Results
+                                    {
+                                        TotalQuestions = s.TotalQuestions,
+                                        Date = s.CreationDateTime,
+                                        AttemptedOptionId = sd.AttemptedOptionId,
+                                        CorrectOptionId = sd.CorrectOptionId
+
+                                    }).ToList();
+
+                    item.Attempts = response.Count;
+                    int correct = 0;
+                    int Total = 0;
+                    foreach (var i in response)
+                    {
+                        Total = i.TotalQuestions;
+                        if(i.CorrectOptionId == i.AttemptedOptionId)
+                        {
+                            correct++;
+                            
+                        }
+                    }
+                    item.Grades = correct + "/" + Total;
+                }
+            }
+
+            return ResultList;
+        }
+
+        //[HttpGet, Route("GetStudentResultList")]
+        //public async Task<List<ResultListResponse>> GetStudentResultList()
+        //{
+        //    var resultList = new List<ResultListResponse>();
+        //    var cases = _context.Case_tbl.Select(x => new { x.Case_Id, x.Title }).ToList();
+
+
+        //    foreach (var item in cases)
+        //    {
+        //        var StudentAttempt = _context.StudentCaseAttemptStatus_tbl.Where(x => x.Case_Id == item.Case_Id).Select(x => new { x.Student_Id , x.Status ,x.UpdateDateTime}).ToList();
+
+        //        foreach (var st in StudentAttempt)
+        //        {
+        //            var students = _context.Signup.Where(x => x.Id == st.Student_Id).Select(x => new { x.Username}).FirstOrDefault();
+
+        //            if (st.Status == "Read")
+        //            {
+        //                resultList.Add(
+        //                    new ResultListResponse
+        //                    {
+        //                        Title = item.Title,
+        //                        StudentFeedback = "",
+        //                        StudentName = students.Username,
+        //                        Date = st.UpdateDateTime.ToString(),
+        //                        Attempts = 1,
+        //                    }
+        //                );
+        //            }
+
+        //        }
+        //    }
+        //    return resultList;
+        //}
         [HttpPost, Route("SaveAnwser")]
         public async Task SaveAnwser(List<OptionsDto> options)
         {
@@ -646,13 +745,13 @@ namespace LoyallaApi.Controllers
             {
 
                 var questionDetail = _context.Question_tbl.Find(item.questionId);
-                if (questionDetail!=null)
+                if (questionDetail != null)
                 {
                     questionDetail.Description = item.description;
                     _context.Question_tbl.Update(questionDetail);
                     await _context.SaveChangesAsync();
                     var optionsDetail = _context.Options_tbl.Find(item.optionId);
-                    if (optionsDetail!=null)
+                    if (optionsDetail != null)
                     {
                         var lastOptionHistory = _context.Options_tbl.Where(x => x.QuestionId == item.questionId).ToList();
                         foreach (var lastDetail in lastOptionHistory)
@@ -669,4 +768,9 @@ namespace LoyallaApi.Controllers
             }
         }
     }
+
 }
+
+      
+
+

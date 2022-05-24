@@ -36,7 +36,7 @@ login()
   if((userNm =="admin" && pwd=="admin"))
   {
     localStorage.setItem("userid", "0");
-    this.router.navigate(["/adminNavbar"]);
+    this.router.navigate(["adminNavbar/AddCase"]);
   }
   else{
 

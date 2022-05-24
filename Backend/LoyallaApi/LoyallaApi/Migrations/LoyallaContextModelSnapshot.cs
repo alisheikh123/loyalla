@@ -284,10 +284,7 @@ namespace LoyallaApi.Migrations
                     b.Property<int>("QuestionId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SubmissionId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("SubmissionsSubmissionId")
+                    b.Property<int>("SubmissionsSubmissionId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -304,6 +301,9 @@ namespace LoyallaApi.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
+                    b.Property<int>("CaseId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime?>("CreationDateTime")
                         .HasColumnType("timestamp without time zone");
 
@@ -311,6 +311,9 @@ namespace LoyallaApi.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int>("StudentId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TotalQuestions")
                         .HasColumnType("integer");
 
                     b.HasKey("SubmissionId");
@@ -347,7 +350,9 @@ namespace LoyallaApi.Migrations
                 {
                     b.HasOne("LoyallaApi.DBModels.Submissions", null)
                         .WithMany("Submission")
-                        .HasForeignKey("SubmissionsSubmissionId");
+                        .HasForeignKey("SubmissionsSubmissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LoyallaApi.DBModels.Cases", b =>
