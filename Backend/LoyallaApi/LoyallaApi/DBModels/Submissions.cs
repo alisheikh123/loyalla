@@ -13,6 +13,8 @@ namespace LoyallaApi.DBModels
         [Key]
         public int SubmissionId { get; set; }
         public int PaperId { get; set; }
+        public int CaseId { get; set; }
+        public int TotalQuestions { get; set; }
         public int StudentId { get; set; }
         public Nullable<System.DateTime> CreationDateTime { get; set; }
 
