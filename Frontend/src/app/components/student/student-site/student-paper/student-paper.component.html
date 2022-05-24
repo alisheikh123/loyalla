@@ -59,43 +59,38 @@
                     <div class="bg-white px-3 py-5" style="height: 93vh; overflow-y: scroll;">
                         <div>
                             <div class="heading_titile pb-3">
-
                                 <h3 class="fs-25 text-dark">{{questionsList.paperName}}</h3>
                             </div>
                             <form [formGroup]="form">
-                                <fieldset  *ngFor="let q of questionsList.questions;let i = index">
+                                <fieldset *ngFor="let q of questionsList.questions;let i = index">
                                     <div class="fluid_title">
                                         <h4 class="fs-16 text-dark text-uppercase">{{q.topic}}</h4>
                                     </div>
                                     <div class="d-flex">
-                                   <h1 class="fs-14 text-dark text-uppercase">Q:{{i+1}}</h1> <h5 class="pl-3 pb-3 fs-14 text-dark">{{q.questionName}}</h5>
-
+                                        <h1 class="fs-14 text-dark text-uppercase">Q:{{i+1}}</h1>
+                                        <h5 class="pl-3 pb-3 fs-14 text-dark">{{q.questionName}}</h5>
                                     </div>
-
-                                  <div *ngFor="let question of q.options; let j = index" >
-                                  <label for="{{question.questionId}}"></label>
-                                  <input id="{{question.questionId}}" type="radio" formControlName="{{question.questionId}}" value="{{question.id}}">
-                                  {{question.optionName}}
-                                </div>
-                                <div class="description py-3">
-                                    <textarea placeholder="Description" class="p-3"></textarea>
-                                </div>
+                                    <div *ngFor="let option of q.options; let j = index">
+                                        <label for="{{option.questionId}}"></label>
+                                        <input id="{{option.questionId}}" type="radio"
+                                            (click)="selectedOption(q.correctOptionId,option.id,option.questionId)"
+                                            formControlName="{{option.questionId}}" value="{{option.id}}">{{option.optionName}}
+                                    </div>
+                                    <div class="description py-3">
+                                        <textarea (change)="changeDescription($event,q.questionId)" placeholder="Type description here..." class="p-3"></textarea>
+                                    </div>
                                 </fieldset>
-                           
-                              </form>
-                             
-
-
+                            </form>
+                        </div>
+                    </div>
+                    <div class="float-right py-3">
+                        <div class="btnpnk mx-2">
+                            <a (click)="submit()">SAVE</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="float-right py-3">
-                <div class="btnpnk mx-2">
-                    <a href="" routerLink="/StudentResultList">SAVE</a>
-                </div>
-            </div>
+
         </div>
-    </div>
-
-</div>
-<!-- </div>
+        <!-- </div>
 </div> -->

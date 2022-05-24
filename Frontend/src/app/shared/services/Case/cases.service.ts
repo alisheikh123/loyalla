@@ -36,6 +36,10 @@ export class CasesService {
     return this.http.post<any>(this.apiUrl + '/api/Loyalla/UpdateCaseStatus',model).pipe(
       catchError(this.errorService.handleError));
   }
+  UpdateCaseStatusSubmission(model:any) {
+    return this.http.put<any>(this.apiUrl + '/api/Loyalla/UpdateCaseStatusSubmission',model).pipe(
+      catchError(this.errorService.handleError));
+  }
   getStatus(studentId : number , CaseId : number) {
 
     return this.http.get<any>(this.apiUrl + '/api/Loyalla/GetCaseStatus?Student_Id='+studentId+'&Case_Id= '+CaseId+'').pipe(
@@ -57,6 +61,11 @@ export class CasesService {
   addNewQuestion(questions: any) {
     debugger;
    return this.http.post(this.apiUrl + '/api/Question/addQuestion', questions).pipe(
+     catchError(this.errorService.handleError));
+ }
+  submitPaper(model: any) {
+    debugger;
+   return this.http.post(this.apiUrl + '/api/Loyalla/SubmitPaper', model).pipe(
      catchError(this.errorService.handleError));
  }
  addNewPaper(paper: any) {

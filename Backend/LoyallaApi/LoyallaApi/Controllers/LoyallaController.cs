@@ -590,13 +590,16 @@ namespace LoyallaApi.Controllers
         }
 
         [HttpPost, Route("SubmitPaper")]
-        public async Task<ActionResult<Questions>> SubmitPaper(Submissions model)
+        public async Task<EntityResponseModel<object>> SubmitPaper(Submissions model)
         {
             var CurrentDateTime = DateTime.Now;
             model.CreationDateTime = CurrentDateTime;
             _context.Submission_tbl.Add(model);
             await _context.SaveChangesAsync();
-            return Ok("Submitted");
+            return new EntityResponseModel<object>
+            {
+                Msg = "Submitted",
+            };
         }
 
        
@@ -696,6 +699,7 @@ namespace LoyallaApi.Controllers
                 var answer = _context.Anwser_tbl.Where(x => x.QuestionId == item.QuestionId).ToList();
                 paperList.Id = paper.Id;
                 paperList.PaperName = paper.PaperName;
+                paperList.CaseId = paper.CaseId;
                 int index = answer.FindIndex(a => a.IsAnwsers == 1);
                 if(index == -1)
                 {
@@ -740,6 +744,26 @@ namespace LoyallaApi.Controllers
 
             _context.StudentCaseAttemptStatus_tbl.Add(model);
             await _context.SaveChangesAsync();
+
+        }
+        [HttpPut, Route("UpdateCaseStatusSubmission")]
+        public async Task UpdateCaseStatusSubmission(StudentCaseAttemptStatus model)
+        {
+            model.CreationDateTime = DateTime.Now;
+            model.UpdateDateTime = DateTime.Now;
+
+            var dbstatus = _context.StudentCaseAttemptStatus_tbl.FirstOrDefault(s => s.Student_Id.Equals(model.Student_Id) && s.Case_Id.Equals(model.Student_Id));
+            dbstatus.CreationDateTime = model.CreationDateTime;
+            dbstatus.Student_Id = model.Student_Id;
+            dbstatus.Created_By = model.Created_By;
+            dbstatus.Updated_By = model.Updated_By;
+            dbstatus.Case_Id = model.Case_Id;
+            dbstatus.Status = model.Status;
+
+            await _context.SaveChangesAsync();
+            //_context.StudentCaseAttemptStatus_tbl.Update(model);
+            //await _context.SaveChangesAsync();
+
 
         }
 
