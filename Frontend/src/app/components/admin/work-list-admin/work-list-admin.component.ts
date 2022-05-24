@@ -1,6 +1,7 @@
 import { CasesService } from './../../../shared/services/Case/cases.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastService } from 'src/app/shared/services/shared/toast.service';
 
 @Component({
   selector: 'app-work-list-admin',
@@ -11,7 +12,7 @@ export class WorkListAdminComponent implements OnInit {
   allCases:any;
   paperId:number = 0;
 
-  constructor(private service:CasesService) { }
+  constructor(private service:CasesService,private toast:ToastService) { }
 
   ngOnInit(): void {
    
@@ -29,7 +30,8 @@ export class WorkListAdminComponent implements OnInit {
     this.service.deleteCase(caseId).subscribe((res:any)=>{
       
     });
-    window.location.reload();
+    this.toast.showError("Successfully Delete the Case","All Cases")
+      setTimeout(() => {window.location.reload()}, 2000); 
   }
  
 

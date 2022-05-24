@@ -19,34 +19,6 @@ namespace LoyallaApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("LoyallaApi.DBModels.Anwser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<double>("IsAnwsers")
-                        .HasColumnType("double precision");
-
-                    b.Property<int?>("OptionsId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("QuestionsQuestionId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OptionsId");
-
-                    b.HasIndex("QuestionsQuestionId");
-
-                    b.ToTable("Anwser_tbl");
-                });
-
             modelBuilder.Entity("LoyallaApi.DBModels.Cases", b =>
                 {
                     b.Property<int>("Case_Id")
@@ -119,6 +91,9 @@ namespace LoyallaApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
+
+                    b.Property<double>("IsAnwsers")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("OptionName")
                         .HasColumnType("text");
@@ -343,26 +318,11 @@ namespace LoyallaApi.Migrations
                     b.ToTable("Submission_tbl");
                 });
 
-            modelBuilder.Entity("LoyallaApi.DBModels.Anwser", b =>
-                {
-                    b.HasOne("LoyallaApi.DBModels.Options", null)
-                        .WithMany("Anwsers")
-                        .HasForeignKey("OptionsId");
-
-                    b.HasOne("LoyallaApi.DBModels.Questions", "Questions")
-                        .WithMany()
-                        .HasForeignKey("QuestionsQuestionId");
-
-                    b.Navigation("Questions");
-                });
-
             modelBuilder.Entity("LoyallaApi.DBModels.Options", b =>
                 {
-                    b.HasOne("LoyallaApi.DBModels.Questions", "Questions")
+                    b.HasOne("LoyallaApi.DBModels.Questions", null)
                         .WithMany("Options")
                         .HasForeignKey("QuestionsQuestionId");
-
-                    b.Navigation("Questions");
                 });
 
             modelBuilder.Entity("LoyallaApi.DBModels.Paper", b =>
@@ -393,11 +353,6 @@ namespace LoyallaApi.Migrations
             modelBuilder.Entity("LoyallaApi.DBModels.Cases", b =>
                 {
                     b.Navigation("Paper");
-                });
-
-            modelBuilder.Entity("LoyallaApi.DBModels.Options", b =>
-                {
-                    b.Navigation("Anwsers");
                 });
 
             modelBuilder.Entity("LoyallaApi.DBModels.Paper", b =>

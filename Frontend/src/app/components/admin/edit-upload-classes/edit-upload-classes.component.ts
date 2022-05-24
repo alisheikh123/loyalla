@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CasesService } from 'src/app/shared/services/Case/cases.service';
+import { ToastService } from 'src/app/shared/services/shared/toast.service';
 
 @Component({
   selector: 'app-edit-upload-classes',
@@ -24,7 +25,7 @@ export class EditUploadClassesComponent implements OnInit {
   caseDetail:any;
   paperId:number=0;
   constructor(private fb: FormBuilder,
-    private service: CasesService,private route:Router,private activatedRoute: ActivatedRoute) { }
+    private service: CasesService,private route:Router,private toaste:ToastService,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(res => {
@@ -100,6 +101,8 @@ export class EditUploadClassesComponent implements OnInit {
       setTimeout(() => {
         this.showAlert = false;
       }, 2000);
+      this.toaste.showSuccess("successfully updated the case","Update Case")
+      setTimeout(() => {window.location.reload()}, 2000); 
       this.route.navigate(['/adminNavbar/WorkListAdmin']);
 
     })

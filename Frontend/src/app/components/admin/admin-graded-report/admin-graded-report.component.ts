@@ -1,6 +1,8 @@
 import { CasesService } from 'src/app/shared/services/Case/cases.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AnwserSheet } from 'src/app/shared/interface/AnwserSheet';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-graded-report',
@@ -12,31 +14,49 @@ export class AdminGradedReportComponent implements OnInit {
   questionsList: any;
   optionList: any
   paperId:number = 0;
-  constructor(private cases: CasesService,private activatedRoute: ActivatedRoute) { }
+  arr: any = [];
+ 
+  constructor(private cases: CasesService,private toast:ToastrService,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(res => {
       this.paperId = Number(res['id']);
     });
     this.getQuestions();
-    this.getAnwsers();
   }
   getQuestions() {
-
-
     this.cases.getQuestionsWithAnwser(this.paperId).subscribe((res: any) => {
       this.questionsList = res?.data;
-      console.log(this.questionsList);
+    });
+  }
+  getDescription(event:any,questionId:number){
+    debugger;
+    const anwserSheet : AnwserSheet = {
+      questionId:questionId,
+      optionId:0,
+      anwserStatus:0,
+      description:event.target.value
+    }
+   this.arr.push(anwserSheet);
 
-    });
   }
-  getAnwsers() {
-    this.cases.getAnwsers().subscribe((res) => {
-      this.anwserList = res;
-    });
+  selectedOption(questionId:number,optionId: number,description:string) {
+    const anwserSheet : AnwserSheet = {
+      questionId:questionId,
+      optionId:optionId,
+      anwserStatus:1,
+      description:description
+    }
+     this.arr.push(anwserSheet);
   }
-  selectedOption(optionId: number) {
-    console.log(optionId);
+
+
+  saveFormData(){
+    console.log(this.arr)
+    this.cases.saveAnwser(this.arr).subscribe((res)=>{
+      this.toast.success("Updated Successfully","Anwser Sheet")
+      setTimeout(() => {window.location.reload()}, 2000); 
+    })
   }
 
 

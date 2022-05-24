@@ -60,25 +60,27 @@
                         <div>
                             <div class="heading_titile pb-3">
 
-                                <h3 class="fs-25 text-dark">{{questionsList.paperName}}</h3>
+                                <h3 class="fs-25 text-dark">{{questionsList?.paperName}}</h3>
                             </div>
 
 
-                    <div class="inputfield" *ngFor="let q of questionsList.questions;let i = index">
+                    <div class="inputfield" *ngFor="let q of questionsList?.questions;let i = index" >
                          <div class="fluid_title">
                             <h4 class="fs-16 text-dark text-uppercase">{{q.topic}}</h4>
                         </div>
                        <span>Q:{{i+1}}</span> <h5 class="fs-14 text-dark">{{q.questionName}}</h5>
-                                <div class="d-flex" *ngFor="let o of q.options">
-                                    <input type="radio" id="html" name="joineffusion" class="checkcorrect" (click)="selectedOption(o.id)" />&nbsp;
-                                    <label for="html" class="d-grid">
-                                        <span class="fs-15">{{o.optionName}}</span>
-                                        <span class="fs-12"></span>
+                                <div class="d-flex" *ngFor="let o of q.options" >
+                                   
+                                    <input type="radio" id="html" name="joineffusion" class="checkcorrect" (click)="selectedOption(q.questionId,o.id,q.description)" />&nbsp;
+                                    <label for="html" class="d-grid" >
+                                         <span class="fs-15">{{o.optionName}}</span>
+                                        <span class="fs-12 text-success" *ngIf="o.isAnwsers==1 ?'correct':''" >correct</span>
+                                        
 
-                                    </label>
+                                    </label>`
                                 </div>
                                 <div class="description py-3">
-                                    <textarea placeholder="Description" class="p-3"></textarea>
+                                    <textarea placeholder="Description"  class="p-3" (change)="getDescription($event,q.questionId)">{{q.description}}</textarea>
                                 </div>
 
                     </div>
@@ -88,7 +90,7 @@
             </div>
             <div class="float-right py-3">
                 <div class="btnpnk mx-2">
-                    <a href="" routerLink="/StudentResultList">SAVE</a>
+                    <a href="" routerLink="/StudentResultList" (click)="saveFormData()">SAVE</a>
                 </div>
             </div>
         </div>

@@ -99,8 +99,9 @@ return this.http.get(this.apiUrl+'/api/Loyalla/GetOption?questionId='+`{question
    debugger;
   return this.http.get<any>(this.apiUrl+'/api/Question/GetPaperById?Id='+id).pipe(catchError(this.errorService.handleError));
  }
-getAnwsers()
-{
-  return this.http.get(this.apiUrl+'/api/Loyalla/GetAnwsers').pipe(catchError(this.errorService.handleError))
+saveAnwser(options:any){
+  debugger;
+  return this.http.post(this.apiUrl + '/api/Loyalla/SaveAnwser', options).pipe(
+    catchError(this.errorService.handleError));
 }
 }

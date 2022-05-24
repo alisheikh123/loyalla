@@ -59,20 +59,17 @@ namespace LoyallaApi.Controllers
                     var papersList = new Paper();
                     var questionsList = new Questions();
                     var optionsList = new Options();
-                    var anwserlist = new Anwser();
 
                     // add a new worksheet to the empty workbook
 
                     ExcelWorksheet paper = package.Workbook.Worksheets[0];
                     ExcelWorksheet question = package.Workbook.Worksheets[1];
                     ExcelWorksheet option = package.Workbook.Worksheets[2];
-                    ExcelWorksheet anwser = package.Workbook.Worksheets[3];
 
 
                     var paperRowCount = paper.Dimension.Rows;
                     var questionRowCount = question.Dimension.Rows;
                     var optionRowCount = option.Dimension.Rows;
-                    var anwserRowCount = anwser.Dimension.Rows;
 
                     #region Upload Paper
                     for (int row = 2; row <= paperRowCount; row++)
@@ -114,6 +111,7 @@ namespace LoyallaApi.Controllers
                                         {
                                             optionsList.QuestionId = questionsList.QuestionId;
                                             optionsList.OptionName = option.Cells[optionRow, 2].Value.ToString().Trim();
+                                            optionsList.IsAnwsers = int.Parse(option.Cells[optionRow, 3].Value.ToString().Trim());
                                             var optionId = await _context.Options_tbl.FindAsync(optionsList.Id);
                                             if (optionId != null)
                                             {
@@ -130,31 +128,7 @@ namespace LoyallaApi.Controllers
 
                                     }
                                     #endregion
-                                    // Add Anwsers
-                                    #region Add Anwsers
-                                    for (int anwserRow = 2; anwserRow <= anwserRowCount; anwserRow++)
-                                    {
-                                        int questionForignSerialNo = int.Parse(anwser.Cells[anwserRow, 1].Value.ToString().Trim());
-                                        if (questionserialNo == questionForignSerialNo)
-                                        {
-                                            anwserlist.QuestionId = questionsList.QuestionId;
-                                            anwserlist.IsAnwsers = int.Parse(anwser.Cells[anwserRow, 2].Value.ToString().Trim());
-
-                                            var anwserId = await _context.Anwser_tbl.FindAsync(anwserlist.Id);
-                                            if (anwserId != null)
-                                            {
-                                                anwserlist.Id++;
-                                                await _context.Anwser_tbl.AddAsync(anwserlist);
-                                                await _context.SaveChangesAsync();
-                                            }
-                                            else
-                                            {
-                                                await _context.Anwser_tbl.AddAsync(anwserlist);
-                                                await _context.SaveChangesAsync();
-                                            }
-                                        }
-                                    }
-                                    #endregion
+                                  
 
                                 }
                                 else
@@ -171,6 +145,7 @@ namespace LoyallaApi.Controllers
                                         {
                                             optionsList.QuestionId = questionsList.QuestionId;
                                             optionsList.OptionName = option.Cells[optionRow, 2].Value.ToString().Trim();
+                                            optionsList.IsAnwsers = int.Parse(option.Cells[optionRow, 3].Value.ToString().Trim());
                                             var optionId = await _context.Options_tbl.FindAsync(optionsList.Id);
                                             if (optionId != null)
                                             {
@@ -188,30 +163,7 @@ namespace LoyallaApi.Controllers
                                     }
                                     #endregion
 
-                                    #region Add Anwsers
-                                    for (int anwserRow = 2; anwserRow <= anwserRowCount; anwserRow++)
-                                    {
-                                        int questionForignSerialNo = int.Parse(anwser.Cells[anwserRow, 1].Value.ToString().Trim());
-                                        if (questionserialNo == questionForignSerialNo)
-                                        {
-                                            anwserlist.QuestionId = questionsList.QuestionId;
-                                            anwserlist.IsAnwsers = int.Parse(anwser.Cells[anwserRow, 2].Value.ToString().Trim());
-
-                                            var anwserId = await _context.Anwser_tbl.FindAsync(anwserlist.Id);
-                                            if (anwserId != null)
-                                            {
-                                                anwserlist.Id++;
-                                                await _context.Anwser_tbl.AddAsync(anwserlist);
-                                                await _context.SaveChangesAsync();
-                                            }
-                                            else
-                                            {
-                                                await _context.Anwser_tbl.AddAsync(anwserlist);
-                                                await _context.SaveChangesAsync();
-                                            }
-                                        }
-                                    }
-                                    #endregion
+                                    
                                 }
                             } 
                             #endregion
@@ -245,6 +197,7 @@ namespace LoyallaApi.Controllers
                                         {
                                             optionsList.QuestionId = questionsList.QuestionId;
                                             optionsList.OptionName = option.Cells[optionRow, 2].Value.ToString().Trim();
+                                            optionsList.IsAnwsers = int.Parse(option.Cells[optionRow, 3].Value.ToString().Trim());
                                             var optionId = await _context.Options_tbl.FindAsync(optionsList.Id);
                                             if (optionId != null)
                                             {
@@ -262,46 +215,13 @@ namespace LoyallaApi.Controllers
                                     }
                                     #endregion
 
-                                    #region Upload Anwsers
-                                    // Upload Anwsers
-                                    for (int anwserRow = 2; anwserRow <= anwserRowCount; anwserRow++)
-                                    {
-                                        int questionForignSerialNo = int.Parse(anwser.Cells[anwserRow, 1].Value.ToString().Trim());
-                                        if (questionserialNo == questionForignSerialNo)
-                                        {
-                                            anwserlist.QuestionId = questionsList.QuestionId;
-                                            anwserlist.IsAnwsers = int.Parse(anwser.Cells[anwserRow, 2].Value.ToString().Trim());
-
-                                            var anwserId = await _context.Anwser_tbl.FindAsync(anwserlist.Id);
-                                            if (anwserId != null)
-                                            {
-                                                anwserlist.Id++;
-                                                await _context.Anwser_tbl.AddAsync(anwserlist);
-                                                await _context.SaveChangesAsync();
-                                            }
-                                            else
-                                            {
-                                                await _context.Anwser_tbl.AddAsync(anwserlist);
-                                                await _context.SaveChangesAsync();
-                                            }
-                                        }
-                                    }
-                                    #endregion
+                                   
 
                                 }
                                 else
                                 {
-
-                                    try
-                                    {
                                         await _context.Question_tbl.AddAsync(questionsList);
                                         await _context.SaveChangesAsync();
-                                    }
-                                    catch (Exception ex)
-                                    {
-
-                                        throw;
-                                    }
 
                                     #region Upload Options
                                     for (int optionRow = 2; optionRow <= optionRowCount; optionRow++)
@@ -311,6 +231,7 @@ namespace LoyallaApi.Controllers
                                         {
                                             optionsList.QuestionId = questionsList.QuestionId;
                                             optionsList.OptionName = option.Cells[optionRow, 2].Value.ToString().Trim();
+                                            optionsList.IsAnwsers = int.Parse(option.Cells[optionRow, 3].Value.ToString().Trim());
                                             var optionId = await _context.Options_tbl.FindAsync(optionsList.Id);
                                             if (optionId != null)
                                             {
@@ -328,30 +249,6 @@ namespace LoyallaApi.Controllers
                                     }
                                     #endregion
 
-                                    #region Upload Anwsers
-                                    for (int anwserRow = 2; anwserRow <= anwserRowCount; anwserRow++)
-                                    {
-                                        int questionForignSerialNo = int.Parse(anwser.Cells[anwserRow, 1].Value.ToString().Trim());
-                                        if (questionserialNo == questionForignSerialNo)
-                                        {
-                                            anwserlist.QuestionId = questionsList.QuestionId;
-                                            anwserlist.IsAnwsers = int.Parse(anwser.Cells[anwserRow, 2].Value.ToString().Trim());
-
-                                            var anwserId = await _context.Anwser_tbl.FindAsync(anwserlist.Id);
-                                            if (anwserId != null)
-                                            {
-                                                anwserlist.Id++;
-                                                await _context.Anwser_tbl.AddAsync(anwserlist);
-                                                await _context.SaveChangesAsync();
-                                            }
-                                            else
-                                            {
-                                                await _context.Anwser_tbl.AddAsync(anwserlist);
-                                                await _context.SaveChangesAsync();
-                                            }
-                                        }
-                                    }
-                                    #endregion
                                 }
                             } 
                             #endregion
@@ -415,7 +312,6 @@ namespace LoyallaApi.Controllers
             List<Paper> paperagainstcase = new List<Paper>();
             List<Questions> questionagainstpaper = new List<Questions>();
             List<Options> optionsagainstquestions = new List<Options>();
-            List<Anwser> anwserssagainstoptions = new List<Anwser>();
             var cases = _context.Case_tbl.Where(x => x.Case_Id == Case_Id).FirstOrDefault();
             if (cases == null)
             {
@@ -430,8 +326,6 @@ namespace LoyallaApi.Controllers
                     foreach (var q in questionagainstpaper)
                     {
                         optionsagainstquestions = _context.Options_tbl.Where(x => x.QuestionId == q.QuestionId).ToList();
-                            anwserssagainstoptions = _context.Anwser_tbl.Where(x => x.QuestionId == q.QuestionId).ToList();
-                        _context.Anwser_tbl.RemoveRange(anwserssagainstoptions);
                         _context.Options_tbl.RemoveRange(optionsagainstquestions);
 
                     }
@@ -494,13 +388,11 @@ namespace LoyallaApi.Controllers
                         ExcelWorksheet paper = package.Workbook.Worksheets[0];
                         ExcelWorksheet question = package.Workbook.Worksheets[1];
                         ExcelWorksheet option = package.Workbook.Worksheets[2];
-                        ExcelWorksheet anwser = package.Workbook.Worksheets[3];
 
 
                         var paperRowCount = paper.Dimension.Rows;
                         var questionRowCount = question.Dimension.Rows;
                         var optionRowCount = option.Dimension.Rows;
-                        var anwserRowCount = anwser.Dimension.Rows;
 
                         #region Upload Paper
                         for (int row = 2; row <= paperRowCount; row++)
@@ -545,21 +437,7 @@ namespace LoyallaApi.Controllers
 
                                             }
                                             #endregion
-                                            // Add Anwsers
-                                            #region Add Anwsers
-                                            for (int anwserRow = 2; anwserRow <= anwserRowCount; anwserRow++)
-                                            {
-                                            var anwserDetail = await _context.Anwser_tbl.FindAsync(questionDetail.QuestionId);
-                                            int questionForignSerialNo = int.Parse(anwser.Cells[anwserRow, 1].Value.ToString().Trim());
-                                                if (questionserialNo == questionForignSerialNo)
-                                                {
-                                                anwserDetail.QuestionId = questionDetail.QuestionId;
-                                                anwserDetail.IsAnwsers = int.Parse(anwser.Cells[anwserRow, 2].Value.ToString().Trim());
-                                                _context.Anwser_tbl.Update(anwserDetail);
-                                                await _context.SaveChangesAsync();
-                                                }
-                                            }
-                                            #endregion
+                                           
 
                                         
                                     }
@@ -604,21 +482,21 @@ namespace LoyallaApi.Controllers
 
        
 
-        [HttpGet, Route("GetAnwsers")]
-        public async Task<ActionResult<List<Anwser>>> getAnwsers()
-        {
-            return _context.Anwser_tbl.OrderBy(x => x.QuestionId).ToList();
-        }
+        //[HttpGet, Route("GetAnwsers")]
+        //public async Task<ActionResult<List<Anwser>>> getAnwsers()
+        //{
+        //    return _context.Anwser_tbl.OrderBy(x => x.QuestionId).ToList();
+        //}
 
         [HttpGet, Route("GetQuestionsDetail")]
         public async Task<List<QuestionsOptionsList>> getQuestions()
         {
             var optionsList = new List<QuestionsOptionsList>();
             var paper = _context.Paper_tbl.Where(x => x.Id == 1).Select(x => new { x.Id, x.PaperName, x.Title }).FirstOrDefault();
-            var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).ToList();
+            var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).OrderBy(x=>x.QuestionId).ToList();
             foreach (var item in questions)
             {
-                var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).OrderBy(x => x.QuestionId).ToList();
+                var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).OrderBy(x => x.Id).ToList();
                 foreach (var item2 in options)
                 {
                     optionsList.Add(new QuestionsOptionsList
@@ -642,16 +520,12 @@ namespace LoyallaApi.Controllers
 
             var paperList = new Paper();
             var paper = _context.Paper_tbl.Where(x => x.Id == paperId).FirstOrDefault();
-            var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).ToList();
+            var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).OrderBy(x=>x.QuestionId).ToList();
 
 
             foreach (var item in questions)
             {
-                var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).ToList();
-
-                //foreach (var op in options)
-                //{
-                //var anwser = _context.Anwser_tbl.Where(x => x.OptionId == options.Id).ToList();
+                var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).OrderBy(c=>c.Id).ToList();
                 paperList.Id = paper.Id;
                 paperList.PaperName = paper.PaperName;
                 paperList.Questions.Add(
@@ -661,22 +535,8 @@ namespace LoyallaApi.Controllers
                              Topic = item.Topic,
                              Description = item.Description,
                              QuestionName = item.QuestionName,
-                             Options = options,
-                                 //Options = new Options[]
-                                 //{
-                                 //    new Options
-                                 //    {
-                                 //        Id = op.Id,
-                                 //        OptionName = op.OptionName,
-                                 //        Anwsers = anwser,
-                                 //    }
-                                 //}
-                             });
-                // };
-                //});
-
-
-                //}
+                             Options = options
+                         });
             }
             return new EntityResponseModel<object>
             {
@@ -696,15 +556,15 @@ namespace LoyallaApi.Controllers
             foreach (var item in questions)
             {
                 var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).ToList();
-                var answer = _context.Anwser_tbl.Where(x => x.QuestionId == item.QuestionId).ToList();
+                //var answer = _context.Anwser_tbl.Where(x => x.QuestionId == item.QuestionId).ToList();
                 paperList.Id = paper.Id;
                 paperList.PaperName = paper.PaperName;
                 paperList.CaseId = paper.CaseId;
-                int index = answer.FindIndex(a => a.IsAnwsers == 1);
-                if(index == -1)
-                {
-                    index = 0;
-                }
+                //int index = answer.FindIndex(a => a.IsAnwsers == 1);
+                //if(index == -1)
+                //{
+                //    index = 0;
+                //}
                
                 paperList.Questions.Add(
                          new Questions
@@ -714,7 +574,7 @@ namespace LoyallaApi.Controllers
                              Description = item.Description,
                              QuestionName = item.QuestionName,
                              Options = options,
-                             CorrectOptionId= options[index].Id
+                             //CorrectOptionId= options[index].Id
             });
                 
             }
@@ -777,6 +637,36 @@ namespace LoyallaApi.Controllers
             {
                 Data = status,
             };
+        }
+
+        [HttpPost, Route("SaveAnwser")]
+        public async Task SaveAnwser(List<OptionsDto> options)
+        {
+            foreach (var item in options)
+            {
+
+                var questionDetail = _context.Question_tbl.Find(item.questionId);
+                if (questionDetail!=null)
+                {
+                    questionDetail.Description = item.description;
+                    _context.Question_tbl.Update(questionDetail);
+                    await _context.SaveChangesAsync();
+                    var optionsDetail = _context.Options_tbl.Find(item.optionId);
+                    if (optionsDetail!=null)
+                    {
+                        var lastOptionHistory = _context.Options_tbl.Where(x => x.QuestionId == item.questionId).ToList();
+                        foreach (var lastDetail in lastOptionHistory)
+                        {
+                            lastDetail.IsAnwsers = 0;
+                            _context.Options_tbl.Update(lastDetail);
+                            await _context.SaveChangesAsync();
+                        }
+                        optionsDetail.IsAnwsers = item.anwserStatus;
+                        _context.Options_tbl.Update(optionsDetail);
+                        await _context.SaveChangesAsync();
+                    }
+                }
+            }
         }
     }
 }

@@ -32,6 +32,7 @@ import { StudentPaperComponent } from './components/student/student-site/student
 import { CommonModule } from '@angular/common';
 import { EditUploadClassesComponent } from './components/admin/edit-upload-classes/edit-upload-classes.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
