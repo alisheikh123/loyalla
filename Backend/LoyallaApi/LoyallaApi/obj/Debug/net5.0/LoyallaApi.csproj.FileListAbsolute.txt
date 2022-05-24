@@ -300,7 +300,6 @@ C:\Users\AliRazaTahir\source\repos\Loyala\Backend\LoyallaApi\LoyallaApi\bin\Debu
 C:\Users\AliRazaTahir\source\repos\Loyala\Backend\LoyallaApi\LoyallaApi\bin\Debug\net5.0\appsettings.Development.json
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\bin\Debug\net5.0\appsettings.Development.json
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\bin\Debug\net5.0\appsettings.json
-D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\bin\Debug\net5.0\LoyallaApi.StaticWebAssets.xml
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\bin\Debug\net5.0\LoyallaApi.exe
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\bin\Debug\net5.0\LoyallaApi.deps.json
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\bin\Debug\net5.0\LoyallaApi.runtimeconfig.json
@@ -443,9 +442,9 @@ D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\ob
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\scopedcss\bundle\LoyallaApi.styles.css
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\staticwebassets\LoyallaApi.StaticWebAssets.Manifest.cache
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\LoyallaApi.RazorTargetAssemblyInfo.cache
-D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\LoyallaApi.csproj.CopyComplete
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\LoyallaApi.dll
-D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\refint\LoyallaApi.dll
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\LoyallaApi.pdb
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\LoyallaApi.genruntimeconfig.cache
 D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\ref\LoyallaApi.dll
+D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\bin\Debug\net5.0\ref\LoyallaApi.dll
+D:\My.Work\Projects\Remote\Emad\Code-Git\Loyala\Backend\LoyallaApi\LoyallaApi\obj\Debug\net5.0\staticwebassets\LoyallaApi.StaticWebAssets.xml

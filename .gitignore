@@ -15,12 +15,16 @@ TestResult.xml
 Version.cs
 Version.h
 Version.cpp
+*/bin
 
 /.vs/VSWorkspaceState.json
 /Backend/LoyallaApi/.vs/LoyallaApi/FileContentIndex
 /Backend/LoyallaApi/.vs/ProjectEvaluation
+/Backend/LoyallaApi/LoyallaApi/obj
+/Backend/LoyallaApi/LoyallaApi/bin
 /Backend/LoyallaApi/LoyallaApi/bin/Debug/net5.0
 /Backend/LoyallaApi/LoyallaApi/obj/Debug/net5.0
 /Backend/LoyallaApi/LoyallaApi/obj/Debug/net5.0-windows
 /Backend/LoyallaApi/LoyallaApi/Migrations
 /Backend/LoyallaApi/LoyallaApi/Upload
+
