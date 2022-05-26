@@ -533,6 +533,7 @@ namespace LoyallaApi.Controllers
                 var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).OrderBy(c=>c.Id).ToList();
                 paperList.Id = paper.Id;
                 paperList.PaperName = paper.PaperName;
+                paperList.CaseId = paper.CaseId;
                 paperList.Questions.Add(
                          new Questions
                          {

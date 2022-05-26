@@ -73,11 +73,17 @@
                                     <div *ngFor="let option of q.options; let j = index">
                                         <label for="{{option.questionId}}"></label>
                                         <input id="{{option.questionId}}" type="radio"
-                                            (click)="selectedOption(q.correctOptionId,option.id,option.questionId)"
-                                            formControlName="{{option.questionId}}" value="{{option.id}}">{{option.optionName}}
+                                            
+                                            (click)="selectedOption(option, q.options)"
+                                            formControlName="{{option.questionId}}" value="{{option.id}}">
+                                            {{option.optionName}}
+                                            <br>
+                                            <label class="correctanswer">{{option.isAnwsers === 1 && isHidden === true ? 'Correct Answer' : ''}}</label>
+
                                     </div>
-                                    <div class="description py-3">
-                                        <textarea (change)="changeDescription($event,q.questionId)" placeholder="Type description here..." class="p-3"></textarea>
+                                    
+                                    <div *ngIf="isHidden" class="description py-3">
+                                        <textarea placeholder="Type description here..." class="p-3">{{q.description}}</textarea>
                                     </div>
                                 </fieldset>
                             </form>

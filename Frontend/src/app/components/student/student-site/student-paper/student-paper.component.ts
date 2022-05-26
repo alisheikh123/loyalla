@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 export class StudentPaperComponent implements OnInit {
 
   questionsList: any;
-  description : any []=[];
+  isHidden: boolean = false;
   answers : any []=[];
   optionList: any;
   status:any;
@@ -44,7 +44,7 @@ export class StudentPaperComponent implements OnInit {
   getQuestions() {
 
 
-    this.cases.getQuestionsWithoutAnwser(this.paperId).subscribe((res: any) => {
+    this.cases.getQuestionsWithAnwser(this.paperId).subscribe((res: any) => {
 
       debugger
       this.questionsList = res?.data;
@@ -61,35 +61,22 @@ export class StudentPaperComponent implements OnInit {
 
   // selectedOption(Correct option Id, Selected Option Id, Question Id)
 
-  selectedOption(c_id:any, s_id: any, q_id : any) {
+  selectedOption(model: any, obj : any ) {
+    debugger
+
+  let findId = obj.find((x:any) => x.isAnwsers === 1 )
+
    var data = {
-     id : 0,
-     questionId : q_id,
+     id : model.questionId,
+     questionId : model.questionId,
      submissionId : 0,
-     attemptedOptionId : s_id,
-     correctOptionId : c_id,
+     attemptedOptionId : model.id,
+     correctOptionId : findId.id,
      description: ""
    } 
    this.upsertAnswer(data)
   }
 
-  changeDescription(event:any, id : any) {
-    
-    var data = {
-      description : event.target.value,
-      id : id
-    }
-
-    this.upsertDescription(data)
-  }
-
-
-   upsertDescription(item:any) { 
-    const i = this.description.findIndex(_item => _item.id === item.id);
-    if (i > -1) this.description[i] = item; 
-    else this.description.push(item);
-
-  }
 
    upsertAnswer(item:any) { 
     const i = this.answers.findIndex(_item => _item.questionId === item.questionId);
@@ -97,12 +84,10 @@ export class StudentPaperComponent implements OnInit {
     else this.answers.push(item);
 
   }
+
   submit(){
     
     if(this.status !== "Submitted"){
-    for(var i = 0 ; i < this.description.length ; i++){
-          this.answers.find(v => v.questionId == this.description[i].id).description = this.description[i].description;
-      }
 
     var studentid = JSON.parse(localStorage.getItem('userid') || "{}");
 
@@ -116,6 +101,8 @@ export class StudentPaperComponent implements OnInit {
       "submission" : this.answers 
     }
 
+    debugger
+
     this.cases.submitPaper(model).subscribe(
       (res: any) => {
         debugger
@@ -128,6 +115,7 @@ export class StudentPaperComponent implements OnInit {
         this.AttemptStatus.Updated_By = parseInt(studentid);
   
         this.cases.UpdateCaseStatusSubmission(this.AttemptStatus).subscribe((res:any)=>{
+          this.isHidden = true
           alert('Paper successfully submitted.');
         
         })
@@ -136,7 +124,7 @@ export class StudentPaperComponent implements OnInit {
     );
     }
     else{
-      alert("You already submitted the paper")
+      this.isHidden = true
     }
 
   }

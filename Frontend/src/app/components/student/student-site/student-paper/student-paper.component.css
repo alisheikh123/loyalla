@@ -202,3 +202,8 @@ label {
         margin: 0rem 1rem !important;
     }
 }
+.correctanswer{
+    font-size: 12px;
+    color: #1abf1a;
+    padding: 18px;
+}

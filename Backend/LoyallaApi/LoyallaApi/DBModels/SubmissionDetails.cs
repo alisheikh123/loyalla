@@ -10,6 +10,5 @@ namespace LoyallaApi.DBModels
         public int SubmissionsSubmissionId { get; set; }
         public int AttemptedOptionId { get; set; }
         public int CorrectOptionId { get; set; }
-        public string Description { get; set; }
     }
 }

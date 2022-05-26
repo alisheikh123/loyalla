@@ -278,9 +278,6 @@ namespace LoyallaApi.Migrations
                     b.Property<int>("CorrectOptionId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
                     b.Property<int>("QuestionId")
                         .HasColumnType("integer");
 
