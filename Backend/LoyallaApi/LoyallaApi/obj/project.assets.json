@@ -7113,11 +7113,12 @@
       ]
     },
     "System.Net.NameResolution/4.3.0": {
-      "sha512": "Ajle43tyQpdCTfxvKjkSZxpupwZLEwiSl1OTEKkZ2Uug+qwGY86x3m7lTXdEpxehBMU5mcxCv0gNwhKzbsTzkw==",
+      "sha512": "AFYl08R7MrsrEjqpQWTZWBadqXyTzNDaWpMqyxhb0d6sGhV6xMDKueuBXlLL30gz+DIRY6MpdgnHWlCh5wmq9w==",
       "type": "package",
       "path": "system.net.nameresolution/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8315,6 +8316,7 @@
       "path": "system.runtime.serialization.json/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9876,23 +9878,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zaid\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\AliRazaTahir\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+      "projectUniqueName": "D:\\Ali\\Angular & .NET\\Angular & .NET\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
       "projectName": "LoyallaApi",
-      "projectPath": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
-      "packagesPath": "C:\\Users\\Zaid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
+      "projectPath": "D:\\Ali\\Angular & .NET\\Angular & .NET\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+      "packagesPath": "C:\\Users\\AliRazaTahir\\.nuget\\packages\\",
+      "outputPath": "D:\\Ali\\Angular & .NET\\Angular & .NET\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Zaid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AliRazaTahir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9983,7 +9986,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

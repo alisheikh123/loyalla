@@ -170,6 +170,9 @@ namespace LoyallaApi.Controllers
                         }
                         else
                         {
+
+                            var lastPaperId = _context.Paper_tbl.OrderByDescending(x => x.Id).Take(1).Select(x => x.Id).FirstOrDefault();
+                            lastPaperId++;
                             _context.Paper_tbl.Add(papersList);
                             await _context.SaveChangesAsync();
                             #region Upload Questions
@@ -220,8 +223,20 @@ namespace LoyallaApi.Controllers
                                 }
                                 else
                                 {
-                                        await _context.Question_tbl.AddAsync(questionsList);
+                                    var lastQuestionId = _context.Question_tbl.OrderByDescending(x => x.QuestionId).Take(1).Select(x => x.QuestionId).FirstOrDefault();
+                                    lastQuestionId++;
+                                    questionsList.QuestionId = lastQuestionId;
+                                    questionsList.CreationDateTime = DateTime.Now;
+                                    await _context.Question_tbl.AddAsync(questionsList);
+                                    try
+                                    {
                                         await _context.SaveChangesAsync();
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                        throw;
+                                    }
 
                                     #region Upload Options
                                     for (int optionRow = 2; optionRow <= optionRowCount; optionRow++)
@@ -241,6 +256,9 @@ namespace LoyallaApi.Controllers
                                             }
                                             else
                                             {
+                                                var lastOptionId = _context.Options_tbl.OrderByDescending(x => x.Id).Take(1).Select(x => x.Id).FirstOrDefault();
+                                                lastOptionId++;
+                                                optionsList.Id = lastOptionId;
                                                 await _context.Options_tbl.AddAsync(optionsList);
                                                 await _context.SaveChangesAsync();
                                             }
@@ -476,9 +494,17 @@ namespace LoyallaApi.Controllers
         public async Task<EntityResponseModel<object>> SubmitPaper(Submissions model)
         {
             var CurrentDateTime = DateTime.Now;
-            model.CreationDateTime = CurrentDateTime;
-            _context.Submission_tbl.Add(model);
-            await _context.SaveChangesAsync();
+            try
+            {
+                model.CreationDateTime = CurrentDateTime;
+                _context.Submission_tbl.Add(model);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
             return new EntityResponseModel<object>
             {
                 Msg = "Submitted",
