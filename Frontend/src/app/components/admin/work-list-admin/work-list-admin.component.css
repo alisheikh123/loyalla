@@ -1,83 +1,145 @@
-.pagination-lg .page-item:first-child .page-link{
-    margin-right: 15px;
+ body .ngx-pagination li.current {
+     background: #8b003a !important;
+     padding: 7px 16px !important;
+     border-radius: 50px !important;
+ }
+
+ /* .ngx-pagination li {
+    display: inline-block !important;
+    background-color: #8b003a !important;
+    padding: 10px !important;
+    margin: 0px 5px 0px 5px !important;
+    border-radius: 50px !important;
+    /* color: white; */
+ /* } */
+
+ .form-control {
+    color: #8b003a !important;
+    background-color: #fff;
+    /* border: 2px solid #8b003a !important; */
+    border-color:transparent;
+    outline: 0;
+    box-shadow: none !important;
 }
-.pagination-lg .page-item:last-child .page-link{
-    margin-left: 15px;
-}
-li.page-item.mid a:hover {
-    background: #f0b310;
-    color: white;
-}
-table thead th{
-    color: #8b003a;
-    border: none !important;
-    background-color: transparent !important;
-}
-/* table tbody tr{
+ .form-control:focus {
+     color: #495057;
+     background-color: #fff;
+     /* border: 2px solid #8b003a !important; */
+     border-color:transparent;
+     outline: 0;
+     box-shadow: none !important;
+ }
+
+ body .ngx-pagination .current {
+     padding: 10px 16px !important;
+     background: #8b003a !important;
+     color: #fefefe !important;
+     cursor: default !important;
+     border-radius: 50px !important;
+ }
+
+ .pagination-lg .page-item:first-child .page-link {
+     margin-right: 15px;
+ }
+
+ .pagination-lg .page-item:last-child .page-link {
+     margin-left: 15px;
+ }
+
+ li.page-item.mid a:hover {
+     background: #f0b310;
+     color: white;
+ }
+
+ table thead th {
+     color: #8b003a;
+     border: none !important;
+     background-color: transparent !important;
+ }
+
+ .btnColor {
+     background-color: #8b003a;
+     color: white;
+ }
+
+ /* table tbody tr{
     margin: 1rem 0rem;
 } */
 
-ul{
-    list-style: none;
-}
-ul li{
-    padding: 0rem 0.25rem;
-}
-.table td, .table th {
-    padding: 0.75rem;
-    vertical-align: middle;
-    border-top: 1px solid #dee2e6;
-}
-ul li .imgtop{
-    position: relative;
-    top: 6px;
-}
-.containers{
-    margin: 0rem 6rem;
-}
-.checkedbox {
-    -webkit-appearance: none; /*hides the default checkbox*/
-    height: 20px;
-    width: 20px;
-    position: relative;
-    top: 0px;
-    left: 45px;
-  
-    background-color: #8b003a;
-    border:1px solid #8b003a;
-    border-radius: 50px;
-    outline: none;
-  }
-  .checkedboxed{
-    -webkit-appearance: none; /*hides the default checkbox*/
-    height: 20px;
-    width: 20px;
-    position: relative;
-    top: 0px;
-    left: 45px;
-  
-    background-color: #59c36a;
-    border:1px solid #59c36a;
-    border-radius: 50px;
-    outline: none;  
-  }
-  .pevious a{
-      background-color: #8b003a !important;
-  }
-  .next a{
-      background-color: #8b003a !important;
-  }
-  /* @media only screen and (min-width: 577px) and (max-width: 768px){
+ ul {
+     list-style: none;
+ }
+
+ ul li {
+     padding: 0rem 0.25rem;
+ }
+
+ .table td,
+ .table th {
+     padding: 0.75rem;
+     vertical-align: middle;
+     border-top: 1px solid #dee2e6;
+ }
+
+ ul li .imgtop {
+     position: relative;
+     top: 6px;
+ }
+
+ .containers {
+     margin: 0rem 6rem;
+ }
+
+ .checkedbox {
+     -webkit-appearance: none;
+     /*hides the default checkbox*/
+     height: 20px;
+     width: 20px;
+     position: relative;
+     top: 0px;
+     left: 45px;
+
+     background-color: #8b003a;
+     border: 1px solid #8b003a;
+     border-radius: 50px;
+     outline: none;
+ }
+
+ .checkedboxed {
+     -webkit-appearance: none;
+     /*hides the default checkbox*/
+     height: 20px;
+     width: 20px;
+     position: relative;
+     top: 0px;
+     left: 45px;
+
+     background-color: #59c36a;
+     border: 1px solid #59c36a;
+     border-radius: 50px;
+     outline: none;
+ }
+
+ .pevious a {
+     background-color: #8b003a !important;
+ }
+
+ .next a {
+     background-color: #8b003a !important;
+ }
+
+ /* @media only screen and (min-width: 577px) and (max-width: 768px){
     .containers{
         margin: 0rem !important;
 }} */
-@media only screen and (max-width: 576.98px){
-    .containers{
+ @media only screen and (max-width: 576.98px) {
+     .containers {
          margin: 0rem !important;
-    }
-}
-@media only screen and (min-width: 576.98px) and (max-width: 767.98px){
-    .container {
-        max-width: 568px !important;
-    }
-}
+     }
+ }
+
+ @media only screen and (min-width: 576.98px) and (max-width: 767.98px) {
+     .container {
+         max-width: 568px !important;
+     }
+ }

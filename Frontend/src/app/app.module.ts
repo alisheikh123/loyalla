@@ -31,6 +31,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { StudentPaperComponent } from './components/student/student-site/student-paper/student-paper.component';
 import { CommonModule } from '@angular/common';
 import { EditUploadClassesComponent } from './components/admin/edit-upload-classes/edit-upload-classes.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -58,7 +61,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     OptionComponent,
     StudentPaperComponent,
     EditUploadClassesComponent,
-    // NgbModule
   ],
   imports: [
     FormsModule,
@@ -72,6 +74,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       positionClass: 'toast-top-left',
       preventDuplicates: true,}),
     HttpClientModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
     NgbModule,
   ],
   providers: [CasesService],

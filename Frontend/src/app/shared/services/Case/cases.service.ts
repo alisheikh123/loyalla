@@ -40,7 +40,7 @@ export class CasesService {
     return this.http.put<any>(this.apiUrl + '/api/Loyalla/UpdateCaseStatusSubmission',model).pipe(
       catchError(this.errorService.handleError));
   }
-  getStatus(studentId : number , CaseId : number) {
+  getStatus(studentId:number,CaseId:number) {
 
     return this.http.get<any>(this.apiUrl + '/api/Loyalla/GetCaseStatus?Student_Id='+studentId+'&Case_Id= '+CaseId+'').pipe(
       catchError(this.errorService.handleError));

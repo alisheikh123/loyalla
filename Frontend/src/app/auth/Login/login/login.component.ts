@@ -2,6 +2,7 @@ import { AuthService } from './../../../shared/services/Auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';									   
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,12 @@ export class LoginComponent implements OnInit {
     Email : '',
     Password: '',
   }
-  constructor(private fb: FormBuilder,private service:AuthService,private router: Router) { }
+
+
+   constructor(private fb: FormBuilder,
+    private service:AuthService,
+    private toastrService:ToastrService,
+    private router: Router) { }						   
 
   ngOnInit(): void {
     this.intiateForm();
@@ -41,14 +47,15 @@ login()
   else{
 
     this.service.login(this.loginform.value).subscribe(response=>{
-      if(parseInt(response) > 0)
+      debugger;
+      if(parseInt(response.id) > 0)
       {
-        this.invalidLogin = false;
-        this.router.navigate(["/studentNavbar"]);
+        this.invalidLogin = false;					   
+        this.router.navigate(["/studentNavbar/UserWorkList"]);
       }
       else
       {
-        alert("Invalid User");
+         this.toastrService.error('Invalid User')
       }
 
     });
