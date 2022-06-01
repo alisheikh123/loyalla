@@ -31,7 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { StudentPaperComponent } from './components/student/student-site/student-paper/student-paper.component';
 import { CommonModule } from '@angular/common';
 import { EditUploadClassesComponent } from './components/admin/edit-upload-classes/edit-upload-classes.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,8 @@ import { EditUploadClassesComponent } from './components/admin/edit-upload-class
       positionClass: 'toast-top-left',
       preventDuplicates: true,}),
     HttpClientModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
   ],
   providers: [CasesService],
   exports: [

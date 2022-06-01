@@ -4,6 +4,10 @@
 .form-control{
     padding: 0.375rem 0rem;
 }
+.alertCss {
+    margin-top: 3%;
+    text-align: center;
+}
 .tittle-input h4{
     margin-bottom: 0rem;
 }
@@ -13,9 +17,14 @@
 .dragin_drop .inner{
     padding: 0px !important;
 }
-.dragin_drop .label{
-    height: 46%;
+label{
+    margin-bottom: 1.3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
+/* .dragin_drop .label{
+    height: 46%;
+} */
 .checboxonline{
     height: 25px;
     width: 25px;
@@ -81,17 +90,98 @@ input[type="text"]{
 .dragin_drop .inner{
     font-size: 15px;
 }
+
+
+.wrapper {
+    min-width: 80%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    /* top: 50%; */
+  }
+  
+  
+  
+  
+  .bar {
+    position: relative;
+  
+    border: 2px solid #0d96e0;
+  
+    border-radius: 20px;
+  }
+  
+  .bar div {
+    position: relative;
+    width: 0;
+    height: 9px;
+    border-radius: 10px;
+    background-color: #0d96e0;
+  }
+  
+  
+  
+  #html-bar {
+    animation: html-fill 1s forwards;
+  }
+  
+  @keyframes html-fill {
+    100% {
+      width: 100%;
+    }
+  }
+  
+
+@media only screen and (min-width: 993px) and (max-width: 1199px){
+    .extraCSS{
+        padding: 50px !important;
+}}
+@media only screen and (min-width: 769px) and (max-width: 991px){
+
+    .classAdded{
+        display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    }
+}
 @media only screen and (min-width: 577px) and (max-width: 768px){
     .containers{
-        margin: 0rem !important;
+        margin: auto !important;
+    }
+.uploadFileBox{
+    
+    margin-bottom: 3%;
+
 }}
-@media only screen and (max-width: 576.98px){
+@media only screen and (max-width: 576px){
     .containers{
          margin: 0rem !important;
     }
+    .extraCSS{
+        margin-bottom: 10px !important;
+        padding: 50px !important;
+    }
+    .uploadFileBox{
+    
+        margin-bottom: 2% !important;
+    
+    }
+    .cs360{
+        padding: 0px !important;
+       }
+    
 }
+
+
 .upload{
     font-weight:bold;
-    color:#28a745;
+    /* color:#28a745;
     margin-left: 15px;
+    font-weight: bold; */
+    color: #28a745;
+    margin-left: 12px;
+    /* margin-top: -47% !important; */
+    position: relative;
+    top: -25px;
 }
+

@@ -1,64 +1,86 @@
 <div class="position-relative py-5" style="background-color: #f5f5f5">
-    <div class="row">
-        <div class="container">
-            <div class="row px-3 pb-2">
-            <div class="heading">
-                <h3 class="fs-30 text-dark fw-bold">WorkList Admin</h3>
-            </div>
+    <div class="container">
 
-            </div>
-            <div class="table table-responsive">
-                <table class="table table-border" style="background-color: transparent !important;">
-                    <thead>
-                        <tr>
-                            <th class="fs-15 text-center">S.No</th>
-                            <th class="fs-15 text-center">Case Title</th>
-                            <th class="fs-15 text-center">Comments</th>
-                            <th class="fs-15 text-center">Date</th>
-                            <th class="fs-15 text-center">Answer sheet</th>
-                            <th class="fs-15 text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white" *ngFor="let item of allCases  let i=index">
-                            <td class="text-center">{{i+1}}</td>
-                            <td class="text-center">{{item.caseName}}</td>
-                            <td class="text-center">{{item.comments}}</td>
-                            <td class="text-center">{{item.creationDate | date}}</td>
-                            <td class="text-center">
-                                <ul class="d-flex justify-content-center">
-                                    <li><a placement="top" ngbTooltip="Tooltip on top" title="{{item.paperName}}" [routerLink]="['/adminNavbar/AdminGradedReport/'+item.paperId]"><img src="assets/img/answer1.png" class="imgtop"></a></li>
-                                    <li><a  [routerLink]="['/adminNavbar/Edit-Case/'+item.caseId+'/'+item.paperId]" ><img src="assets/img/edit.png" class="imgtop" ></a></li>
-                                    <li><img src="assets/img/delete.png" class="imagedelete" (click)="deleteCase(item.caseId)"></li>
-                                </ul>
-                            </td>
-                            <td class="text-center">
-                                <div class="checkedbox">
-                                </div>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-            <section class="pagination my-5">
-                <div class="row">
-                    <div class="col-md-12 text-center pagination-shop">
-                    <ul class="pagination pagination-lg pagination-md pagination-sm">
-                    <li class="page-item pevious"><a class="page-link" href="#">< Previous</a></li>
-                    <li class="page-item mid"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item mid"><a class="page-link " href="#">2</a></li>
-                    <li class="page-item mid"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link border-0 bg-transparent text-dark" href="#">...</a></li>
-                    <li class="page-item mid smid"><a class="page-link" href="#" style="padding-left: 0.75rem !important;">82</a></li>
-                    <li class="page-item next"><a class="page-link" href="#">Next ></a></li>
-                    </ul>
+        <div class="row">
+            <div class="col-md-8">
+                <div class=" px-3 pb-2">
+                    <div class="heading">
+                        <h3 class="fs-30 text-dark fw-bold">WorkList Admin</h3>
                     </div>
+
                 </div>
-               </section>
             </div>
-
+            <div class="col-md-4">
+                <div class="d-flex">
+                    <input class="form-control me-2" [(ngModel)]="searchText" autocomplete="off"
+                    type="text" placeholder="Search Case Here" aria-label="Search">
+                    <!-- <p>{{searchText}}</p> -->
+                    <!-- <button class="btn btnColor" type="submit">Search</button> -->
+                </div>
+            </div>
         </div>
+
+        <div class="table table-responsive">
+            <table class="table table-border" style="background-color: transparent !important;">
+                <thead>
+                    <tr>
+                        <th class="fs-15 text-center">S.No</th>
+                        <th class="fs-15 text-center">Case Title</th>
+                        <th class="fs-15 text-center">Comments</th>
+                        <th class="fs-15 text-center">Date</th>
+                        <th class="fs-15 text-center">Answer sheet</th>
+                        <th class="fs-15 text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white" *ngFor="let item of allCases | paginate: config |filter:searchText let i=index">
+                        <td class="text-center">{{i+1}}</td>
+                        <td class="text-center">{{item.caseName}}</td>
+                        <td class="text-center">{{item.comments}}</td>
+                        <td class="text-center">{{item.creationDate | date}}</td>
+                        <td class="text-center">
+                            <ul class="d-flex justify-content-center">
+                                <li><a placement="top" ngbTooltip="Tooltip on top" title="{{item.paperName}}"
+                                        [routerLink]="['/adminNavbar/AdminGradedReport/'+item.paperId]"><img
+                                            src="assets/img/answer1.png" class="imgtop"></a></li>
+                                <li><a href="" routerLink="/AdminGradedReport"><img src="assets/img/edit.png"
+                                            class="imgtop"></a></li>
+                                <li><img src="assets/img/delete.png" class="imagedelete"
+                                        (click)="deleteCase(item.case_Id)"></li>
+                            </ul>
+                        </td>
+                        <td class="text-center">
+                            <div class="checkedbox">
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+             <!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
+        </div>
+
+        <section class="pagination my-5">
+            <div class="row">
+                <div class="col-md-12 text-center new_pagination">
+                    <pagination-controls  class="page-item mid" (pageChange)="pageChanged($event)"></pagination-controls>
+                    <!-- <ul class="pagination pagination-lg pagination-md pagination-sm">
+                        <li class="page-item pevious"><a class="page-link" href="#">
+                                < Previous</a>
+                        </li>
+                        <li class="page-item mid"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item mid"><a class="page-link " href="#">2</a></li>
+                        <li class="page-item mid"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link border-0 bg-transparent text-dark" href="#">...</a>
+                        </li>
+                        <li class="page-item mid smid"><a class="page-link" href="#"
+                                style="padding-left: 0.75rem !important;">82</a></li>
+                        <li class="page-item next"><a class="page-link" href="#">Next ></a></li>
+                    </ul> -->
+                </div>
+            </div>
+        </section>
+
+
     </div>
-
-
+</div>

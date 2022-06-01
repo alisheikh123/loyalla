@@ -9,30 +9,52 @@ import { ToastService } from 'src/app/shared/services/shared/toast.service';
   styleUrls: ['./work-list-admin.component.css']
 })
 export class WorkListAdminComponent implements OnInit {
-  allCases:any;
-  paperId:number = 0;
+  allCases: any;
+  paperId: number = 0;
 
-  constructor(private service:CasesService,private toast:ToastService) { }
+  config: any;
+  // collection = { count: 60, data: [] };
+  // id:any;
+  searchText: any;
 
-  ngOnInit(): void {
+  constructor(private service:CasesService, private toast :ToastService) { 
+
+    
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      // totalItems: this.collection.count
+    };  
+   }
+ 
+	   
    
-    this.getCaseList();
-  }
-  getCaseList()
-  {
-    this.service.getCaseList().subscribe((res:any)=>{
-        this.allCases = res;
-    });
-  }
+ngOnInit(): void {
 
-  deleteCase(caseId:number)
-  {
-    this.service.deleteCase(caseId).subscribe((res:any)=>{
-      
-    });
-    this.toast.showError("Successfully Delete the Case","All Cases")
-      setTimeout(() => {window.location.reload()}, 2000); 
-  }
+  this.getCaseList();
+}
+pageChanged(event){
+  this.config.currentPage = event;
+  // console.log(this.searchText)
+}
+
+getCaseList()
+{
+  this.service.getCaseList().subscribe((res: any) => {
+    this.allCases = res;
+    console.log(this.allCases);
+  });
+}
+
+deleteCase(caseId: number)
+{
+  debugger;
+  this.service.deleteCase(caseId).subscribe((res: any) => {
+    window.location.reload();
+  });
+  this.toast.showError("Successfully Delete the Case", "All Cases")
+  setTimeout(() => { window.location.reload() }, 2000);
+}
  
 
 }
