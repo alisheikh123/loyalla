@@ -128,7 +128,7 @@ namespace LoyallaApi.Controllers
 
                                     }
                                     #endregion
-                                  
+
 
                                 }
                                 else
@@ -163,9 +163,9 @@ namespace LoyallaApi.Controllers
                                     }
                                     #endregion
 
-                                    
+
                                 }
-                            } 
+                            }
                             #endregion
                         }
                         else
@@ -218,7 +218,7 @@ namespace LoyallaApi.Controllers
                                     }
                                     #endregion
 
-                                   
+
 
                                 }
                                 else
@@ -268,7 +268,7 @@ namespace LoyallaApi.Controllers
                                     #endregion
 
                                 }
-                            } 
+                            }
                             #endregion
                         }
 
@@ -453,11 +453,11 @@ namespace LoyallaApi.Controllers
                                                 await _context.SaveChangesAsync();
                                             }
 
-                                            }
-                                            #endregion
-                                           
+                                        }
+                                        #endregion
 
-                                        
+
+
                                     }
 
 
@@ -492,26 +492,38 @@ namespace LoyallaApi.Controllers
         //}
         [HttpPost, Route("SubmitPaper")]
         public async Task<EntityResponseModel<object>> SubmitPaper(Submissions model)
+
         {
-            var CurrentDateTime = DateTime.Now;
             try
             {
-                model.CreationDateTime = CurrentDateTime;
-                _context.Submission_tbl.Add(model);
-                await _context.SaveChangesAsync();
+                var lastSubmissionId = _context.Submission_tbl.OrderByDescending(x => x.SubmissionId).Take(1).Select(x => x.SubmissionId).FirstOrDefault();
+                var lastSubmissionDetailId = _context.SubmissionDetails_tbl.OrderByDescending(x => x.Id).Take(1).Select(x => x.Id).FirstOrDefault();
+                foreach (var item in model.Submission)
+                {
+                    lastSubmissionDetailId++;
+                    item.Id = lastSubmissionDetailId;
+                }
+                lastSubmissionId++;
+                model.SubmissionId = lastSubmissionId;
+                model.CreationDateTime = DateTime.Now;
+                 _context.Submission_tbl.Add(model);
+                _context.SaveChanges();
+                
             }
-            catch (Exception ex)
+                catch (Exception ex)
             {
 
                 throw;
             }
             return new EntityResponseModel<object>
             {
-                Msg = "Submitted",
+
+                Code = model.SubmissionId,
+                Msg = "Submitted"
             };
         }
 
-   
+
 
         //[HttpGet, Route("GetAnwsers")]
         //public async Task<ActionResult<List<Anwser>>> getAnwsers()
@@ -524,7 +536,7 @@ namespace LoyallaApi.Controllers
         {
             var optionsList = new List<QuestionsOptionsList>();
             var paper = _context.Paper_tbl.Where(x => x.Id == 1).Select(x => new { x.Id, x.PaperName, x.Title }).FirstOrDefault();
-            var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).OrderBy(x=>x.QuestionId).ToList();
+            var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).OrderBy(x => x.QuestionId).ToList();
             foreach (var item in questions)
             {
                 var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).OrderBy(x => x.Id).ToList();
@@ -551,12 +563,12 @@ namespace LoyallaApi.Controllers
 
             var paperList = new Paper();
             var paper = _context.Paper_tbl.Where(x => x.Id == paperId).FirstOrDefault();
-            var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).OrderBy(x=>x.QuestionId).ToList();
+            var questions = _context.Question_tbl.Where(x => x.PaperId == paper.Id).OrderBy(x => x.QuestionId).ToList();
 
 
             foreach (var item in questions)
             {
-                var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).OrderBy(c=>c.Id).ToList();
+                var options = _context.Options_tbl.Where(x => x.QuestionId == item.QuestionId).OrderBy(c => c.Id).ToList();
                 paperList.Id = paper.Id;
                 paperList.PaperName = paper.PaperName;
                 paperList.CaseId = paper.CaseId;
@@ -598,7 +610,7 @@ namespace LoyallaApi.Controllers
                 //{
                 //    index = 0;
                 //}
-               
+
                 paperList.Questions.Add(
                          new Questions
                          {
@@ -608,8 +620,8 @@ namespace LoyallaApi.Controllers
                              QuestionName = item.QuestionName,
                              Options = options,
                              //CorrectOptionId= options[index].Id
-            });
-                
+                         });
+
             }
             return new EntityResponseModel<object>
             {
@@ -673,7 +685,7 @@ namespace LoyallaApi.Controllers
         }
 
 
-     
+
 
         [HttpGet, Route("GetStudentResultList")]
         public async Task<List<ResultListResponse>> GetStudentResultList()
@@ -719,10 +731,10 @@ namespace LoyallaApi.Controllers
                     foreach (var i in response)
                     {
                         Total = i.TotalQuestions;
-                        if(i.CorrectOptionId == i.AttemptedOptionId)
+                        if (i.CorrectOptionId == i.AttemptedOptionId)
                         {
                             correct++;
-                            
+
                         }
                     }
                     item.Grades = correct + "/" + Total;
@@ -794,10 +806,52 @@ namespace LoyallaApi.Controllers
                 }
             }
         }
+
+
+        [HttpPost, Route("SaveFeedBack")]
+        public async Task SaveFeedback(FeedbackDto model)
+        {
+            var result = _objectMapper.Map<FeedbackDto, Feedback>(model);
+            result.CreationDateTime = DateTime.Now;
+            await _context.Feedback_tbl.AddAsync(result);
+            await _context.SaveChangesAsync();
+        }
+
+        [HttpGet, Route("GetResult")]
+        public async Task<EntityResponseModel<object>> getResult(int Id)
+        {
+            int value = 0;
+            var submissionDetail = _context.SubmissionDetails_tbl.Where(x => x.SubmissionsSubmissionId == Id).ToList();
+            foreach (var item in submissionDetail)
+            {
+
+                if (item.AttemptedOptionId == item.CorrectOptionId)
+                {
+                    value++;
+                }
+                else
+                {
+                    value = value + 0;
+                }
+            }
+            return new EntityResponseModel<object>
+            {
+                Code = value
+            };
+        }
+        [HttpGet, Route("GetSubmissionId")]
+        public async Task<EntityResponseModel<object>> GetSubmissionId(int Id)
+        {
+
+            return new EntityResponseModel<object>
+            {
+                Code = _context.Submission_tbl.Where(x => x.CaseId == Id).Select(x => x.SubmissionId).FirstOrDefault()
+            };
+        }
     }
 
 }
 
-      
+
 
 

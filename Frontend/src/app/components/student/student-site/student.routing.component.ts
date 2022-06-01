@@ -15,8 +15,8 @@ const routes: Routes = [
 {path: '', component: SignUpComponent },
 {path: 'UserWorkList', component: UserWorkListComponent},
 {path: 'Comment', component: CommentFeedbackComponent},
-{path: 'FeedbackOptional', component: FeedbackoptionalComponent},
-{path: 'result', component: ResultsComponent},
+{path: 'FeedbackOptional/:caseId/:studentId/:submissionId', component: FeedbackoptionalComponent},
+{path: 'result/:submissionId', component: ResultsComponent},
 {path: 'ReadStudy', component: ReadStudyComponent},
 {path: 'ReviewReport', component: GradedReportComponent},
 {path:'studentPaper/:id',component: StudentPaperComponent}

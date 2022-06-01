@@ -8,6 +8,7 @@ namespace LoyallaApi.DBModels.Mapper
         public LoyallaMapper()
         {
             CreateMap<caseDto, Cases>();
+            CreateMap<FeedbackDto, Feedback>();
         }
     }
 }

@@ -59,16 +59,16 @@
                     <div class="bg-white px-3 py-5" style="height: 93vh; overflow-y: scroll;">
                         <div>
                             <div class="heading_titile pb-3">
-                                <h3 class="fs-25 text-dark">{{questionsList.paperName}}</h3>
+                                <h3 class="fs-25 text-dark">{{questionsList?.paperName}}</h3>
                             </div>
                             <form [formGroup]="form">
                                 <fieldset *ngFor="let q of questionsList.questions;let i = index">
                                     <div class="fluid_title">
-                                        <h4 class="fs-16 text-dark text-uppercase">{{q.topic}}</h4>
+                                        <h4 class="fs-16 text-dark text-uppercase">{{q?.topic}}</h4>
                                     </div>
                                     <div class="d-flex">
                                         <h1 class="fs-14 text-dark text-uppercase">Q:{{i+1}}</h1>
-                                        <h5 class="pl-3 pb-3 fs-14 text-dark">{{q.questionName}}</h5>
+                                        <h5 class="pl-3 pb-3 fs-14 text-dark">{{q?.questionName}}</h5>
                                     </div>
                                     <div *ngFor="let option of q.options; let j = index">
                                         <label for="{{option.questionId}}"></label>

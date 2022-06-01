@@ -8,6 +8,7 @@ import { CasesService } from 'src/app/shared/services/Case/cases.service';
 })
 export class UserWorkListComponent implements OnInit {
   allCases : any[] = [];
+  submissionId:number=0;
   AttemptStatus={
     Case_Id : 0,
     Student_Id : 0,
@@ -25,7 +26,7 @@ export class UserWorkListComponent implements OnInit {
   }
   getStatusList(item:any)
   {  
-    
+    debugger;
     var Id = parseInt(this.student_Id)
     this.service.getStatus(Id,item.caseId).subscribe((res:any)=>{
       debugger
@@ -80,5 +81,13 @@ export class UserWorkListComponent implements OnInit {
     }
 
     this.router.navigate(['/studentNavbar/studentPaper/'+item.paperId])
+  }
+  navigateToResult(caseId:number){
+    console.log(caseId)
+    // routerLink="/studentNavbar/result/{{1}}"
+    this.service.getSubmissionId(caseId).subscribe((res)=>{
+      this.submissionId = res.code;
+      this.router.navigateByUrl('studentNavbar/result/'+this.submissionId)
+    })
   }
 }

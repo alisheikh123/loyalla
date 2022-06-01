@@ -41,19 +41,21 @@
                     </li>
                     <span class="tooltiptext">Review</span>
                   </div>
-                  <li>
+                  <div class="tooltips">
+                    <!-- routerLink="/StudentSite/ReadStudy" -->
+                    <li *ngIf="item.Status =='Read' || item.Status == 'Unread'">
+                      <a (click)="changeStatus(item)"
+                        ><img src="assets/img/read.png"
+                      /></a>
+                    </li>
+                    <span class="tooltiptext">Read</span>
+                  </div>
+                  <li *ngIf="item.Status == 'Submitted'">
                     <div class="tooltips">
-                      <!-- <a
-                        href=""
-                        routerLink="/StudentSite/ReadReport"
-                        routerLinkActive="active"
+                      <a
+                        (click)="navigateToResult(item.caseId)"
                         ><img src="assets/img/reload.png"
-                      /></a> -->
-                      <li>
-                        <a (click)="changeStatus(item)"
-                          ><img src="assets/img/reload.png"
-                        /></a>
-                      </li>
+                      /></a>
                       <span class="tooltiptext">Retake</span>
                     </div>
                   </li>
