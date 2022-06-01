@@ -845,9 +845,46 @@ namespace LoyallaApi.Controllers
 
             return new EntityResponseModel<object>
             {
-                Code = _context.Submission_tbl.Where(x => x.CaseId == Id).Select(x => x.SubmissionId).FirstOrDefault()
+                Data = _context.Submission_tbl.Where(x => x.CaseId == Id).Select(x => new { x.SubmissionId,x.PaperId }).FirstOrDefault()
+            };
+        }    
+        [HttpGet, Route("GetSubmissionsByPaperId")]
+        public async Task<EntityResponseModel<object>> GetSubmissionsByPaperId(int Id)
+        {
+            var submissionId = _context.Submission_tbl.Where(x => x.PaperId == Id).Select(x => x.SubmissionId).FirstOrDefault();
+            var submissionDetail = _context.SubmissionDetails_tbl.Where(x => x.SubmissionsSubmissionId == submissionId).ToList();
+            return new EntityResponseModel<object>
+            {
+                Data = submissionDetail
+            };
+        }  
+        [HttpGet, Route("GetAttempts")]
+        public async Task<EntityResponseModel<object>> GetAttempts(int Id)
+        {
+            var studentAttemptsCount = _context.StudentCaseAttemptStatus_tbl.Where(x => x.Student_Id == Id && x.Status == "Submitted").Count();
+            return new EntityResponseModel<object>
+            {
+                Code = studentAttemptsCount
             };
         }
+
+        [HttpPost, Route("SaveSurvey")]
+        public async Task SaveSurvey(SurveyDto model)
+        {
+            try
+            {
+                var result = _objectMapper.Map<SurveyDto, Survey>(model);
+                result.CreationDateTime = DateTime.Now;
+                await _context.Survey_tbl.AddAsync(result);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
     }
 
 }

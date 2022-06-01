@@ -13,19 +13,10 @@ export class AuthService {
   constructor(private http: HttpClient, private errorService: ErrorService) { 
   }
 
-  // login(model: any) {
-  //   debugger;
-  //   return this.http.post<any>(this.apiUrl + '/api/Account/login', model).pipe(
-  //     catchError(this.errorService.handleError));
-  // }
-
   login(model:any) {
-    // Normally make a POST request to your APi with your login credentials
     return this.http.post(this.apiUrl + '/api/Account/login', model, { observe: 'response' }).pipe(
       take(1),
       map(res => {
-        debugger;
-        console.log(res);
         let response = new ApiResponse();
         response = Object.assign(response, res);
         if (response.body > 0) {
@@ -39,7 +30,6 @@ export class AuthService {
   }
 
   register(model: any) {
-    debugger;
     return this.http.post<any>(this.apiUrl + '/api/Account/signup', model).pipe(catchError(this.errorService.handleError));
   }
 }

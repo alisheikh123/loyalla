@@ -318,6 +318,39 @@ namespace LoyallaApi.Migrations
                     b.ToTable("Submission_tbl");
                 });
 
+            modelBuilder.Entity("LoyallaApi.DBModels.Survey", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("CreationDateTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsTechnicalIssue")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsUseFullLearningTool")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("Rate")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("TechincalIssueDescription")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Survey_tbl");
+                });
+
             modelBuilder.Entity("LoyallaApi.DBModels.Options", b =>
                 {
                     b.HasOne("LoyallaApi.DBModels.Questions", null)

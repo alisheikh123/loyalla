@@ -31,7 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { StudentPaperComponent } from './components/student/student-site/student-paper/student-paper.component';
 import { CommonModule } from '@angular/common';
 import { EditUploadClassesComponent } from './components/admin/edit-upload-classes/edit-upload-classes.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,8 @@ import { EditUploadClassesComponent } from './components/admin/edit-upload-class
     PaperComponent,
     OptionComponent,
     StudentPaperComponent,
-    EditUploadClassesComponent
+    EditUploadClassesComponent,
+    // NgbModule
   ],
   imports: [
     FormsModule,
@@ -71,6 +72,7 @@ import { EditUploadClassesComponent } from './components/admin/edit-upload-class
       positionClass: 'toast-top-left',
       preventDuplicates: true,}),
     HttpClientModule,
+    NgbModule,
   ],
   providers: [CasesService],
   exports: [

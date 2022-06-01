@@ -12,6 +12,7 @@ export class FeedbackoptionalComponent implements OnInit {
   caseId:number=0;
   submission:number=0;
   studentId:number=0;
+  paperId:number=0;
   feedbackDescription:string='';
   constructor(private activatedRoute: ActivatedRoute,private service:CasesService,private toast:ToastService,private router:Router) { }
 
@@ -21,12 +22,11 @@ export class FeedbackoptionalComponent implements OnInit {
       this.caseId = Number(res['caseId']);
       this.studentId = Number(res['studentId']);
       this.submission = Number(res['submissionId'])
-      console.log(this.submission)
+      this.paperId = Number(res['paperId'])
     });
   }
   getFeedbackDescription(event:any){
     this.feedbackDescription = event.target.value;
-    console.log(this.feedbackDescription);
   }
   submit(){
     const feedbackObject = {
@@ -36,7 +36,7 @@ export class FeedbackoptionalComponent implements OnInit {
     }
     this.service.saveFeedBack(feedbackObject).subscribe((res)=>{
         this.toast.showSuccess("Feedback Successfully Added","Feedback Submission")
-        this.router.navigateByUrl('studentNavbar/result/'+this.submission)
+        this.router.navigateByUrl('studentNavbar/result/'+this.submission+'/'+this.paperId)
     })
   }   
   skip()

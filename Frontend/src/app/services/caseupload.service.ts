@@ -19,7 +19,6 @@ export class CaseuploadService {
     var formData : any=new FormData();
     formData.append("cas.Title",form.Title)
     formData.append("cas.Description",form.Description)
-    console.log(form.Title)
    return this.http.post<any>(this.BaseURL +"api/loyalla/AddCase" , formData)
   }
 

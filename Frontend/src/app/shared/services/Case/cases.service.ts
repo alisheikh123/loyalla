@@ -59,17 +59,14 @@ export class CasesService {
       catchError(this.errorService.handleError));
   }
   addNewQuestion(questions: any) {
-    debugger;
    return this.http.post(this.apiUrl + '/api/Question/addQuestion', questions).pipe(
      catchError(this.errorService.handleError));
  }
   submitPaper(model: any) {
-    debugger;
    return this.http.post(this.apiUrl + '/api/Loyalla/SubmitPaper', model).pipe(
      catchError(this.errorService.handleError));
  }
  addNewPaper(paper: any) {
-  debugger;
  return this.http.post(this.apiUrl + '/api/Question/addPaper', paper).pipe(
    catchError(this.errorService.handleError));
 }
@@ -111,5 +108,17 @@ getResult(submissionId:number){
 }
 getSubmissionId(caseId:number){
   return this.http.get<any>(this.apiUrl+'/api/Loyalla/GetSubmissionId?Id='+caseId).pipe(catchError(this.errorService.handleError));
+}
+getSubmissionIdByPaperId(paperId:number){
+  return this.http.get<any>(this.apiUrl+'/api/Loyalla/GetSubmissionsByPaperId?Id='+paperId).pipe(catchError(this.errorService.handleError));
+}
+saveSurvey(model:any)
+{
+  return this.http.post(this.apiUrl + '/api/Loyalla/SaveSurvey', model).pipe(
+    catchError(this.errorService.handleError));
+}
+getAttempts(studentId:number){
+  return this.http.get<any>(this.apiUrl+'/api/Loyalla/GetAttempts?Id='+studentId).pipe(catchError(this.errorService.handleError));
+
 }
 }

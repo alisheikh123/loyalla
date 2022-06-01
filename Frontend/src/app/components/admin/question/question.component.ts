@@ -34,11 +34,9 @@ export class QuestionComponent implements OnInit {
   {
     this.service.getAllQuestions().subscribe((res:any)=>
     {
-      debugger;
       this.questions = res;
       this.service.getPaperById(res?.paperId).subscribe((response:any)=>
       {
-        debugger;
         this.questions = response;
 
       });
@@ -72,9 +70,7 @@ export class QuestionComponent implements OnInit {
     }
     this.service.addNewQuestion(model).subscribe(
       (res: any) => {
-        debugger
           alert('New user created!' + 'Registration successful.');
-          // this.router.navigate([""]);
         }
 
 

@@ -45,7 +45,6 @@ export class PaperComponent implements OnInit {
     }
     this.service.addNewPaper(model).subscribe(
       (res: any) => {
-        debugger
           alert('New user Paper!' + 'Registration successful.');
         }
 

@@ -91,7 +91,7 @@
                     </div>
                     <div class="float-right py-3">
                         <div class="btnpnk mx-2">
-                            <a (click)="submit()">SAVE</a>
+                            <a (click)="submit()" *ngIf="reviewId==0">SAVE</a>
                         </div>
                     </div>
                 </div>

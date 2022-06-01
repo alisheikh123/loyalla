@@ -30,7 +30,6 @@ export class AdminGradedReportComponent implements OnInit {
     });
   }
   getDescription(event:any,questionId:number){
-    debugger;
     const anwserSheet : AnwserSheet = {
       questionId:questionId,
       optionId:0,
@@ -52,7 +51,6 @@ export class AdminGradedReportComponent implements OnInit {
 
 
   saveFormData(){
-    console.log(this.arr)
     this.cases.saveAnwser(this.arr).subscribe((res)=>{
       this.toast.success("Updated Successfully","Anwser Sheet")
       setTimeout(() => {window.location.reload()}, 2000); 

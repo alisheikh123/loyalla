@@ -15,7 +15,6 @@ export class UploadClassesComponent implements OnInit {
   myFiles:any [] = [];
 
   getFileDetails (e) {
-    //console.log (e.target.files);
     if(e.target.files.length === 0)
       return;
     
@@ -23,7 +22,6 @@ export class UploadClassesComponent implements OnInit {
 
       this.myFiles.push(e.target.files[i]);
     }
-    console.log(this.myFiles)
   }
 
   case=new FormGroup({
@@ -37,18 +35,12 @@ export class UploadClassesComponent implements OnInit {
 
   uploadCase()
   {
-    debugger
     var formData: any = new FormData();
           for(var i =0 ; i< this.myFiles.length; i++)
           {
             formData.append("Image.files", this.myFiles[i]);
           }
-          //formData.append("us.User.User_Id", response.user_Id);
-    // this.caseuploadSer.FileUpload(formData).subscribe(res=>{
-    //   console.log(res)
-    // })
     this.caseuploadSer.caseUpload(this.case.value).subscribe(res=>{
-      console.log(res)
     })
   }
 }

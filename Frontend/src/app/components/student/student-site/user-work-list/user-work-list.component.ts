@@ -9,6 +9,7 @@ import { CasesService } from 'src/app/shared/services/Case/cases.service';
 export class UserWorkListComponent implements OnInit {
   allCases : any[] = [];
   submissionId:number=0;
+  paperId:number=0;
   AttemptStatus={
     Case_Id : 0,
     Student_Id : 0,
@@ -26,10 +27,8 @@ export class UserWorkListComponent implements OnInit {
   }
   getStatusList(item:any)
   {  
-    debugger;
     var Id = parseInt(this.student_Id)
     this.service.getStatus(Id,item.caseId).subscribe((res:any)=>{
-      debugger
 
       if(res.data.length === 0){
         item.Status = "Unread";
@@ -43,12 +42,6 @@ export class UserWorkListComponent implements OnInit {
         item.Status = "Submitted";
         this.allCases.push(item)
       }
-      console.log(this.allCases);
-      // this.allCases = res;
-      // this.getStatusList(res)
-      // this.allCases[0].status = true
-
-      // console.log(this.allCases);
   });
   }
   getCaseList()
@@ -64,7 +57,6 @@ export class UserWorkListComponent implements OnInit {
     this.router.navigate(['/UserWOrkList/ReadStudy']);
   }
   changeStatus(item: any){
-    debugger
     if(item.Status === "Unread")
     {
       
@@ -80,14 +72,13 @@ export class UserWorkListComponent implements OnInit {
 
     }
 
-    this.router.navigate(['/studentNavbar/studentPaper/'+item.paperId])
+    this.router.navigate(['/studentNavbar/studentPaper/'+item.paperId+'/0'])
   }
   navigateToResult(caseId:number){
-    console.log(caseId)
-    // routerLink="/studentNavbar/result/{{1}}"
     this.service.getSubmissionId(caseId).subscribe((res)=>{
-      this.submissionId = res.code;
-      this.router.navigateByUrl('studentNavbar/result/'+this.submissionId)
+      this.submissionId = res.data.submissionId;
+      this.paperId = res.data.paperId;
+      this.router.navigateByUrl('studentNavbar/result/'+this.submissionId+'/'+this.paperId)
     })
   }
 }

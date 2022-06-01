@@ -11,11 +11,13 @@ import { ToastService } from 'src/app/shared/services/shared/toast.service';
 })
 export class StudentPaperComponent implements OnInit {
   questionsList: any;
+  reviewId:number = 0;
   isHidden: boolean = false;
   answers: any[] = [];
   optionList: any;
   submissionId: number = 0;
   status: any;
+  attemptedOptionDetail:any;
   paperId: number = 0;
   TotalQuestions: number = 0;
   caseId: number = 0;
@@ -42,13 +44,25 @@ export class StudentPaperComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((res) => {
       this.paperId = Number(res['id']);
+      this.reviewId = Number(res['reviewId'])
     });
+    
     this.getQuestions();
+    if(this.reviewId==1){
+      this.isHidden=true;
+      this.getSubmissionAgainstPaperId();
+    }
+    if(this.reviewId==0){
+      this.isHidden=false
+    }
   }
-
+  getSubmissionAgainstPaperId(){
+    this.cases.getSubmissionIdByPaperId(this.paperId).subscribe((res)=>{
+      this.attemptedOptionDetail = res.data;
+    })
+  }
   getQuestions() {
     this.cases.getQuestionsWithAnwser(this.paperId).subscribe((res: any) => {
-      debugger;
       this.questionsList = res?.data;
       this.caseId = res?.data.caseId;
       this.TotalQuestions = this.questionsList.questions.length;
@@ -59,13 +73,10 @@ export class StudentPaperComponent implements OnInit {
         );
       });
       this.getStatusList();
-      console.log(this.questionsList);
     });
   }
 
   selectedOption(model: any, obj: any) {
-    debugger;
-
     let findId = obj.find((x: any) => x.isAnwsers === 1);
 
     var data = {
@@ -100,14 +111,12 @@ export class StudentPaperComponent implements OnInit {
         submission: this.answers,
       };
       this.cases.submitPaper(model).subscribe((res: any) => {
-        console.log(res);
         this.AttemptStatus.Case_Id = this.caseId;
         this.AttemptStatus.Student_Id = parseInt(studentid);
         this.AttemptStatus.Status = 'Submitted';
         this.AttemptStatus.Created_By = parseInt(studentid);
         this.AttemptStatus.Updated_By = parseInt(studentid);
         this.submissionId = res.code;
-        console.log("Submission Id",this.submissionId)
 
         this.cases
           .UpdateCaseStatusSubmission(this.AttemptStatus)
@@ -123,7 +132,9 @@ export class StudentPaperComponent implements OnInit {
                 '/' +
                 this.AttemptStatus.Student_Id +
                 '/' +
-                this.submissionId
+                this.submissionId+
+                '/' +
+                this.paperId
             );
           });
       });
@@ -137,7 +148,6 @@ export class StudentPaperComponent implements OnInit {
     this.cases
       .getStatus(parseInt(studentid), this.caseId)
       .subscribe((res: any) => {
-        console.log('status', res);
         if (res.data.length > 0) {
           this.status = res.data[0].status;
         }

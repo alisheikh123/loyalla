@@ -41,7 +41,6 @@ login()
   else{
 
     this.service.login(this.loginform.value).subscribe(response=>{
-      debugger;
       if(parseInt(response) > 0)
       {
         this.invalidLogin = false;
