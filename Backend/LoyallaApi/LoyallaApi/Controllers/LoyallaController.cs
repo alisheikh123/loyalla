@@ -298,7 +298,7 @@ namespace LoyallaApi.Controllers
                                 PaperId = p.Id,
                                 PaperName = p.PaperName
 
-                            }).ToList();
+                            }).OrderByDescending(x => x.CaseId).ToList();
 
             return CaseList;
         }
@@ -506,11 +506,11 @@ namespace LoyallaApi.Controllers
                 lastSubmissionId++;
                 model.SubmissionId = lastSubmissionId;
                 model.CreationDateTime = DateTime.Now;
-                 _context.Submission_tbl.Add(model);
+                _context.Submission_tbl.Add(model);
                 _context.SaveChanges();
-                
+
             }
-                catch (Exception ex)
+            catch (Exception ex)
             {
 
                 throw;
@@ -840,14 +840,14 @@ namespace LoyallaApi.Controllers
             };
         }
         [HttpGet, Route("GetSubmissionId")]
-        public async Task<EntityResponseModel<object>> GetSubmissionId(int Id)
+        public async Task<EntityResponseModel<object>> GetSubmissionId(int Id, int StudentId)
         {
 
             return new EntityResponseModel<object>
             {
-                Data = _context.Submission_tbl.Where(x => x.CaseId == Id).Select(x => new { x.SubmissionId,x.PaperId }).FirstOrDefault()
+                Data = _context.Submission_tbl.Where(x => x.CaseId == Id && x.StudentId == StudentId).Select(x => new { x.SubmissionId, x.PaperId }).FirstOrDefault()
             };
-        }    
+        }
         [HttpGet, Route("GetSubmissionsByPaperId")]
         public async Task<EntityResponseModel<object>> GetSubmissionsByPaperId(int Id)
         {
@@ -857,7 +857,7 @@ namespace LoyallaApi.Controllers
             {
                 Data = submissionDetail
             };
-        }  
+        }
         [HttpGet, Route("GetAttempts")]
         public async Task<EntityResponseModel<object>> GetAttempts(int Id)
         {
@@ -866,6 +866,37 @@ namespace LoyallaApi.Controllers
             {
                 Code = studentAttemptsCount
             };
+        }
+        [HttpGet, Route("getStudents")]
+        public async Task<List<GetStudents>> getStudents(int Id)
+        {
+            List<GetStudents> getStudents = new List<GetStudents>();
+
+            var student = (from at in _context.StudentCaseAttemptStatus_tbl
+                           join c in _context.Case_tbl on at.Case_Id equals c.Case_Id
+                           join sign in _context.Signup on at.Student_Id equals sign.Id
+                           join feed in _context.Feedback_tbl on c.Case_Id equals feed.Case_Id
+                           join submiss in _context.Submission_tbl on at.Case_Id equals submiss.CaseId
+                           where c.Case_Id == Id && at.Status == "Submitted" && at.Student_Id == feed.Student_Id && at.Student_Id == submiss.StudentId
+                           select new { c.Title, sign.Username, feed.Feedbacks, feed.CreationDateTime, submiss.SubmissionId }).ToList();
+
+            foreach (var item in student)
+            {
+                getStudents.Add(new GetStudents
+                {
+                    Case = item.Title,
+                    Feedback = item.Feedbacks,
+                    CreationDate = item.CreationDateTime,
+                    SubmissionId = item.SubmissionId,
+                    Name = item.Username,
+                    Grade = getMarks(item.SubmissionId).Value,
+                    TotalQuestion = getMarks(item.SubmissionId).Count
+                });
+                
+
+            }
+
+            return getStudents;
         }
 
         [HttpPost, Route("SaveSurvey")]
@@ -883,6 +914,38 @@ namespace LoyallaApi.Controllers
 
                 throw;
             }
+        }
+
+        [HttpGet, Route("getPaperId")]
+        public async Task<int> getPaperId(int Id)
+        {
+
+            return _context.Paper_tbl.Where(x => x.CaseId == Id).Select(x => x.Id).FirstOrDefault();
+             
+        }
+        private ReturnStudentMarksMapper getMarks(int Id)
+        {
+            int value = 0;
+            var submissionDetail = _context.SubmissionDetails_tbl.Where(x => x.SubmissionsSubmissionId == Id).ToList();
+            var totalQuestion = _context.Submission_tbl.Where(x => x.SubmissionId == Id).Select(x => x.TotalQuestions).FirstOrDefault();
+            foreach (var item in submissionDetail)
+            {
+
+                if (item.AttemptedOptionId == item.CorrectOptionId)
+                {
+                    value++;
+                }
+                else
+                {
+                    value = value + 0;
+                }
+            }
+            return new ReturnStudentMarksMapper
+            {
+                Count = totalQuestion,
+                Value = value
+            };
+
         }
 
     }

@@ -106,8 +106,8 @@ saveFeedBack(model:any){
 getResult(submissionId:number){
   return this.http.get<any>(this.apiUrl+'/api/Loyalla/GetResult?Id='+submissionId).pipe(catchError(this.errorService.handleError));
 }
-getSubmissionId(caseId:number){
-  return this.http.get<any>(this.apiUrl+'/api/Loyalla/GetSubmissionId?Id='+caseId).pipe(catchError(this.errorService.handleError));
+getSubmissionId(caseId:number,studentId:number){
+  return this.http.get<any>(this.apiUrl+'/api/Loyalla/GetSubmissionId?Id='+caseId+'&StudentId='+studentId).pipe(catchError(this.errorService.handleError));
 }
 getSubmissionIdByPaperId(paperId:number){
   return this.http.get<any>(this.apiUrl+'/api/Loyalla/GetSubmissionsByPaperId?Id='+paperId).pipe(catchError(this.errorService.handleError));
@@ -119,6 +119,14 @@ saveSurvey(model:any)
 }
 getAttempts(studentId:number){
   return this.http.get<any>(this.apiUrl+'/api/Loyalla/GetAttempts?Id='+studentId).pipe(catchError(this.errorService.handleError));
+
+}
+getStudentList(caseId:number){
+  return this.http.get<any>(this.apiUrl+'/api/Loyalla/getStudents?Id='+caseId).pipe(catchError(this.errorService.handleError));
+
+}
+getPaperId(caseId:number){
+  return this.http.get<any>(this.apiUrl+'/api/Loyalla/getPaperId?Id='+caseId).pipe(catchError(this.errorService.handleError));
 
 }
 }

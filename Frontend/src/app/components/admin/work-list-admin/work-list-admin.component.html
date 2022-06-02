@@ -29,6 +29,7 @@
                         <th class="fs-15 text-center">Comments</th>
                         <th class="fs-15 text-center">Date</th>
                         <th class="fs-15 text-center">Answer sheet</th>
+                        <th class="fs-15 text-center">User</th>
                         <th class="fs-15 text-center">Actions</th>
                     </tr>
                 </thead>
@@ -38,6 +39,7 @@
                         <td class="text-center">{{item.caseName}}</td>
                         <td class="text-center">{{item.comments}}</td>
                         <td class="text-center">{{item.creationDate | date}}</td>
+                        
                         <td class="text-center">
                             <ul class="d-flex justify-content-center">
                                 <li><a placement="top" ngbTooltip="Tooltip on top" title="{{item.paperName}}"
@@ -49,6 +51,7 @@
                                         (click)="deleteCase(item.caseId)"></li>
                             </ul>
                         </td>
+                        <td class="text-center" [routerLink]="['/adminNavbar/StudentResultList/'+item.caseId]"><i class="fa fa-user fa-lg" aria-hidden="true"></i></td>
                         <td class="text-center">
                             <div class="checkedbox">
                             </div>

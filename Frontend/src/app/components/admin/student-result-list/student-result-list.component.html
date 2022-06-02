@@ -17,84 +17,22 @@
                         <th class="fs-15">Student Feedback</th>
                         <th class="fs-15">Date</th>
                         <th class="fs-15">Student</th>
-                        <th class="fs-15">Attempts</th>
+                        <!-- <th class="fs-15">Attempts</th> -->
                         <th class="fs-15">Grade</th>
                         <th class="fs-15">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white">
-                            <td>Knee MRI Case 1</td>
-                            <td style="width: 30%;">Lorem Ipsum has been the industry's  standard dummy text ever.</td>
-                            <td>2/9/2022</td>
-                            <td>John</td>
-                            <td>5</td>
-                            <td>9/20</td>
-                            <td><img src="assets/img/action.png"></td>
+                        <tr class="bg-white" *ngFor="let i of studentList">
+                            <td>{{i.case}}</td>
+                            <td style="width: 30%;">{{i.feedback}}</td>
+                            <td>{{i.creationDate | date}}</td>
+                            <td>{{i.name}}</td>
+                            <!-- <td>5</td> -->
+                            <td>{{i.grade}}/{{i.totalQuestion}}</td>
+                            <td><img src="assets/img/action.png"  (click)="navigateToResult()" ></td>
                         </tr>
-                        <tr class="bg-white">
-                            <td>Knee MRI Case 1</td>
-                            <td style="width: 30%;">Lorem Ipsum has been the industry's  standard dummy text ever.</td>
-                            <td>2/9/2022</td>
-                            <td>Smith</td>
-                            <td>2</td>
-                            <td>5/20</td>
-                            <td><img src="assets/img/action.png"></td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td>Knee MRI Case 1</td>
-                            <td style="width: 30%;">Lorem Ipsum has been the industry's  standard dummy text ever.</td>
-                            <td>2/9/2022</td>
-                            <td>Aloe</td>
-                            <td>7</td>
-                            <td>14/20</td>
-                            <td><img src="assets/img/action.png"></td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td>Knee MRI Case 1</td>
-                            <td style="width: 30%;">Lorem Ipsum has been the industry's  standard dummy text ever.</td>
-                            <td>2/9/2022</td>
-                            <td>Gotaf</td>
-                            <td>4</td>
-                            <td>15/20</td>
-                            <td><img src="assets/img/action.png"></td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td>Knee MRI Case 1</td>
-                            <td style="width: 30%;">Lorem Ipsum has been the industry's  standard dummy text ever.</td>
-                            <td>2/9/2022</td>
-                            <td>Albert</td>
-                            <td>2</td>
-                            <td>19/20</td>
-                            <td><img src="assets/img/action.png"></td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td>Knee MRI Case 1</td>
-                            <td style="width: 30%;">Lorem Ipsum has been the industry's  standard dummy text ever.</td>
-                            <td>2/9/2022</td>
-                            <td>Ohtea</td>
-                            <td>7</td>
-                            <td>18/20</td>
-                            <td><img src="assets/img/action.png"></td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td>Knee MRI Case 1</td>
-                            <td style="width: 30%;">Lorem Ipsum has been the industry's  standard dummy text ever.</td>
-                            <td>2/9/2022</td>
-                            <td>Smit</td>
-                            <td>4</td>
-                            <td>10/20</td>
-                            <td><img src="assets/img/action.png"></td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td>Knee MRI Case 1</td>
-                            <td style="width: 30%;">Lorem Ipsum has been the industry's  standard dummy text ever.</td>
-                            <td>2/9/2022</td>
-                            <td>Doe</td>
-                            <td>7</td>
-                            <td>7/20</td>
-                            <td><img src="assets/img/action.png"></td>
-                        </tr>
+                
                     </tbody>
                 </table>
             </div>
