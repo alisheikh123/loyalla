@@ -11,5 +11,6 @@ namespace LoyallaApi.DBModels.DTO
         public int SubmissionId { get; set; }
         public int Grade { get; set; }
         public int TotalQuestion { get; set; }
+        public int StudentId { get; set; }
     }
 }

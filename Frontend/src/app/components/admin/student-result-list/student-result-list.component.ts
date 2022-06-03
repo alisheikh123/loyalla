@@ -12,9 +12,9 @@ export class StudentResultListComponent implements OnInit {
   studentList: any;
   paperId: any;
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private service: CasesService,
-    private router:Router
+  private activatedRoute: ActivatedRoute,
+  private service: CasesService,
+  private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -29,10 +29,12 @@ export class StudentResultListComponent implements OnInit {
   getStudentsDetail() {
     this.service.getStudentList(this.caseId).subscribe((res) => {
       this.studentList = res;
-      console.log(this.studentList);
     });
   }
   navigateToResult() {
     this.router.navigateByUrl('/adminNavbar/studentPaper/'+this.paperId+'/1')
+  }
+  getStudentSurveyList(studentId:number){
+    this.router.navigateByUrl('/adminNavbar/studentSurvey/'+studentId)
   }
 }

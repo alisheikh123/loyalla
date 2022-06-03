@@ -35,6 +35,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StudentSurveyDetailComponent } from './student-survey-detail/student-survey-detail.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     OptionComponent,
     StudentPaperComponent,
     EditUploadClassesComponent,
+    StudentSurveyDetailComponent,
   ],
   imports: [
     FormsModule,

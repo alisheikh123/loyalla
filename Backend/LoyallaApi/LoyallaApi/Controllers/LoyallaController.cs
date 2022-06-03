@@ -878,7 +878,7 @@ namespace LoyallaApi.Controllers
                            join feed in _context.Feedback_tbl on c.Case_Id equals feed.Case_Id
                            join submiss in _context.Submission_tbl on at.Case_Id equals submiss.CaseId
                            where c.Case_Id == Id && at.Status == "Submitted" && at.Student_Id == feed.Student_Id && at.Student_Id == submiss.StudentId
-                           select new { c.Title, sign.Username, feed.Feedbacks, feed.CreationDateTime, submiss.SubmissionId }).ToList();
+                           select new { c.Title, sign.Username,sign.Id,feed.Feedbacks, feed.CreationDateTime, submiss.SubmissionId }).ToList();
 
             foreach (var item in student)
             {
@@ -890,7 +890,8 @@ namespace LoyallaApi.Controllers
                     SubmissionId = item.SubmissionId,
                     Name = item.Username,
                     Grade = getMarks(item.SubmissionId).Value,
-                    TotalQuestion = getMarks(item.SubmissionId).Count
+                    TotalQuestion = getMarks(item.SubmissionId).Count,
+                    StudentId = item.Id
                 });
                 
 
@@ -921,6 +922,12 @@ namespace LoyallaApi.Controllers
         {
 
             return _context.Paper_tbl.Where(x => x.CaseId == Id).Select(x => x.Id).FirstOrDefault();
+             
+        }       
+        [HttpGet, Route("getSurvey")]
+        public async Task<List<Survey>> getSurvey(int Id)
+        {
+            return _context.Survey_tbl.Where(x => x.StudentId == Id).ToList();
              
         }
         private ReturnStudentMarksMapper getMarks(int Id)

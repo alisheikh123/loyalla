@@ -129,4 +129,8 @@ getPaperId(caseId:number){
   return this.http.get<any>(this.apiUrl+'/api/Loyalla/getPaperId?Id='+caseId).pipe(catchError(this.errorService.handleError));
 
 }
+studentSuveyList(studentId:number){
+  return this.http.get<any>(this.apiUrl+'/api/Loyalla/getSurvey?Id='+studentId).pipe(catchError(this.errorService.handleError));
+
+}
 }

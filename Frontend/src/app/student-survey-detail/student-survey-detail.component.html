@@ -3,36 +3,36 @@
         <div class="container py-4 px-lg-5">
             <div class="row px-3 pb-2">
             <div class="heading col-md-6">
-                <h3 class="fs-25 text-dark fw-bold">Student Result List</h3>
+                <h3 class="fs-25 text-dark fw-bold"> Survey List</h3>
             </div>
             <div class="btn_black col-md-6 text-right">
-                <a href="" routerLink="/Setting"><img src="assets/img/exports.png"> &nbsp; EXPORT</a>
+                <!-- <a href="" routerLink="/Setting"><img src="assets/img/exports.png"> &nbsp; EXPORT</a> -->
               </div>
             </div>
             <div class="table table-responsive">
                 <table class="table bg-transparent">
                     <thead>
                     <tr>
-                        <th class="fs-15">Case Title</th>
-                        <th class="fs-15">Student Feedback</th>
-                        <th class="fs-15">Date</th>
-                        <th class="fs-15">Student</th>
-                        <th class="fs-15">Grade</th>
-                        <th class="fs-15">Action</th>
+                        <th class="fs-15">Technical Issue Description</th>
+                        <th class="fs-15">Is Techincal Issue</th>
+                        <th class="fs-15">Comments against Tool</th>
+                        <th class="fs-15">Is Full Learning Tool</th>
+                        <th class="fs-15">Rate</th>
+                        <th class="fs-15">Creation Date</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white" *ngFor="let i of studentList" (click)="getStudentSurveyList(i.studentId)">
-                        
-                            <td>{{i.case}}</td>
-                            <td style="width: 30%;">{{i.feedback}}</td>
-                            <td>{{i.creationDate | date}}</td>
-                            <td>{{i.name}}</td>
-                            <td>{{i.grade}}/{{i.totalQuestion}}</td>
-                       
-                            <td><img src="assets/img/action.png"  (click)="navigateToResult()" ></td>
+                        <tr class="bg-white" *ngFor="let i of surveyDetail">
+                            <td>{{i.techincalIssueDescription}}</td>
+                            <td style="width: 30%;">{{(i.isTechnicalIssue==true?'Yes':'No')}}</td>
+                            <td>{{i.comment}}</td>
+                            <td>{{(i.isUseFullLearningTool==true ? 'Yes' : 'No')}}</td>
+                             <td>{{i.rate}}</td>
+                            <td>{{i.creationDateTime | date}}</td>
                         </tr>
-                
+                        <tr *ngIf="surveyDetail.length==0">
+                            <p>No Record Found</p>
+                        </tr>
                     </tbody>
                 </table>
             </div>
