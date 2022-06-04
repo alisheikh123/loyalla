@@ -39,7 +39,7 @@ export class ResultsComponent implements OnInit {
   }
   showSurvey(){
     this.service.getAttempts(this.student_Id).subscribe((res)=>{
-      if(res.code>=1){
+      if(res.code>=10){
         setTimeout(() => (this.router.navigateByUrl('studentNavbar/Comment/'+ this.student_Id)), 3000)
       }
       else{
