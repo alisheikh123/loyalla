@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {}
+    "D:\\Ali\\Angular & .NET\\Angular & .NET\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {
+    "D:\\Ali\\Angular & .NET\\Angular & .NET\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+        "projectUniqueName": "D:\\Ali\\Angular & .NET\\Angular & .NET\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
         "projectName": "LoyallaApi",
-        "projectPath": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
-        "packagesPath": "C:\\Users\\Zaid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zaid\\Documents\\GitHub\\Loyala\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
+        "projectPath": "D:\\Ali\\Angular & .NET\\Angular & .NET\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\LoyallaApi.csproj",
+        "packagesPath": "C:\\Users\\AliRazaTahir\\.nuget\\packages\\",
+        "outputPath": "D:\\Ali\\Angular & .NET\\Angular & .NET\\Loyalla\\Backend\\LoyallaApi\\LoyallaApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Zaid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AliRazaTahir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -108,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

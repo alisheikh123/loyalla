@@ -14,12 +14,12 @@ const routes: Routes = [
 {path:'studentNavbar', component: StudentNavBarComponent, children:[
 {path: '', component: SignUpComponent },
 {path: 'UserWorkList', component: UserWorkListComponent},
-{path: 'Comment', component: CommentFeedbackComponent},
-{path: 'FeedbackOptional', component: FeedbackoptionalComponent},
-{path: 'result', component: ResultsComponent},
+{path: 'Comment/:studentId', component: CommentFeedbackComponent},
+{path: 'FeedbackOptional/:caseId/:studentId/:submissionId/:paperId', component: FeedbackoptionalComponent},
+{path: 'result/:submissionId/:paperId/:reviewId', component: ResultsComponent},
 {path: 'ReadStudy', component: ReadStudyComponent},
 {path: 'ReviewReport', component: GradedReportComponent},
-{path:'studentPaper/:id',component: StudentPaperComponent}
+{path:'studentPaper/:id/:reviewId',component: StudentPaperComponent}
 ]},
 ];
 

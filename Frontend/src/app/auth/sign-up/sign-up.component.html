@@ -1,106 +1,202 @@
 <div class="position-relative py-5" style="background-color: #f5f5f5;">
     <section class="banner_section_title">
         <div class="container">
-        <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-md-12 text-left">
-        <div class="title_all">
-        <ul>
-            <li><a href="#" routerLink="/" routerLinkActive="router-link-active">Home /</a></li>
-            <li><a href="#">Signup</a></li>
-        </ul>
-        </div>
-        </div>
-        </div>
-        </div>
-</section>
-    <div class="col-md-12 ">
-       <h1 class="text-center mt-4 mb-4">Sign Up</h1>
-    </div>
-    <div class="container">
- <form class="form" [formGroup]="registrationForm" novalidate="novalidate" (ngSubmit)="submit()">
-    <section class="banner_section">
-        <div class="container">
-            <div class="row">
-             <div class="col-lg-6">
-                 <div class="form_banner">
-                   <div class="inpfiled">
-                       <label>Username</label>
-                       <input type="text" placeholder="Enter Your Name" formControlName="userName" class="form-control">
-                       <label class="text-danger" *ngIf="registrationForm.get('userName')!.touched && registrationForm.get('userName')!.errors?.['required']">This field is mandatory.</label>
-                   </div>
-                   <div class="inpfiled">
-                    <label>Email</label>
-                    <input class="form-control" formControlName="email" placeholder="Enter Email">
-                    <label class="text-danger" *ngIf="registrationForm.get('email')!.touched && registrationForm.get('email')!.errors?.['email']">Invalid email address.</label>
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="col-md-12 text-left">
+                    <div class="title_all">
+                        <ul>
+                            <li><a href="#" routerLink="/" routerLinkActive="router-link-active">Home /</a></li>
+                            <li><a href="#">Signup</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="inpfiled">
-                    <label>Location</label>
-                    <select formControlName="location" class="form-control" name="location"
-                    id="location" (change)="selectCountry($event)">
-                    <option *ngFor="let country of countries" [value]="country.name">
-                        {{country.name}}</option>
-                    <option [value]=null selected>Select Country</option>
-                </select>
-                </div>
-                <div class="inpfiled">
-                    <label>Current Status</label>
-                    <select class="form-control" formControlName="currentStatus" name="currentStatus" id="currentStatus" #select (change)="changeStatus($event)">
-                        <option *ngFor="let s of status" [value]="s.name">{{s.name}}</option>
-                        <option [value]=null selected>Select Current Status</option>
-                    </select>
-                </div>
-                <div class="inputfiled" id="isOtherStatus" *ngIf="isOtherStatus">
-                    <label>Other</label>
-                    <input type="text" placeholder="Please Specify" formControlName="otherStatus" class="form-control">
-                </div>
-                <div class="inpfiled">
-                    <label>Current Year Of Medical Traning</label>
-                    <select class="form-control" formControlName="medicalTraining" name="medicalTraining" id="medicalTraining" #selects (change)="changeTraining($event)">
-                        <option *ngFor="let t of trainingType" [value]="t.name">{{t.name}}</option>
-                    </select>
-                </div>
-                <div class="inputfiled" id="isOtherTraining" *ngIf="isOtherTraining">
-                    <label>Other</label>
-                    <input type="text" placeholder="Please Specify" formControlName="otherTraining" class="form-control">
-                </div>
-                 </div>
-             </div>
-             <div class="col-lg-6">
-                <div class="form_banner">
-                  <div class="inpfiled">
-                      <label>Password</label>
-                      <input type="password" formControlName="password" name="password" id="password" placeholder="Enter Your Password" class="form-control">
-                  </div>
-                  <div class="inpfiled">
-                   <label>User Age</label>
-                   <input type="text" placeholder="Enter Age" formControlName="age" class="form-control"  name="age" id="age"   >
-               </div>
-               <div class="inpfiled">
-                   <label>Select Your Field</label>
-                   <select class="form-control" formControlName="field" name="field" id="field" #MySelect (change)="changeField($event)">
-                       <option *ngFor="let f of field" [value]="f.name">{{f.name}}</option>
-                   </select>
-               </div>
-               <div class="inputfiled" id="isOtherField" *ngIf="isOtherField">
-                <label>Other</label>
-                <input type="text" placeholder="Please Specify" formControlName="otherField" class="form-control">
-            </div>
-               <div class="inpfiled">
-                   <label>Current Year Of Medical School</label>
-                   <select class="form-control" formControlName="school" name="school" id="school" #selectschool (change)="changeSchool($event)">
-                       <option *ngFor="let s of school" [value]="s.name">{{s.name}}</option>
-                   </select>
-               </div>
-                </div>
-            </div>
             </div>
         </div>
     </section>
-    <div class="row btn_marg my-4 d-flex justify-content-end">
-        <div class="btn_col1">
-            <button  type="submit"  [disabled]="!registrationForm.valid" >SIGNUP NOW</button>
-        </div>
-   </div>
-</form>
-   </div>
+    <div class="col-md-12 ">
+        <h1 class="text-center mt-4 mb-4">Sign Up</h1>
+    </div>
+    <div class="container">
+        <form class="form" [formGroup]="registrationForm" novalidate="novalidate" (ngSubmit)="submit()">
+            <section class="banner_section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form_banner">
+                                <div class="inpfiled">
+                                    <label>Username
+                                        <small>*</small>
+                                    </label>
+                                    <input type="text" placeholder="Enter Your Name"
+                                        [(ngModel)]="users.userInfo.UserName" formControlName="userName"
+                                        class="form-control">
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('userName')!.touched && registrationForm.get('userName')!.errors?.['required']">Please fill this field.</label><br>
+                                    <span class="text-danger" *ngIf="checkUserNameFill">This field is mandatory.</span>
+                                </div>
+                                <div class="inpfiled">
+                                    <label>Email
+                                        <small>*</small>
+                                    </label>
+                                    <input class="form-control" 
+                                    [(ngModel)]="users.userInfo.Email"
+                                    formControlName="email" placeholder="Enter Email">
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('email')!.touched && registrationForm.get('email')!.errors?.['required'] && registrationForm.get('email')!.errors?.['email']">Please fill this field</label> <br>
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('email')!.touched && registrationForm.get('email')!.errors?.['email'] && registrationForm.get('email')!.errors?.['required']">Invalid
+                                        email address.</label>
+                                    <span class="text-danger" *ngIf="checkEmailFill">This field is mandatory.</span>
+                                </div>
+
+                                <div class="inpfiled">
+                                    <label>Location
+                                        <small>*</small>
+                                    </label>
+                                    <select formControlName="location" [(ngModel)]="users.userInfo.Location" class="form-control" name="location"
+                                        id="location" (change)="selectCountry($event)">
+                                        <option  *ngFor="let country of countries" [value]="country.name">
+                                            {{country.name}}</option>
+                                        <option [value]=null selected>Select Country</option>
+                                    </select>
+
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('location')!.touched && registrationForm.get('location')!.errors?.['required']">Please fill this field.</label><br>
+                                    <span class="text-danger" *ngIf="checkLocFill">This field is mandatory.</span>
+                                </div>
+
+                                <div class="inpfiled">
+                                    <label>Current Status
+                                        <small>*</small>
+                                    </label>
+                                    <select class="form-control" formControlName="currentStatus"
+                                    [(ngModel)]="users.userInfo.CurrentStatus"
+                                    name="currentStatus"
+                                        id="currentStatus" #select (change)="changeStatus($event)">
+                                        <option *ngFor="let s of status" [value]="s.name">{{s.name}}</option>
+                                        <option [value]=null selected>Select Current Status</option>
+                                    </select>
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('currentStatus')!.touched && registrationForm.get('currentStatus')!.errors?.['required']">Please fill this field.</label><br>
+                                    <span class="text-danger" *ngIf="checkstatusFill">This field is mandatory.</span>
+                                </div>
+
+                                <div class="inputfiled" id="isOtherStatus" *ngIf="isOtherStatus">
+                                    <label>Other
+
+                                    </label>
+                                    <input type="text" placeholder="Please Specify"  formControlName="otherStatus"
+                                        class="form-control">
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('otherStatus')!.touched && registrationForm.get('otherStatus')!.errors?.['required']">Please fill this field.</label><br>
+                                </div>
+
+                                <div class="inpfiled">
+                                    <label>Current Year Of Medical Traning
+                                        <small>*</small>
+                                    </label>
+                                    <select class="form-control" [(ngModel)]="users.userInfo.YearOfMedTra" formControlName="medicalTraining"
+                                        name="medicalTraining" id="medicalTraining" #selects
+                                        (change)="changeTraining($event)">
+                                        <option *ngFor="let t of trainingType" [value]="t.name">{{t.name}}</option>
+                                    </select>
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('medicalTraining')!.touched && registrationForm.get('medicalTraining')!.errors?.['required'] ">Please fill this field.</label><br>
+                                    <span style="color: red; " *ngIf="checkMedTrainFill">This field is mandatory.</span>
+                                </div>
+
+                                <div class="inputfiled" id="isOtherTraining" *ngIf="isOtherTraining">
+                                    <label>Other</label>
+                                    <input type="text" placeholder="Please Specify" formControlName="otherTraining"
+                                        class="form-control">
+                                </div>
+
+                            </div>
+                            <label class="text-danger"
+                                *ngIf="registrationForm.get('otherTraining')!.touched && registrationForm.get('otherTraining')!.errors?.['required'] ">Please fill this field.</label><br>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form_banner">
+                                <div class="inpfiled">
+                                    <label>Password
+                                        <small>*</small>
+                                    </label>
+                                    <input type="password" [(ngModel)]="users.userInfo.Password" formControlName="password" name="password" id="password"
+                                        placeholder="Enter Your Password" class="form-control">
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('password')!.touched && registrationForm.get('password')!.errors?.['required']">Please fill this field.</label><br>
+                                    <span class="text-danger" *ngIf="checkPassFill">This field is mandatory.</span>
+                                </div>
+                                
+                                <div class="inpfiled">
+                                    <label>User Age
+                                        <small>*</small>
+                                    </label>
+                                    <input type="text" [(ngModel)]="users.userInfo.UserAge" placeholder="Enter Age" formControlName="age"
+                                        class="form-control" name="age" id="age">
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('age')!.touched && registrationForm.get('age')!.errors?.['required']">Please fill this field.</label><br>
+                                    <span class="text-danger" *ngIf="checkAgeFill">This field is mandatory.</span>
+                                </div>
+
+                                <div class="inpfiled">
+                                    <label>Gender
+                                        <small>*</small>
+                                    </label>
+                                    <select class="form-control" [(ngModel)]="users.userInfo.Gender" formControlName="gender" name="gender" id="field"
+                                        #MySelect (change)="changeGender($event)">
+                                        <option *ngFor="let g of genders" [value]="g.name">{{g.name}}</option>
+                                    </select>
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('gender')!.touched && registrationForm.get('gender')!.errors?.['required']">Please fill this field.</label><br>
+                                    <span class="text-danger" *ngIf="checkGenderFill">This field is mandatory.</span>
+                                </div>
+
+                                <div class="inpfiled">
+                                    <label>Select Your Field
+                                        <small>*</small>
+                                    </label>
+                                    <select class="form-control" [(ngModel)]="users.userInfo.Field" formControlName="field" name="field" id="field"
+                                        #MySelect (change)="changeField($event)">
+                                        <option *ngFor="let f of field" [value]="f.name">{{f.name}}</option>
+                                    </select>
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('field')!.touched && registrationForm.get('field')!.errors?.['required']">Please fill this field.</label><br>
+                                    <span class="text-danger" *ngIf="checkFieldFill">This field is mandatory.</span>
+                                </div>
+                                <div class="inputfiled" id="isOtherField" *ngIf="isOtherField">
+                                    <label>Other</label>
+                                    <input type="text"  placeholder="Please Specify" formControlName="otherField"
+                                        class="form-control">
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('isOtherField')!.touched && registrationForm.get('isOtherField')!.errors?.['required']">Please
+                                        fill this field.</label><br>
+                                </div>
+                                <div class="inpfiled">
+                                    <label>Current Year Of Medical School
+                                        <small>*</small>
+                                    </label>
+                                    <select class="form-control" [(ngModel)]="users.userInfo.MedSchool" formControlName="school" name="school" id="school"
+                                        #selectschool (change)="changeSchool($event)">
+                                        <option *ngFor="let s of school" [value]="s.name">{{s.name}}</option>
+                                    </select>
+                                    <label class="text-danger"
+                                        *ngIf="registrationForm.get('school')!.touched && registrationForm.get('school')!.errors?.['required']">
+                                        Please fill this field.
+                                    </label><br>
+                                    <span class="text-danger" *ngIf="checkSchoolFill">This field is mandatory.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="row btn_marg my-4 d-flex justify-content-end">
+                <div class="btn_col1">
+                    <button type="submit" [disabled]="registrationForm.valid">SIGNUP NOW</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

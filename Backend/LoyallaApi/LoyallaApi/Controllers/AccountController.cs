@@ -42,14 +42,14 @@ namespace LoyallaApi.Controllers
         }
 
         [HttpPost,Route("login")]
-        public async Task<string> Login(loginDto login) 
+        public async Task<object> Login(loginDto login) 
         {
-            var isUser = _context.Signup.Where(x => (x.Email == login.email | x.Username==login.email) && x.Password == login.password).Select(x=>x.Id).FirstOrDefault();
+            var isUser = _context.Signup.Where(x => (x.Email == login.email | x.Username==login.email) && x.Password == login.password).Select(x=>new {x.Id,x.Email,x.Username }).FirstOrDefault();
             if (isUser == null) 
             {
                 return "";
             }
-            return isUser.ToString();
+            return isUser;
         }
     }
 }
