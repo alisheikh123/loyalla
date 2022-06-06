@@ -19,6 +19,7 @@ import { Role } from './shared/model/role';
 import { EditUploadClassesComponent } from './components/admin/edit-upload-classes/edit-upload-classes.component';
 import { StudentPaperComponent } from './components/student/student-site/student-paper/student-paper.component';
 import { StudentSurveyDetailComponent } from './student-survey-detail/student-survey-detail.component';
+import { AllSurviesComponent } from './components/admin/all-survies/all-survies.component';
 
 const routes: Routes = [
   { path: 'adminNavbar',canActivate: [AuthGuard], component: AdminNavbarComponent, children: [
@@ -34,6 +35,7 @@ const routes: Routes = [
    {path: 'AdminGradedReport/:id',canActivate: [AuthGuard], component: AdminGradedReportComponent},
    {path:'studentPaper/:id/:reviewId',canActivate: [AuthGuard],component: StudentPaperComponent},
    {path:'studentSurvey/:studentId',canActivate: [AuthGuard],component: StudentSurveyDetailComponent},
+   {path:'allSurvies',canActivate: [AuthGuard],component: AllSurviesComponent},
 
 ]},
 {path: '', component: LoginComponent},

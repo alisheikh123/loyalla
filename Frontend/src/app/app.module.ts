@@ -36,6 +36,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StudentSurveyDetailComponent } from './student-survey-detail/student-survey-detail.component';
+import { AllSurviesComponent } from './components/admin/all-survies/all-survies.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { StudentSurveyDetailComponent } from './student-survey-detail/student-su
     StudentPaperComponent,
     EditUploadClassesComponent,
     StudentSurveyDetailComponent,
+    AllSurviesComponent,
   ],
   imports: [
     FormsModule,

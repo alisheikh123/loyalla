@@ -131,6 +131,8 @@ getPaperId(caseId:number){
 }
 studentSuveyList(studentId:number){
   return this.http.get<any>(this.apiUrl+'/api/Loyalla/getSurvey?Id='+studentId).pipe(catchError(this.errorService.handleError));
-
+}
+getAllSurvies(){
+  return this.http.get<any>(this.apiUrl+'/api/Loyalla/getAllSurvies').pipe(catchError(this.errorService.handleError));
 }
 }
