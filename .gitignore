@@ -17,6 +17,8 @@ Version.h
 Version.cpp
 */bin
 */obj
+*/.vs
+
 
 /.vs/VSWorkspaceState.json
 /Backend/LoyallaApi/.vs/LoyallaApi/FileContentIndex
