@@ -96,7 +96,7 @@
                                         formControlName="{{option.questionId}}" value="{{option.id}}">
                                         {{option.optionName}}
                                         <br>
-                                        <label class="correctanswer">{{option.isAnwsers === 1 && isHidden === true ? 'Correct Answer' : ''}}</label>
+                                        <!-- <label class="correctanswer">{{option.isAnwsers === 1 && isHidden === true ? 'Correct Answer' : ''}}</label> -->
 
                                 </div>
                                 
@@ -109,7 +109,7 @@
                 </div>
                 <div class="float-right py-3">
                     <div class="btnpnk mx-2">
-                        <a (click)="submit()" *ngIf="reviewId==0">SAVE</a>
+                        <a (click)="submit()">SAVE</a>
                     </div>
                 </div>
             </div>

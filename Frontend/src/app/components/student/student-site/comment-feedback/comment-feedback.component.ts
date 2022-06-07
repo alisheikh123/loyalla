@@ -61,4 +61,12 @@ export class CommentFeedbackComponent implements OnInit {
       this.router.navigateByUrl('/studentNavbar/UserWorkList')
     });
   }
+  useWorkList()
+  {
+    this.router.navigateByUrl('studentNavbar/UserWorkList')
+  }
+  newCase()
+  {
+    this.router.navigateByUrl('studentNavbar/UserWorkList')
+  }
 }

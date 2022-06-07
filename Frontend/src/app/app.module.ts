@@ -37,6 +37,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StudentSurveyDetailComponent } from './student-survey-detail/student-survey-detail.component';
 import { AllSurviesComponent } from './components/admin/all-survies/all-survies.component';
+import { RetakeComponent } from './components/student/student-site/retake/retake.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AllSurviesComponent } from './components/admin/all-survies/all-survies.
     EditUploadClassesComponent,
     StudentSurveyDetailComponent,
     AllSurviesComponent,
+    RetakeComponent,
   ],
   imports: [
     FormsModule,

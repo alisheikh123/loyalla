@@ -3,20 +3,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CasesService } from 'src/app/shared/services/Case/cases.service';
 import { ToastService } from 'src/app/shared/services/shared/toast.service';
-
 @Component({
-  selector: 'app-results',
-  templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css'],
+  selector: 'app-retake',
+  templateUrl: './retake.component.html',
+  styleUrls: ['./retake.component.css']
 })
-export class ResultsComponent implements OnInit {
+export class RetakeComponent implements OnInit {
+
   submissionId: number = 0;
   studentId:any;
   result: number = 0;
   paperId: number = 0;
   student_Id: number = 0;
   questionsList: any;
-  reviewId:number = 0;
+  retakeId:number = 0;
   isHidden: boolean = false;
   answers: any[] = [];
   optionList: any;
@@ -48,25 +48,19 @@ export class ResultsComponent implements OnInit {
     this.activatedRoute.params.subscribe((res) => {
       this.submissionId = Number(res['submissionId']);
       this.paperId = Number(res['paperId'])
-      this.reviewId = Number(res['reviewId'])
-      this.getResult();
-      // this.showSurvey();
+      this.retakeId = Number(res['retake'])
     
     });
     this.getQuestions();
-    if(this.reviewId==1){
+    if(this.retakeId==1){
       this.isHidden=true;
       this.getSubmissionAgainstPaperId();
     }
-    if(this.reviewId==0){
+    if(this.retakeId==0){
       this.isHidden=false
     }
   }
-  getResult() {
-    this.service.getResult(this.submissionId).subscribe((res) => {
-      this.result = res.code;
-    });
-  }
+
   getSubmissionAgainstPaperId(){
     this.service.getSubmissionIdByPaperId(this.paperId).subscribe((res)=>{
       this.attemptedOptionDetail = res.data;
@@ -122,46 +116,58 @@ export class ResultsComponent implements OnInit {
     else this.answers.push(item);
   }
   submit() {
-    if (this.status !== 'Submitted') {
-      var studentid = JSON.parse(localStorage.getItem('userid') || '{}');
+  let value = 0
+    console.log(this.answers)
+    this.answers.map((ele)=>{
+      if(ele.attemptedOptionId==ele.correctOptionId)
+      {
+        value = value + 1;
+      }
+      else{
+        value = value + 0;
+      }
+    })
+    this.result = value;
+    // if (this.status !== 'Submitted') {
+    //   var studentid = JSON.parse(localStorage.getItem('userid') || '{}');
 
-      let model = {
-        submissionId: 0,
-        paperId: this.paperId,
-        caseId: this.caseId,
-        totalQuestions: this.TotalQuestions,
-        studentId: parseInt(studentid),
-        submission: this.answers,
-      };
-      this.service.submitPaper(model).subscribe((res: any) => {
-        this.AttemptStatus.Case_Id = this.caseId;
-        this.AttemptStatus.Student_Id = parseInt(studentid);
-        this.AttemptStatus.Status = 'Submitted';
-        this.AttemptStatus.Created_By = parseInt(studentid);
-        this.AttemptStatus.Updated_By = parseInt(studentid);
-        this.submissionId = res.code;
+    //   let model = {
+    //     submissionId: 0,
+    //     paperId: this.paperId,
+    //     caseId: this.caseId,
+    //     totalQuestions: this.TotalQuestions,
+    //     studentId: parseInt(studentid),
+    //     submission: this.answers,
+    //   };
+    //   // this.service.submitPaper(model).subscribe((res: any) => {
+    //     this.AttemptStatus.Case_Id = this.caseId;
+    //     this.AttemptStatus.Student_Id = parseInt(studentid);
+    //     this.AttemptStatus.Status = 'Submitted';
+    //     this.AttemptStatus.Created_By = parseInt(studentid);
+    //     this.AttemptStatus.Updated_By = parseInt(studentid);
 
-        this.service
-          .UpdateCaseStatusSubmission(this.AttemptStatus)
-          .subscribe((res: any) => {
-            this.isHidden = true;
-            this.toast.showSuccess(
-              'Paper successfully submitted.',
-              'Paper Submission'
-            );
-            this.router.navigateByUrl(
-              '/studentNavbar/result/' +
-                this.submissionId+
-                '/' +
-                this.paperId +
-                '/' +
-                '0'
-            );
-          });
-      });
-    } else {
-      this.isHidden = true;
-    }
+    //     // this.service
+    //     //   .UpdateCaseStatusSubmission(this.AttemptStatus)
+    //     //   .subscribe((res: any) => {
+    //         // this.isHidden = true;
+    //         // this.toast.showSuccess(
+    //         //   'Paper successfully submitted.',
+    //         //   'Paper Submission'
+    //         // );
+    //         // this.router.navigateByUrl(
+    //         //   '/studentNavbar/result/' +
+    //         //     this.submissionId+
+    //         //     '/' +
+    //         //     this.paperId +
+    //         //     '/' +
+    //         //     '0'
+    //         // );
+    //       // });
+    //   // }
+    //   // );
+    // } else {
+    //   this.isHidden = true;
+    // }
   }
   goToFeedback(){
     console.log(this.caseId)

@@ -17,6 +17,10 @@ export class CasesService {
     return this.http.post(this.apiUrl + '/api/Loyalla/AddCase', cases).pipe(
       catchError(this.errorService.handleError));
   }
+  checkSurveyExist(studentId:any){
+    return this.http.get<any>(this.apiUrl + '/api/Loyalla/GetCaseDetail'+'?caseId='+studentId).pipe(
+      catchError(this.errorService.handleError));
+  }
   getCaseDetailById(caseId:number)
   {
     return this.http.get<any>(this.apiUrl + '/api/Loyalla/GetCaseDetail'+'?caseId='+caseId).pipe(

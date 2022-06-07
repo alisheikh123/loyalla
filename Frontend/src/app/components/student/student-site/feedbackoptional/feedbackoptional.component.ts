@@ -23,7 +23,27 @@ export class FeedbackoptionalComponent implements OnInit {
       this.studentId = Number(res['studentId']);
       this.submission = Number(res['submissionId'])
       this.paperId = Number(res['paperId'])
+      
     });
+     this.showSurvey();
+  }
+  showSurvey(){
+    this.service.getAttempts(this.studentId).subscribe((res)=>{
+      for(let i=1;i<20;i++)
+      {
+      let j = 10;
+      let value = i*j;///1*10 = 10
+      if(res.code==value){
+        this.service.checkSurveyExist(this.studentId).subscribe(()=>{
+          
+        })
+        setTimeout(() => (this.router.navigateByUrl('studentNavbar/Comment/'+ this.studentId)), 3000)
+      }
+      else{
+      }
+      }
+    
+    })
   }
   getFeedbackDescription(event:any){
     this.feedbackDescription = event.target.value;
@@ -36,12 +56,20 @@ export class FeedbackoptionalComponent implements OnInit {
     }
     this.service.saveFeedBack(feedbackObject).subscribe((res)=>{
         this.toast.showSuccess("Feedback Successfully Added","Feedback Submission")
-        this.router.navigateByUrl('studentNavbar/result/'+this.submission+'/'+this.paperId+'/1')
+        this.router.navigateByUrl('studentNavbar/UserWorkList')
     })
   }   
   skip()
   {
-    this.router.navigateByUrl('studentNavbar/result/'+this.submission+'/'+this.paperId+'/1')
+    this.router.navigateByUrl('studentNavbar/UserWorkList')
+  }
+  useWorkList()
+  {
+    this.router.navigateByUrl('studentNavbar/UserWorkList')
+  }
+  newCase()
+  {
+    this.router.navigateByUrl('studentNavbar/UserWorkList')
   }
 
 }

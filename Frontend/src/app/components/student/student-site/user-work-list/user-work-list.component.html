@@ -32,14 +32,13 @@
                   <div class="tooltips">
                     <li>
                       <a
-                        href=""
                         class="text-dark"
-                        routerLink="/StudentSite/ReviewReport"
+                        (click)="navigateToResult(item.caseId)"
                         routerLinkActive="active"
                         ><i class="fa fa-search"></i
                       ></a>
                     </li>
-                    <span class="tooltiptext">Review</span>
+                    <span class="tooltiptext" >Review</span>
                   </div>
                   <div class="tooltips">
                     <!-- routerLink="/StudentSite/ReadStudy" -->
@@ -53,7 +52,7 @@
                   <li *ngIf="item.Status == 'Submitted'">
                     <div class="tooltips">
                       <a
-                        (click)="navigateToResult(item.caseId)"
+                      (click)="navigateToRetake(item.caseId)"
                         ><img src="assets/img/reload.png"
                       /></a>
                       <span class="tooltiptext">Retake</span>

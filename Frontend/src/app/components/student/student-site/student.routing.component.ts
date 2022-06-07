@@ -9,6 +9,7 @@ import { FeedbackoptionalComponent } from './feedbackoptional/feedbackoptional.c
 import { ResultsComponent } from './results/results.component';
 import { ReadStudyComponent } from './read-study/read-study.component';
 import { GradedReportComponent } from './graded-report/graded-report.component';
+import { RetakeComponent } from './retake/retake.component';
 
 const routes: Routes = [
 {path:'studentNavbar', component: StudentNavBarComponent, children:[
@@ -17,6 +18,7 @@ const routes: Routes = [
 {path: 'Comment/:studentId', component: CommentFeedbackComponent},
 {path: 'FeedbackOptional/:caseId/:studentId/:submissionId/:paperId', component: FeedbackoptionalComponent},
 {path: 'result/:submissionId/:paperId/:reviewId', component: ResultsComponent},
+{path: 'retake/:submissionId/:paperId/:reviewId', component: RetakeComponent},
 {path: 'ReadStudy', component: ReadStudyComponent},
 {path: 'ReviewReport', component: GradedReportComponent},
 {path:'studentPaper/:id/:reviewId',component: StudentPaperComponent}

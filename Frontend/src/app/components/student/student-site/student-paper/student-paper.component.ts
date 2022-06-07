@@ -127,14 +127,12 @@ export class StudentPaperComponent implements OnInit {
               'Paper Submission'
             );
             this.router.navigateByUrl(
-              '/studentNavbar/FeedbackOptional/' +
-                this.AttemptStatus.Case_Id +
-                '/' +
-                this.AttemptStatus.Student_Id +
-                '/' +
+              '/studentNavbar/result/' +
                 this.submissionId+
                 '/' +
-                this.paperId
+                this.paperId +
+                '/' +
+                '0'
             );
           });
       });
