@@ -58,10 +58,17 @@
             </div>
         </div>
     </section>
-    <div class="row btn_marg my-4 d-flex justify-content-end">
-        <div class="btn_col1">
-            <a (click)="submit()" routerLinkActive="active">Submit</a>
+    <div class="row col-md-12 ml-5 mt-5">
+        <div class="col-md-2 ">
+            <a class="btn text-white" style="background-color: #8b003a;" (click)="submit()" routerLinkActive="active">Submit</a>
         </div>
+        <div class="col-md-3">
+            <a class="btn text-white" style="background-color: grey;" (click)="useWorkList()">Go To Work List</a>
+        </div>
+        <div class="col-md-3">
+            <a class="btn btn-warning text-white" (click)="newCase()">Go To Next Case</a>
+        </div>
+       
       
    </div>
    <!-- <div class="col-md-2 btn_col1 justify-content-center">

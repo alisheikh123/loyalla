@@ -59,14 +59,14 @@
                         <h4 class="fs-40 text-dark score">Your Score :{{result}}</h4>
                     </div>
                     <div class="d-flex flex-wrap justify-content-center py-3">
-                        <div class="btnpnk mx-2">
-                        <a class="btn" (click)="retake()">RETAKE</a>
+                        <div class="btnsil mx-2">
+                        <a class="btn  pl-5 pr-5 pt-2 pb-2" style="background-color: #8b003a;" (click)="retake()">RETAKE</a>
                     </div>
                         <div class="btnsil mx-2">
-                            <a class="btn" routerLink="/studentNavbar/ReadStudy" routerLinkActive="active">NEXT CASE</a>
+                            <a class="btn pl-5 pr-5 pt-2 pb-2" routerLink="/studentNavbar/ReadStudy" routerLinkActive="active">NEXT CASE</a>
                         </div>
                         <div class="btnblk mx-2">
-                            <a class="btn" routerLink="/studentNavbar/studentPaper/{{paperId}}/1" routerLinkActive="active">REVIEW</a>
+                            <a class="btn pl-5 pr-5 pt-2 pb-2" routerLink="/studentNavbar/studentPaper/{{paperId}}/1" routerLinkActive="active">REVIEW</a>
                         </div>
                     </div>
                     </div>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="float-right py-3">
                     <div class="btnpnk mx-2">
-                        <a (click)="submit()" *ngIf="reviewId==0">SAVE</a>
+                        <!-- <a (click)="submit()" *ngIf="reviewId==0">SAVE</a> -->
                     </div>
                 </div>
             </div>

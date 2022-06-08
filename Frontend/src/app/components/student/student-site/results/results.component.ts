@@ -87,7 +87,14 @@ export class ResultsComponent implements OnInit {
     });
   }
   retake() {
-    this.ngOnInit();
+    debugger;
+    const student_Id = Number(localStorage.getItem('userid'));
+    this.service.getSubmissionId(this.caseId,student_Id).subscribe((res)=>{
+      this.submissionId = res.data.submissionId;
+      this.paperId = res.data.paperId;
+      console.log(this.submissionId,student_Id)
+      this.router.navigateByUrl('studentNavbar/retake/'+this.submissionId+'/'+this.paperId+'/1')
+    })
   }
   
   getStatusList() {

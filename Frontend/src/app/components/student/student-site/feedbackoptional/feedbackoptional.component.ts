@@ -29,7 +29,7 @@ export class FeedbackoptionalComponent implements OnInit {
   }
   showSurvey(){
     this.service.getAttempts(this.studentId).subscribe((res)=>{
-      for(let i=1;i<20;i++)
+      for(let i=1;i<50;i++)
       {
       let j = 10;
       let value = i*j;///1*10 = 10

@@ -30,17 +30,21 @@
     </section>
     <div class="row btn_marg my-4 d-lg-flex d-md-flex justify-content-end">
         
-        <div class="col-md-1 btn_col12 mx-2">
-            <a (click)="skip()">SKIP</a>
+        <div class="col-md-1">
+            <a class="btn text-white" style="background-color: black;"  (click)="skip()">SKIP</a>
         </div>
-        <div class="col-md-2 btn_col1 mx-2">
-            <a (click)="submit()">SEND FEEDBACK</a>
+        <div class="col-md-2 ">
+            <a class="btn text-white" style="background-color: #8b003a;" (click)="submit()">SEND FEEDBACK</a>
         </div>
-        <div class="col-md-2 btn_col1 mx-2">
-            <a (click)="useWorkList()">Go To Work List</a>
+        <div class="col-md-2">
+            <a class="btn text-white" style="background-color: grey;"  (click)="useWorkList()">Go To Work List</a>
         </div>
-        <div class="col-md-2 btn_col1 mx-2">
-            <a (click)="newCase()">Go To Next Case</a>
+        <div class="col-md-2">
+            <a class="btn btn-warning text-white" (click)="newCase()">Go To Next Case</a>
         </div>
+
+       
+    
+      
    </div>
 </div>
